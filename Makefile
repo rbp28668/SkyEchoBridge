@@ -129,6 +129,30 @@ SkyEcho2/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/build
 .PHONY : SkyEcho2/fast
 
+NMEAData.o: NMEAData.cpp.o
+.PHONY : NMEAData.o
+
+# target to build an object file
+NMEAData.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/NMEAData.cpp.o
+.PHONY : NMEAData.cpp.o
+
+NMEAData.i: NMEAData.cpp.i
+.PHONY : NMEAData.i
+
+# target to preprocess a source file
+NMEAData.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/NMEAData.cpp.i
+.PHONY : NMEAData.cpp.i
+
+NMEAData.s: NMEAData.cpp.s
+.PHONY : NMEAData.s
+
+# target to generate assembly for a file
+NMEAData.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/NMEAData.cpp.s
+.PHONY : NMEAData.cpp.s
+
 fcs.o: fcs.cpp.o
 .PHONY : fcs.o
 
@@ -282,6 +306,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... SkyEcho2"
+	@echo "... NMEAData.o"
+	@echo "... NMEAData.i"
+	@echo "... NMEAData.s"
 	@echo "... fcs.o"
 	@echo "... fcs.i"
 	@echo "... fcs.s"

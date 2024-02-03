@@ -1,3 +1,5 @@
+// SkyEchoBridge
+// Copyright R Bruce Porteous 2024
 #pragma once
 
 #include <cstdint>

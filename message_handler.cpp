@@ -1,3 +1,6 @@
+// SkyEchoBridge
+// Copyright R Bruce Porteous 2024
+
 #include <iostream>
 #include <assert.h>
 #include "message_handler.h"

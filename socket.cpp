@@ -1,3 +1,5 @@
+// SkyEchoBridge
+// Copyright R Bruce Porteous 2024
 #include <string.h>
 #include <unistd.h>
 #include <exception>

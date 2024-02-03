@@ -1,4 +1,6 @@
 
+// SkyEchoBridge
+// Copyright R Bruce Porteous 2024
 #include "fcs.h"
 
 uint16_t FCS::lookup[256] = {

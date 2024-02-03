@@ -1,3 +1,5 @@
+// SkyEchoBridge
+// Copyright R Bruce Porteous 2024
 #include <iostream>
 #include <iomanip>
 #include "version.h"

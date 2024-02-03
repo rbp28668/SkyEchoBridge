@@ -12,6 +12,7 @@ add_executable(SkyEcho2
     message_handler.cpp
     fcs.cpp
     state.cpp
+    NMEAData.cpp
     main.cpp 
 )
 
