@@ -24,6 +24,8 @@ class TrackedTarget : public Target {
     float relativeBearingDegrees;
     float relativeDistanceMetres;
 
+    long lastUpdatedSeconds;
+
     public:
     TrackedTarget();
     int alarm() const { return _alarm; }
@@ -35,4 +37,6 @@ class TrackedTarget : public Target {
 
     bool advisory() const { return _advisory; }
     void advisorySent() { _advisorySent = true; }
+
+    void markUpdated(long atSeconds);
 };

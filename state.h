@@ -3,6 +3,9 @@
 #pragma once
 
 #include <list>
+#include <unordered_map>
+
+#include <sys/sysinfo.h>
 
 #include "tracked_target.h"
 #include "ownship.h"
@@ -11,7 +14,11 @@
 class State {
     OwnShip ownship;
     
-    std::list<TrackedTarget*> traffic;
+    // Use the Target's identity() function as key.
+    std::unordered_map<int, TrackedTarget*> traffic;
+
+
+    std::list<TrackedTarget*> activeTraffic;
 
     // Data from heartbeat.
     uint32_t hearbeatTime;
@@ -19,7 +26,14 @@ class State {
     bool maintRequired;
     bool batteryLow;
     bool utcOk;
+    long lastHeartbeatTime;
 
+    int heightAboveTerrain;
+
+    // use system uptime as a proxy for time as clock likely not to be set properly.
+    struct sysinfo uptime_info;
+    long uptimeSeconds() { ::sysinfo(&uptime_info); return uptime_info.uptime;}
+    long lastUptime() { return uptime_info.uptime;}
 
     public:
     State();

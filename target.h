@@ -26,10 +26,15 @@ class Target {
     char callsign[8];
     uint8_t emergency;
 
-    // Derived stuff
-
+    
+    
     public:
+    unsigned int identity() { return uint32_t(addressType) << 24 | address;}
     void updateFrom(const Target& other);
     bool isSameTarget(const Target& other) const;
     bool fixInvalid() const;
+    bool speedUnknown() const {return speedKts == 0xFFF;}
+    bool verticalVelocityUnknown() const {return verticalVelocity == 0x800;}
+
+    Target();
 };

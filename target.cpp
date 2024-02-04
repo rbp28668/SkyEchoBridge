@@ -2,6 +2,28 @@
 // Copyright R Bruce Porteous 2024
 #include "target.h"
 
+
+Target::Target() 
+    : trafficAlert(0)
+    , addressType(0)
+    , address(0)
+    , latitude(0)
+    , longitude(0)
+    , altFeet(0)
+    , miscIndicators(0)
+    , nic(0)   // Navigation Integrity Category (NIC)
+    , ncap(0)   // Navigation Accuracy Category for Position (NACp)
+    , emitter(0) // What sort of thing this is - see 3.5.1.10 EMITTER CATEGORY
+    , heading(0)
+    , speedKts(0xFFF)   // Note 0xFFF or 4095 is unknown.
+    , verticalVelocity(0x800) // 0x800 is unknown.
+    , track(0)   // see miscIndicators for exactly what this means.
+    , callsign({ ' ',' ',' ',' ',' ',' ',' ',' '})
+    , emergency(0)
+
+{
+
+}
 void Target::updateFrom(const Target& other){
     trafficAlert = other.trafficAlert;
     addressType = other.addressType;

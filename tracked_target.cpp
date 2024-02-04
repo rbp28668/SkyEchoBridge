@@ -11,6 +11,11 @@ TrackedTarget::TrackedTarget()
 , relativeVerticalMetres(0)
 , relativeBearingDegrees(0)
 , relativeDistanceMetres(0)
+, lastUpdatedSeconds(0)
 {
 
+}
+
+void TrackedTarget::markUpdated(long atSeconds){
+    lastUpdatedSeconds = atSeconds;
 }
