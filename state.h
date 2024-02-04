@@ -4,11 +4,14 @@
 
 #include <list>
 
-#include "target.h"
+#include "tracked_target.h"
+#include "ownship.h"
+
 /// @brief Holds the main state of the application
 class State {
-    Target ownship;
-    std::list<Target*> traffic;
+    OwnShip ownship;
+    
+    std::list<TrackedTarget*> traffic;
 
     // Data from heartbeat.
     uint32_t hearbeatTime;

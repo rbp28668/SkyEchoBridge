@@ -1,3 +1,5 @@
+// SkyEchoBridge
+// Copyright R Bruce Porteous 2024
 
 #include <iostream>
 #include <sstream>
@@ -6,209 +8,235 @@
 #include "NMEAData.h"
 
 
-	// Converts lat to appropriate degrees and N/S
-	std::ostream& NMEAData::convertLat(std::ostream& os) const {
-		
-		int degrees, minutes, fraction;
-
-		bool isNorth = latDegrees >= 0.0;
-		double absLat = std::abs(latDegrees);
-
-		// Lattitude, first 2 digits are whole degrees.
-		degrees = (int)std::floor(absLat);
-		absLat -= degrees;  // now fractional degrees.
-		absLat *= 60;			// now minutes of arc.
-		minutes = (int)std::floor(absLat);
-		absLat -= minutes;		// decimal fraction of minute of arc.
-		fraction = (int)std::floor(absLat * 10000);
-		os << std::setw(2) << std::setfill('0') << degrees;
-		os << std::setw(2) << std::setfill('0') << minutes;
-		os << '.';
-		os << std::setw(4) << std::setfill('0') << fraction;
-		os << ','; 
-		os << (isNorth ? 'N' : 'S');
-
-		// std::cout << "Lat: ";
-		// std::cout << std::setw(2) << std::setfill('0') << degrees;
-		// std::cout << ":" ; 
-		// std::cout << std::setw(2) << std::setfill('0') << minutes;
-		// std::cout << '.';
-		// std::cout << std::setw(4) << std::setfill('0') << fraction;
-		// std::cout << std::endl;
-
-		return os;
-	}
-
-	// Converts long to appropriate degrees and E/W
-	std::ostream& NMEAData::convertLong(std::ostream& os) const {
-
-		int degrees, minutes, fraction;
-
-		bool isEast = longDegrees >= 0.0;
-		double absLong = std::abs(longDegrees);
-
-		// Longditude, first 3 digits are whole degrees (+/- 180 degrees east or west).
-		degrees = (int)std::floor(absLong);
-		absLong -= degrees;  // now fractional degrees.
-		absLong *= 60;			// now minutes of arc.
-		minutes = (int)std::floor(absLong);
-		absLong -= minutes;		// decimal fraction of minute of arc.
-		fraction = (int)std::floor(absLong * 10000);
-		os << std::setw(3) << std::setfill('0') << degrees;
-		os << std::setw(2) << std::setfill('0') << minutes;
-		os << '.';
-		os << std::setw(4) << std::setfill('0') << fraction;
-		os << ','; 
-		os << (isEast ? 'E' : 'W');
-
-		// std::cout << "Long: ";
-		// std::cout << std::setw(3) << std::setfill('0') << degrees;
-		// std::cout << ":" ; 
-		// std::cout << std::setw(2) << std::setfill('0') << minutes;
-		// std::cout << '.';
-		// std::cout << std::setw(4) << std::setfill('0') << fraction;
-		// std::cout << std::endl;
-		return os;
-	}
-
-	// Converts the UTC time to hhmmss.mmm
-	std::ostream& NMEAData::convertTime(std::ostream& os) const {
-
-		double utc = utcTime;
-
-		int h = int(std::floor(utc / (60 * 60)));
-		utc -= h * (60 * 60);  // take off whole hours
-
-		int m = int(std::floor(utc / 60));
-		utc -= m * 60;	// take off mins, just secs left.
-
-		int s = int(std::floor(utc));
-		utc -= s;
-
-		int mS = int(std::floor(utc * 1000)); // milliseconds
-
-		os << std::setw(2) << std::setfill('0') << h;
-		os << std::setw(2) << std::setfill('0') << m;
-		os << std::setw(2) << std::setfill('0') << s;
-		os << '.' ;
-		os << std::setw(3) << std::setfill('0') << mS;
-
-		return os;
-	}
-
-
-	// Wraps the basic sentence by writing the leading $, *, checksum and CRLF
-	void NMEAData::wrap(std::ostream& os, const std::string& in) const {
-		os << "$";
-		os << in;
-		os << "*";
-		os << std::hex << std::uppercase << std::setw(2) << std::setfill('0');
-		os << checksum(in);
-		os << std::dec << std::setw(0);
-		os << "\r\n";
-	}
-
-	// Calculates the checksum for the core string.
-	unsigned int NMEAData::checksum(const std::string& in) const {
-
-		int len = (int)in.length();
-		unsigned int cs = 0;
-		for(int i=0; i<len; ++i) {
-			unsigned char ch = in.at(i);
-			cs ^= ch;
-		}
-
-		return cs;
-	}
-
-	// Writes the GPS GGA sentence to the output.
-	void NMEAData::GPGGA(std::ostream& os){
-
-		std::ostringstream oss;
-
-		oss << "GPGGA,";
-
-		convertTime(oss) << ",";
-		convertLat(oss) << ",";
-		convertLong(oss) << ",";
+// Converts lat to appropriate degrees and N/S
+std::ostream& NMEAData::convertLat(std::ostream& os, double latDegrees) const {
 	
-		oss << "1,";  // GPS fix
-		oss << "12,"; // number of satellites
-		oss << "10,"; // Dilution of Position (DoP)
-		oss << std::setprecision(1) << std::fixed << gpsHeight << ',';
-		oss << "M,"; // in Metres
-		oss << ",,,,"; // height of geoid, units, DGPS time, DGPS station
-		oss << "0000";
+	int degrees, minutes, fraction;
 
-		wrap(os, oss.str());
+	bool isNorth = latDegrees >= 0.0;
+	double absLat = std::abs(latDegrees);
+
+	// Lattitude, first 2 digits are whole degrees.
+	degrees = (int)std::floor(absLat);
+	absLat -= degrees;  // now fractional degrees.
+	absLat *= 60;			// now minutes of arc.
+	minutes = (int)std::floor(absLat);
+	absLat -= minutes;		// decimal fraction of minute of arc.
+	fraction = (int)std::floor(absLat * 10000);
+	os << std::setw(2) << std::setfill('0') << degrees;
+	os << std::setw(2) << std::setfill('0') << minutes;
+	os << '.';
+	os << std::setw(4) << std::setfill('0') << fraction;
+	os << ','; 
+	os << (isNorth ? 'N' : 'S');
+
+	// std::cout << "Lat: ";
+	// std::cout << std::setw(2) << std::setfill('0') << degrees;
+	// std::cout << ":" ; 
+	// std::cout << std::setw(2) << std::setfill('0') << minutes;
+	// std::cout << '.';
+	// std::cout << std::setw(4) << std::setfill('0') << fraction;
+	// std::cout << std::endl;
+
+	return os;
+}
+
+// Converts long to appropriate degrees and E/W
+std::ostream& NMEAData::convertLong(std::ostream& os, double longDegrees) const {
+
+	int degrees, minutes, fraction;
+
+	bool isEast = longDegrees >= 0.0;
+	double absLong = std::abs(longDegrees);
+
+	// Longditude, first 3 digits are whole degrees (+/- 180 degrees east or west).
+	degrees = (int)std::floor(absLong);
+	absLong -= degrees;  // now fractional degrees.
+	absLong *= 60;			// now minutes of arc.
+	minutes = (int)std::floor(absLong);
+	absLong -= minutes;		// decimal fraction of minute of arc.
+	fraction = (int)std::floor(absLong * 10000);
+	os << std::setw(3) << std::setfill('0') << degrees;
+	os << std::setw(2) << std::setfill('0') << minutes;
+	os << '.';
+	os << std::setw(4) << std::setfill('0') << fraction;
+	os << ','; 
+	os << (isEast ? 'E' : 'W');
+
+	// std::cout << "Long: ";
+	// std::cout << std::setw(3) << std::setfill('0') << degrees;
+	// std::cout << ":" ; 
+	// std::cout << std::setw(2) << std::setfill('0') << minutes;
+	// std::cout << '.';
+	// std::cout << std::setw(4) << std::setfill('0') << fraction;
+	// std::cout << std::endl;
+	return os;
+}
+
+// Converts the UTC time to hhmmss.mmm
+std::ostream& NMEAData::convertTime(std::ostream& os, double secondsFromMidnightUtc) const {
+
+	double utc = secondsFromMidnightUtc;
+
+	int h = int(std::floor(utc / (60 * 60)));
+	utc -= h * (60 * 60);  // take off whole hours
+
+	int m = int(std::floor(utc / 60));
+	utc -= m * 60;	// take off mins, just secs left.
+
+	int s = int(std::floor(utc));
+	utc -= s;
+
+	int mS = int(std::floor(utc * 1000)); // milliseconds
+
+	os << std::setw(2) << std::setfill('0') << h;
+	os << std::setw(2) << std::setfill('0') << m;
+	os << std::setw(2) << std::setfill('0') << s;
+	os << '.' ;
+	os << std::setw(3) << std::setfill('0') << mS;
+
+	return os;
+}
+
+
+// Wraps the basic sentence by writing the leading $, *, checksum and CRLF
+void NMEAData::wrap(std::ostream& os, const std::string& in) const {
+	os << "$";
+	os << in;
+	os << "*";
+	os << std::hex << std::uppercase << std::setw(2) << std::setfill('0');
+	os << checksum(in);
+	os << std::dec << std::setw(0);
+	os << "\r\n";
+}
+
+// Calculates the checksum for the core string.
+unsigned int NMEAData::checksum(const std::string& in) const {
+
+	int len = (int)in.length();
+	unsigned int cs = 0;
+	for(int i=0; i<len; ++i) {
+		unsigned char ch = in.at(i);
+		cs ^= ch;
 	}
 
+	return cs;
+}
+
+// Writes the GPS GGA sentence to the output.
+void NMEAData::GPGGA(std::ostream& os, double utcTime, double latDegrees, double longDegrees, float gpsHeight){
+
+	std::ostringstream oss;
+
+	oss << "GPGGA,";
+
+	convertTime(oss, utcTime) << ",";
+	convertLat(oss, latDegrees) << ",";
+	convertLong(oss, longDegrees) << ",";
+
+	oss << "1,";  // GPS fix
+	oss << "12,"; // number of satellites
+	oss << "10,"; // Dilution of Position (DoP)
+	oss << std::setprecision(1) << std::fixed << gpsHeight << ',';
+	oss << "M,"; // in Metres
+	oss << ",,,,"; // height of geoid, units, DGPS time, DGPS station
+	oss << "0000";
+
+	wrap(os, oss.str());
+}
 
 
-	void NMEAData::GPRMC(std::ostream& os){
-		std::ostringstream oss;
 
-		oss << "GPRMC,";
-		convertTime(oss);
-		oss << ",A,";  // valid
+void NMEAData::GPRMC(std::ostream& os, double utcTime, double latDegrees, double longDegrees, float groundSpeedKnots, float trackDegrees, int day, int month, int year, float magneticVariationDegrees){
+	std::ostringstream oss;
 
-		convertLat(oss) << ",";
+	oss << "GPRMC,";
+	convertTime(oss, utcTime);
+	oss << ",A,";  // valid
 
-		convertLong(oss) << ",";
+	convertLat(oss, latDegrees) << ",";
 
-		oss << std::setw(0) << std::setprecision(2) << std::fixed;
-		oss << groundSpeedKnots << ",";
-		oss << trackDegrees << ",";
+	convertLong(oss, longDegrees) << ",";
 
-		oss << std::setw(2) << std::setfill('0');
-		oss << int(day) << int(month) << int(year)%100 << ",";
+	oss << std::setw(0) << std::setprecision(2) << std::fixed;
+	oss << groundSpeedKnots << ",";
+	oss << trackDegrees << ",";
 
-		oss << std::setw(0) << std::fixed << std::setprecision(3) << std::abs(magneticVariationDegrees) << ",";
-		oss << ((magneticVariationDegrees > 0) ? "E" : "W") << ",";  // 
+	oss << std::setw(2) << std::setfill('0');
+	oss << int(day) << int(month) << int(year)%100 << ",";
 
-		wrap(os, oss.str());
+	oss << std::setw(0) << std::fixed << std::setprecision(3) << std::abs(magneticVariationDegrees) << ",";
+	oss << ((magneticVariationDegrees > 0) ? "E" : "W") << ",";  // 
+
+	wrap(os, oss.str());
+}
+
+
+void NMEAData::PGRMZ(std::ostream& os, int altFeet){
+	std::ostringstream oss;
+
+	oss << "PGRMZ,";
+	oss << altFeet;
+	oss << ",F,2";  // valid
+	wrap(os, oss.str());
+}
+
+void NMEAData::PFLAU(std::ostream& os, int rx, int gps, int alarm, int relativeBearing, int alarmType, int relativeVertical, int relativeDistance, bool isICAO, uint32_t id){
+	std::ostringstream oss;
+	oss << "PFLAU,";
+	if(rx < 0) rx = 0;
+	if(rx > 99) rx = 99;
+	oss << rx << ",";
+	oss << gps << ",";
+	oss << alarm << ",";
+	oss << "1,";  // power ok
+	if(relativeBearing != NMEAData::EMPTY) {
+		oss << std::setw(3) << std::setfill('0');
+		oss << relativeBearing;
+		oss << std::setw(0);
+	} 
+	oss << ",";
+	oss << std::setw(1) << alarmType << ",";  
+	oss << std::setw(0);
+	if(relativeVertical != NMEAData::EMPTY) {
+		oss << relativeVertical;
+	}
+	oss << ",";
+	if(relativeDistance != NMEAData::EMPTY) {
+		oss << relativeDistance;
+	}
+	oss << ",";
+	if(isICAO){
+		oss << std::setw(6) << std::setfill('0') << std::hex;
+		oss << id;
+		oss << std::setw(0) << std::dec;
 	}
 
-	void NMEAData::LXWP0(std::ostream& os){
-		std::ostringstream oss;
+	wrap(os, oss.str());
 
-		oss << "LXWP0,";
-		oss << "Y,";	// logging data
-		oss << std::setw(0) << std::setprecision(2) << std::fixed;
-		oss << IASkph << ",";
-		oss << baroAltitudeMetres << ",";
-		oss << varioMetresSec << ",";
-		oss << ",,,,,"; // unknown fields 4 to 8
-		oss << std::setprecision(1);
-		oss << headingDegrees << ",";
-		oss << windHeadingDegrees << ",";
-		oss << windSpeedKph << ",";
+}
 
-		// std::cout << std::setw(0) << std::setprecision(2) << std::fixed;
-		// std::cout << "IAS: " << IASkph << ", ";
-		// std::cout << "Baro: "<< baroAltitudeMetres << ", ";
-		// std::cout << "Vario: " << varioMetresSec << ", ";
-		// std::cout << ",,,,,"; // unknown fields
-		// std::cout << std::setprecision(1);
-		// std::cout << "Hdg: " << headingDegrees << ",";
-		// std::cout << "Wind: " << windHeadingDegrees << ", " << windSpeedKph;
+void NMEAData::PFLAA(std::ostream& os, int alarm, int relativeNorth, int relativeEast, int relativeVertical, bool isICAO, uint32_t id, int groundSpeed, float climbRate, char acType){
+	std::ostringstream oss;
+	oss << "PFLAA,";
+	oss << alarm << ",";
+	oss << relativeNorth << ",";
+	oss << relativeEast << ",";
+	oss << relativeVertical << ",";
+	if(isICAO){
+		oss << std::setw(6) << std::setfill('0') << std::hex;
+		oss << id;
+		oss << std::setw(0) << std::dec;
+	}	
+	oss << ",";
+	oss << groundSpeed << ",";
+	oss << std::setprecision(1);
+	oss << climbRate << ",";
+	oss << acType;
 
-		wrap(os, oss.str());
-	}
+	wrap(os, oss.str());
 
-
-
-	void NMEAData::PGRMZ(std::ostream& os){
-
-	}
-
-	void NMEAData::PFLAU(std::ostream& os){
-
-	}
-
-	void NMEAData::PFLAA(std::ostream& os){
-
-	}
+}
 
 
 NMEAData::NMEAData(void)

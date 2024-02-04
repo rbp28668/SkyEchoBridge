@@ -2,6 +2,8 @@
 // Copyright R Bruce Porteous 2024
 #pragma once
 #include <cstdint>
+
+/// @brief Information received from a GDL-90 message for ownship or target.
 class Target {
 
     public:

@@ -225,6 +225,54 @@ message_handler.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/message_handler.cpp.s
 .PHONY : message_handler.cpp.s
 
+outbound_flarm_converter.o: outbound_flarm_converter.cpp.o
+.PHONY : outbound_flarm_converter.o
+
+# target to build an object file
+outbound_flarm_converter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/outbound_flarm_converter.cpp.o
+.PHONY : outbound_flarm_converter.cpp.o
+
+outbound_flarm_converter.i: outbound_flarm_converter.cpp.i
+.PHONY : outbound_flarm_converter.i
+
+# target to preprocess a source file
+outbound_flarm_converter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/outbound_flarm_converter.cpp.i
+.PHONY : outbound_flarm_converter.cpp.i
+
+outbound_flarm_converter.s: outbound_flarm_converter.cpp.s
+.PHONY : outbound_flarm_converter.s
+
+# target to generate assembly for a file
+outbound_flarm_converter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/outbound_flarm_converter.cpp.s
+.PHONY : outbound_flarm_converter.cpp.s
+
+ownship.o: ownship.cpp.o
+.PHONY : ownship.o
+
+# target to build an object file
+ownship.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/ownship.cpp.o
+.PHONY : ownship.cpp.o
+
+ownship.i: ownship.cpp.i
+.PHONY : ownship.i
+
+# target to preprocess a source file
+ownship.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/ownship.cpp.i
+.PHONY : ownship.cpp.i
+
+ownship.s: ownship.cpp.s
+.PHONY : ownship.s
+
+# target to generate assembly for a file
+ownship.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/ownship.cpp.s
+.PHONY : ownship.cpp.s
+
 socket.o: socket.cpp.o
 .PHONY : socket.o
 
@@ -273,6 +321,54 @@ state.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/state.cpp.s
 .PHONY : state.cpp.s
 
+target.o: target.cpp.o
+.PHONY : target.o
+
+# target to build an object file
+target.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/target.cpp.o
+.PHONY : target.cpp.o
+
+target.i: target.cpp.i
+.PHONY : target.i
+
+# target to preprocess a source file
+target.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/target.cpp.i
+.PHONY : target.cpp.i
+
+target.s: target.cpp.s
+.PHONY : target.s
+
+# target to generate assembly for a file
+target.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/target.cpp.s
+.PHONY : target.cpp.s
+
+tracked_target.o: tracked_target.cpp.o
+.PHONY : tracked_target.o
+
+# target to build an object file
+tracked_target.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/tracked_target.cpp.o
+.PHONY : tracked_target.cpp.o
+
+tracked_target.i: tracked_target.cpp.i
+.PHONY : tracked_target.i
+
+# target to preprocess a source file
+tracked_target.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/tracked_target.cpp.i
+.PHONY : tracked_target.cpp.i
+
+tracked_target.s: tracked_target.cpp.s
+.PHONY : tracked_target.s
+
+# target to generate assembly for a file
+tracked_target.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/tracked_target.cpp.s
+.PHONY : tracked_target.cpp.s
+
 transport.o: transport.cpp.o
 .PHONY : transport.o
 
@@ -318,12 +414,24 @@ help:
 	@echo "... message_handler.o"
 	@echo "... message_handler.i"
 	@echo "... message_handler.s"
+	@echo "... outbound_flarm_converter.o"
+	@echo "... outbound_flarm_converter.i"
+	@echo "... outbound_flarm_converter.s"
+	@echo "... ownship.o"
+	@echo "... ownship.i"
+	@echo "... ownship.s"
 	@echo "... socket.o"
 	@echo "... socket.i"
 	@echo "... socket.s"
 	@echo "... state.o"
 	@echo "... state.i"
 	@echo "... state.s"
+	@echo "... target.o"
+	@echo "... target.i"
+	@echo "... target.s"
+	@echo "... tracked_target.o"
+	@echo "... tracked_target.i"
+	@echo "... tracked_target.s"
 	@echo "... transport.o"
 	@echo "... transport.i"
 	@echo "... transport.s"

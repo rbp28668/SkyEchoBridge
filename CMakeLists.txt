@@ -13,6 +13,10 @@ add_executable(SkyEcho2
     fcs.cpp
     state.cpp
     NMEAData.cpp
+    target.cpp
+    ownship.cpp
+    tracked_target.cpp
+    outbound_flarm_converter.cpp
     main.cpp 
 )
 
