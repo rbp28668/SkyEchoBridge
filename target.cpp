@@ -18,7 +18,7 @@ Target::Target()
     , speedKts(0xFFF)   // Note 0xFFF or 4095 is unknown.
     , verticalVelocity(0x800) // 0x800 is unknown.
     , track(0)   // see miscIndicators for exactly what this means.
-    , callsign({ ' ',' ',' ',' ',' ',' ',' ',' '})
+    , callsign{ ' ',' ',' ',' ',' ',' ',' ',' '}
     , emergency(0)
 
 {

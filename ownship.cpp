@@ -7,7 +7,7 @@ void OwnShip::markUpdated(long atSeconds){
 }
 
 void OwnShip::setGeometricAltitude(int altFeet, int verticalFigureOfMerit, bool verticalWarning){
-    this->altFeet = altFeet;
-    this->verticalFigureOfMerit = verticalFigureOfMerit;
-    this->verticalWarning = verticalWarning;
+    this->geoAltFeet = altFeet;
+    this->geoVerticalFigureOfMerit = verticalFigureOfMerit;
+    this->geoVerticalWarning = verticalWarning;
 }

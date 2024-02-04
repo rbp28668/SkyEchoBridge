@@ -9,9 +9,9 @@ class OwnShip : public Target {
     long lastUpdatedSeconds;
 
 
-    int altFeet;
-    int verticalFigureOfMerit;
-    bool verticalWarning;
+    int geoAltFeet;
+    int geoVerticalFigureOfMerit;
+    bool geoVerticalWarning;
 
     public:
     void markUpdated(long atSeconds);
