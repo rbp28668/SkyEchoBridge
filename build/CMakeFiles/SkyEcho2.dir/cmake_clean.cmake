@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/SkyEcho2.dir/NMEAData.cpp.o"
   "CMakeFiles/SkyEcho2.dir/NMEAData.cpp.o.d"
+  "CMakeFiles/SkyEcho2.dir/config.cpp.o"
+  "CMakeFiles/SkyEcho2.dir/config.cpp.o.d"
   "CMakeFiles/SkyEcho2.dir/fcs.cpp.o"
   "CMakeFiles/SkyEcho2.dir/fcs.cpp.o.d"
   "CMakeFiles/SkyEcho2.dir/main.cpp.o"

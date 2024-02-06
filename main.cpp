@@ -8,19 +8,22 @@
 #include "message_handler.h"
 #include "outbound_flarm_converter.h"
 #include "state.h"
+#include "config.h"
 
+// Set up a default configuration.
+static Config config;
 
-// One receive buffer
+// One big receive buffer
 const size_t buffer_size = 16384;
 static uint8_t buffer[buffer_size];
 
 // send to cout for the time being
-OutboundFlarmConverter outbound(std::cout);
+static OutboundFlarmConverter outbound(std::cout);
 
 // Holds the application state.  Gets updated
 // by the message handler. 
 // Can tell you you're abou to die....
-static State state(&outbound);
+static State state(&outbound, &config);
 
 static void showPacket(uint8_t* buffer, size_t len){
     std::cout << "Received " << len << " bytes" << std::endl;

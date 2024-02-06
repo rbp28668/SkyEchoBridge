@@ -7,9 +7,11 @@
 #include <algorithm>
 #include "state.h"
 #include "outbound_flarm_converter.h"
+#include "config.h"
 
-State::State(OutboundFlarmConverter* outbound)
+State::State(OutboundFlarmConverter* outbound, const Config* config)
 : outbound(outbound)
+ , config(config)
  , heartbeatTime(0)
  , gpsAvailable(false)
  , maintRequired(false)
@@ -115,7 +117,7 @@ void State::pruneOldTargets() {
     std::vector<unsigned int> toPrune;
   
     for( auto t : traffic) {
-        if(heartbeatTime - t.second->lastUpdateTime() > 30){  //TODO make 30 explicit constant
+        if(heartbeatTime - t.second->lastUpdateTime() > config->oldTarget()){  
             unsigned int id = t.first;
             toPrune.push_back(id);
         }
@@ -131,16 +133,16 @@ void State::pruneOldTargets() {
 /// @brief Aims to come up with a number describing the immediate threat of a target
 /// based on the minimum distance, vertical separation at that point and how many
 /// seconds away that is.
-/// Tapers down from 1 from each axis to 0 at a distance in space or time away.
-/// Final score is the product.  So anything > 0.1 say is likely to be a threat.
+/// Tapers down from 1 along each axis to 0 at a given distance in space or time away.
+/// Final score is the product.  So anything > 0.1 (say) is likely to be a threat.
 /// @param minDist 
 /// @param verticalSeparation 
 /// @param atTimeT 
 /// @return 
 float State::calculateThreat(float minDist, float verticalSeparation, float atTimeT){
-    float ht = std::max( 500 - minDist, 0.0f) / 500;
-    float vt = std::max( 100 - fabsf(verticalSeparation),0.0f) / 100;
-    float tt = std::max( 30 - atTimeT , 0.0f) / 30;
+    float ht = std::max( config->threatDistance() - minDist, 0.0f) / config->threatDistance();
+    float vt = std::max( config->threatHeight() - fabsf(verticalSeparation),0.0f) / config->threatHeight();
+    float tt = std::max( config->threatTime() - atTimeT , 0.0f) / config->threatTime();
 
     return ht * vt * tt;
 }
@@ -193,7 +195,8 @@ void State::processCurrentState(){
 
             // Is this close enough to report?
             // 240kts, 4 NM a minute - 7.4km - say 10 to get a minute's warning
-            if(abs(target->relativeVertical()) < 500 && target->relativeDistance() < 10000){
+            if(abs(target->relativeVertical()) < config->ignoreHeight() 
+                && target->relativeDistance() < config->ignoreDistance()) {
                 targetsToReport.push_back(target);
             } else {
                 continue;  // won't report, ignore this one.
@@ -203,7 +206,8 @@ void State::processCurrentState(){
             //  Has this just come inside the close barrel?
             // In PFLAU, AlarmType 4 = traffic advisory (sent once each time an aircraft
             // enters within distance 1.5 km and vertical distance 300 m from own ship;
-            if(abs(target->relativeVertical()) < 300 && target->relativeDistance() < 1500){
+            if(abs(target->relativeVertical()) < config->adviseHeight() 
+                && target->relativeDistance() < config->adviseDistance()) {
                 if(!target->advisory()){
                     target->setAdvisory();
                 }
@@ -212,12 +216,13 @@ void State::processCurrentState(){
             }
  
 
-            // TODO - are we heading on a conflicting course?
+            // Is the target heading on a conflicting course?
             // 1 = aircraft or obstacle alarm, 13-18 seconds to impact
             // 2 = aircraft or obstacle alarm, 9-12 seconds to impact
             // 3 = aircraft or obstacle alarm, 0-8 seconds to impact
             // So 20 seconds out would be c. 2.5km
-            if(abs(target->relativeVertical()) < 500 && target->relativeDistance() < 2500){
+            if(abs(target->relativeVertical()) < config->threatBubbleHeight() 
+                && target->relativeDistance() < config->threatBubbleDistance()){
 
                 // Ok, so ownship at location (a,b) with velocity (va,vb).
                 // Target at location (c,d) with velocity (vc,vd).

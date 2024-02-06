@@ -51,6 +51,11 @@
 },
 {
   "directory": "/home/rbp28668/SkyEcho/cpp/build",
+  "command": "/usr/bin/aarch64-linux-gnu-g++  -I/home/rbp28668/SkyEcho/cpp/build -g -std=gnu++11 -o CMakeFiles/SkyEcho2.dir/config.cpp.o -c /home/rbp28668/SkyEcho/cpp/config.cpp",
+  "file": "/home/rbp28668/SkyEcho/cpp/config.cpp"
+},
+{
+  "directory": "/home/rbp28668/SkyEcho/cpp/build",
   "command": "/usr/bin/aarch64-linux-gnu-g++  -I/home/rbp28668/SkyEcho/cpp/build -g -std=gnu++11 -o CMakeFiles/SkyEcho2.dir/main.cpp.o -c /home/rbp28668/SkyEcho/cpp/main.cpp",
   "file": "/home/rbp28668/SkyEcho/cpp/main.cpp"
 }

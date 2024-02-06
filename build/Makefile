@@ -153,6 +153,30 @@ NMEAData.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/NMEAData.cpp.s
 .PHONY : NMEAData.cpp.s
 
+config.o: config.cpp.o
+.PHONY : config.o
+
+# target to build an object file
+config.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/config.cpp.o
+.PHONY : config.cpp.o
+
+config.i: config.cpp.i
+.PHONY : config.i
+
+# target to preprocess a source file
+config.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/config.cpp.i
+.PHONY : config.cpp.i
+
+config.s: config.cpp.s
+.PHONY : config.s
+
+# target to generate assembly for a file
+config.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/config.cpp.s
+.PHONY : config.cpp.s
+
 fcs.o: fcs.cpp.o
 .PHONY : fcs.o
 
@@ -405,6 +429,9 @@ help:
 	@echo "... NMEAData.o"
 	@echo "... NMEAData.i"
 	@echo "... NMEAData.s"
+	@echo "... config.o"
+	@echo "... config.i"
+	@echo "... config.s"
 	@echo "... fcs.o"
 	@echo "... fcs.i"
 	@echo "... fcs.s"

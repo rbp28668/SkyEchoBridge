@@ -32,7 +32,7 @@ void TrackedTarget::setRelativeDistance(float nsMetres, float ewMetres){
     relativeEastMetres = ewMetres;
 
     relativeDistanceMetres = fsqrt(nsMetres * nsMetres + ewMetres * ewMetres);
-    relativeBearingDegrees = atan2(nsMetres, ewMetres);  // TODO check
+    relativeBearingDegrees = atan2(nsMetres, ewMetres);  // TODO check, may need to includ track too - and convert to degrees
 }
  
 void TrackedTarget::setRelativeVertical(float metres){
