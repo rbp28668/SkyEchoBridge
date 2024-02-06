@@ -26,9 +26,14 @@ class TrackedTarget : public Target {
 
     long lastUpdatedSeconds;
 
+    // Threat score of this target.  Range 0 (no threat) to 1 (you've just died)
+    float _threat;
+
     public:
     TrackedTarget();
     int alarm() const { return _alarm; }
+    void setAlarm(int level) { _alarm = level;}
+    
     float relativeNorth() const { return relativeNorthMetres;}
     float relativeEast() const { return relativeEastMetres;}
     float relativeVertical() const { return relativeVerticalMetres;}
@@ -36,7 +41,18 @@ class TrackedTarget : public Target {
     float relativeDistance() const { return relativeDistanceMetres;}
 
     bool advisory() const { return _advisory; }
-    void advisorySent() { _advisorySent = true; }
+    void clearAdvisory() { _advisory = _advisorySent = true;}
+    void setAdvisory() { _advisory = true; _advisorySent = false;}
+    bool advisorySent() { return _advisorySent;}
+    void markAdvisorySent() { _advisorySent = true; }
+
+    float threat() const { return _threat;}
+    void setThreat(float threat) {_threat =threat;}
 
     void markUpdated(long atSeconds);
+    long lastUpdateTime() const { return lastUpdatedSeconds;}
+
+    std::pair<double, double> extrapolatePosition(uint32_t heartbeatTime) const;
+    void setRelativeDistance(float nsMetres, float ewMetres);
+    void setRelativeVertical(float metres);
 };

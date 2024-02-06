@@ -1,10 +1,15 @@
 // SkyEchoBridge
 // Copyright R Bruce Porteous 2024
 #include <iostream>
+#include <vector>
+#include <cmath>
+#include <algorithm>
 #include "state.h"
+#include "outbound_flarm_converter.h"
 
-
-State::State(){
+State::State(OutboundFlarmConverter* outbound)
+: outbound(outbound)
+{
 
 }
 
@@ -21,26 +26,29 @@ void State::receivedTraffic(Target& target){
     // Time Stamp conveyed in the most recent Heartbeat message is the Time of Applicability for all
     // Traffic Reports output in that second.
 
+    if(target.fixInvalid()) return; // no point tracking as no position info.
+
+    TrackedTarget* tracked(0);
     int identity = target.identity();
     auto it = traffic.find(identity);
     if( it != traffic.end()) {
-        TrackedTarget* existing = it->second;
-        existing->updateFrom(target);
-        existing->markUpdated(uptimeSeconds());
-    } else {
-        TrackedTarget* newTarget = new TrackedTarget(); // TODO make constructor to take a Target.
-        newTarget->updateFrom(target);
-        newTarget->markUpdated(uptimeSeconds());
-        traffic[identity] = newTarget;
+        tracked = it->second;
+     } else {
+        tracked = new TrackedTarget(); // TODO make constructor to take a Target.
+        traffic[identity] = tracked;
     }
-
-
+    tracked->updateFrom(target);
+    tracked->markUpdated(heartbeatTime);
 }
 
 void State::receivedOwnship(Target& target){
     if(!target.fixInvalid()) {
         ownship.updateFrom(target);
-        ownship.markUpdated(uptimeSeconds());
+        ownship.markUpdated(heartbeatTime);
+    }
+
+    if(ownship.hasValidPosition(heartbeatTime)) {
+        outbound->sendOwnshipData(heartbeatTime, ownship);
     }
      
 }
@@ -54,9 +62,208 @@ void State::setOwnshipGeometricAltitude(int altFeet, int verticalFigureOfMerit, 
 }
 
 void State::setHeartbeat(bool gpsAvailable, bool maintRequired, bool batteryLow, bool utcOk, uint32_t ts, uint32_t receivedMsgCount){
-    this->hearbeatTime = ts;
+    
+    // Initially send all the previous stuff.
+    // Need to be careful this doesn't take so long that we lose
+    // inbound messages.  Ideally we'll put this on a Q and thread it.
+    processCurrentState();
+
+    this->heartbeatTime = ts;
     this->gpsAvailable = gpsAvailable;
     this->maintRequired = maintRequired;
     this->batteryLow = batteryLow;
     this->utcOk = utcOk;
+}
+
+
+void State::pruneOldTargets() {
+
+    // First find keys of items to prune
+    auto toPrune = std::vector<unsigned int>(traffic.size());
+    for( auto t : traffic) {
+        if(heartbeatTime - t.second->lastUpdateTime() > 30){  //TODO make 30 explicit constant
+            toPrune.push_back(t.first);
+        }
+    }
+
+    // then delete them
+    for(auto i : toPrune){
+        TrackedTarget* target = traffic.at(i);
+        traffic.erase(i);
+        delete target;
+    }
+ 
+}
+
+/// @brief Aims to come up with a number describing the immediate threat of a target
+/// based on the minimum distance, vertical separation at that point and how many
+/// seconds away that is.
+/// Tapers down from 1 from each axis to 0 at a distance in space or time away.
+/// Final score is the product.  So anything > 0.1 say is likely to be a threat.
+/// @param minDist 
+/// @param verticalSeparation 
+/// @param atTimeT 
+/// @return 
+float State::calculateThreat(float minDist, float verticalSeparation, float atTimeT){
+    float ht = std::max( 500 - minDist, 0.0f) / 500;
+    float vt = std::max( 100 - fabsf(verticalSeparation),0.0f) / 100;
+    float tt = std::max( 30 - atTimeT , 0.0f) / 30;
+
+    return ht * vt * tt;
+}
+
+// use to sort into increasing threat.
+// Return true if first and second are in the right order.
+static bool threatComparator(TrackedTarget* first, TrackedTarget* second){
+
+    // If either have a threat score, sort by that.
+    if(first->threat() > 0 || second->threat() > 0) {
+        return first->threat() < second->threat();
+    }
+
+    // If one has an advisory needing to be sent and not the other,
+    // prioritise the advisory.
+    bool a1 = first->advisory() && !first-> advisorySent();
+    bool a2 = second->advisory() && !second->advisorySent();
+    if(a1 && !a2) return false;
+    if(!a1 && a2) return true;
+
+    // otherwise just sort by target distance (ignoring height)
+    // Want to have largest distances first (lower threat)
+    return first->relativeDistance() > second->relativeDistance();
+}
+
+/// @brief This should be called to process the current state of
+/// of the data and transmit the results if appropriate.
+void State::processCurrentState(){
+
+    pruneOldTargets();
+
+    // Can't do anything if we haven't got a valid position
+    // for ownship (position not received or too old)
+    if(ownship.hasValidPosition(heartbeatTime)){
+
+        std::vector<TrackedTarget*> targetsToReport(traffic.size());
+
+        auto ownshipPosition = ownship.extrapolatePosition(heartbeatTime);
+        for( auto t : traffic) {
+            TrackedTarget* target = t.second;
+            auto targetPosition = target->extrapolatePosition(heartbeatTime);
+
+            auto dist = Target::distance(targetPosition, ownshipPosition);
+            target->setRelativeDistance(dist.first, dist.second);
+            target->setRelativeVertical( (target->altFeet - ownship.altFeet) * 0.3048);
+            target->setThreat(0);
+            target->setAlarm(0);
+
+            // Is this close enough to report?
+            // 240kts, 4 NM a minute - 7.4km - say 10 to get a minute's warning
+            if(abs(target->relativeVertical()) < 500 && target->relativeDistance() < 10000){
+                targetsToReport.push_back(target);
+            } else {
+                continue;  // won't report, ignore this one.
+            }
+
+
+            //  Has this just come inside the close barrel?
+            // In PFLAU, AlarmType 4 = traffic advisory (sent once each time an aircraft
+            // enters within distance 1.5 km and vertical distance 300 m from own ship;
+            if(abs(target->relativeVertical()) < 300 && target->relativeDistance() < 1500){
+                if(!target->advisory()){
+                    target->setAdvisory();
+                }
+            } else {
+                target->clearAdvisory(); // as now outside the bubble.
+            }
+ 
+
+            // TODO - are we heading on a conflicting course?
+            // 1 = aircraft or obstacle alarm, 13-18 seconds to impact
+            // 2 = aircraft or obstacle alarm, 9-12 seconds to impact
+            // 3 = aircraft or obstacle alarm, 0-8 seconds to impact
+            // So 20 seconds out would be c. 2.5km
+            if(abs(target->relativeVertical()) < 500 && target->relativeDistance() < 2500){
+
+                // Ok, so ownship at location (a,b) with velocity (va,vb).
+                // Target at location (c,d) with velocity (vc,vd).
+                // Centre on ownship so a=b=0 and we know (c,d) as (relativeEast, relativeNorth)
+
+                auto ownshipVelocity = ownship.velocity();
+                auto targetVelocity = target->velocity();
+                float va = ownshipVelocity.second;
+                float vb = ownshipVelocity.first;
+                float vc = targetVelocity.second;
+                float vd = targetVelocity.first;
+
+                float c = target->relativeEast();
+                float d = target->relativeNorth();
+
+                // With a=b=0, at time t=0, effectively look at sign of rate of change.
+                bool converging = (c * va + d * vb) > (c * vc + d * vd);
+                if(converging){
+                    float denom = (va - vc)*(va - vc) + (vb - vd)*(vb - vd);
+                    if(abs(denom) < 0.01f) continue; // close to parallel courses
+
+                    // Time of closest pass
+                    float t = (c * (va - vc) + d * (vb - vd)) / denom;
+
+                    float dx = va * t - (c + vc * t);
+                    float dy = vb * t - (d + vd * t);
+                    float minDist = sqrt(dx * dx + dy * dy);
+
+                    // Vertical separation.
+                    float osAlt = ownship.altFeet * 0.3048;
+                    float tsAlt = target->altFeet * 0.3048;
+
+                    if(!ownship.verticalVelocityUnknown()){
+                        float osVSpeed = ownship.verticalVelocity * 0.00508f; // fpm -> fps 
+                        osAlt += osVSpeed * t;
+                    }
+                    if(!target->verticalVelocityUnknown()){
+                        float tgtVSpeed = target->verticalVelocity * 0.00508f;
+                        tsAlt += tgtVSpeed * t;
+                    }
+                    float verticalSeparation = tsAlt - osAlt;
+
+                    float threat = calculateThreat(minDist, verticalSeparation, t);
+                    target->setThreat(threat);
+                    if(threat > 0.1f){
+                        // 1 = alarm, 13-18 seconds to impact
+                        // 2 = alarm, 9-12 seconds to impact
+                        // 3 = alarm, 0-8 seconds to impact
+                        int alarm = 0;
+                        if(t <= 18) alarm = 1;
+                        if(t <= 12) alarm = 2;
+                        if(t <= 8) alarm = 3;
+                        target->setAlarm(alarm);
+                    }
+                }
+
+            }
+        }
+
+        // Ok, so now sort into increasing threat and send the targets of interest.
+        // In passing, see if there's something worth flagging as primary target.
+        std::sort(targetsToReport.begin(), targetsToReport.end(), threatComparator);
+        TrackedTarget* primaryTarget(nullptr);
+        TrackedTarget* lastAdvisory(nullptr);
+
+        for( auto t : targetsToReport) {
+            outbound->sendTarget(*t);
+
+            if(t->advisory()){
+                // If a new advisory then try to send in preference to others.
+                if(!t->advisorySent()) primaryTarget = t;
+                lastAdvisory = t;
+            }
+
+            // But an alarm trumps everything.
+            if(t->alarm() > 0) primaryTarget = t;
+        }
+        
+        //  If nothing special but something has an advisory flag set then send that.
+        if(primaryTarget == nullptr) primaryTarget = lastAdvisory;
+
+        outbound->sendHeartbeat(traffic.size(), gpsAvailable, ownship, primaryTarget);
+    }
 }

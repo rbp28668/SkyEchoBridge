@@ -13,12 +13,14 @@ class OwnShip;
 /// some point to throttle and/or reduce output for merging
 /// into flarm data.
 class OutboundFlarmConverter {
-
+    
+    std::ostream& os;
     NMEAData nmea;
     char convertAircraftType(uint8_t emitter);
 
 public:
-    void sendTarget(std::ostream& os, const TrackedTarget& target);
-    void sendHeartbeat(std::ostream& os, int rxCount, bool gpsValid, const OwnShip& ownship, TrackedTarget* primaryTarget);
-    void sendOwnshipData(std::ostream& os, int utcSeconds, const OwnShip& ownship);
+    OutboundFlarmConverter(std::ostream& os);
+    void sendTarget(const TrackedTarget& target);
+    void sendHeartbeat(int rxCount, bool gpsValid, const OwnShip& ownship, TrackedTarget* primaryTarget);
+    void sendOwnshipData(unsigned int utcSeconds, const OwnShip& ownship);
 };

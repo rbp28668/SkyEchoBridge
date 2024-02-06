@@ -8,6 +8,11 @@
 #include "ownship.h"
 #include "tracked_target.h"
 
+OutboundFlarmConverter::OutboundFlarmConverter(std::ostream& os)
+: os(os)
+{
+
+}
 
 // Flarm categories are: 
 // 0 = (reserved)
@@ -61,7 +66,7 @@ char OutboundFlarmConverter::convertAircraftType(uint8_t emitter){
 }
 
 
-void OutboundFlarmConverter::sendTarget(std::ostream& os, const TrackedTarget& target){
+void OutboundFlarmConverter::sendTarget(const TrackedTarget& target){
     
     int alarm = target.alarm();
     int relativeNorth = int( floorf(target.relativeNorth() + 0.5f));
@@ -70,13 +75,13 @@ void OutboundFlarmConverter::sendTarget(std::ostream& os, const TrackedTarget& t
     bool isICAO = target.addressType == 0 || target.addressType == 2;
     uint32_t id = target.address;
     int groundSpeed = target.speedKts * 0.5144444444f;   // kts to m/S
-    float climbRate = target.verticalVelocity * 0.3048f;   // feet per min to m/S
+    float climbRate = target.verticalVelocityUnknown() ? 0.0f : target.verticalVelocity * 0.00508f;   // feet per min to m/S
     char acType = convertAircraftType(target.emitter);
     nmea.PFLAA(os, alarm, relativeNorth, relativeEast, relativeVertical, isICAO, id, groundSpeed, climbRate, acType);
     os.flush();
 }
 
-void OutboundFlarmConverter::sendHeartbeat(std::ostream& os, int rxCount, bool gpsValid, const OwnShip& ownship, TrackedTarget* primaryTarget){
+void OutboundFlarmConverter::sendHeartbeat(int rxCount, bool gpsValid, const OwnShip& ownship, TrackedTarget* primaryTarget){
 
     int gps = gpsValid ? ( ownship.speedKts > 20 ? 2 : 1) : 0;  // 0 invalid, 1 ok - on ground 2 ok - in air. Use speed as proxy for ground.
     int alarm = 0;
@@ -95,12 +100,15 @@ void OutboundFlarmConverter::sendHeartbeat(std::ostream& os, int rxCount, bool g
         alarm = primaryTarget->alarm();
         relativeBearing = int( floorf(primaryTarget->relativeBearing() + 0.5f));
         
-        if(primaryTarget->advisory()) {
-            alarmType = 4;
-            primaryTarget->advisorySent();
-        }
+        // Alarm or advisory?  Prioritise alarm!
         if(primaryTarget->alarm() > 0) {
             alarmType = 2;
+        } else {
+            if(primaryTarget->advisory() && !primaryTarget->advisorySent()) {
+                alarm = 1;   // for traffic advisory
+                alarmType = 4; // traffic advisory
+                primaryTarget->markAdvisorySent();
+            }
         }
 
         relativeVertical = primaryTarget->relativeVertical();
@@ -114,17 +122,19 @@ void OutboundFlarmConverter::sendHeartbeat(std::ostream& os, int rxCount, bool g
     os.flush();
 }
 
-void OutboundFlarmConverter::sendOwnshipData(std::ostream& os, int utcSeconds, const OwnShip& ownship){
+void OutboundFlarmConverter::sendOwnshipData(unsigned int utcSeconds, const OwnShip& ownship){
     
+    auto position = ownship.extrapolatePosition(utcSeconds);
+
     double utcTime = utcSeconds;
-    double latDegrees = ownship.latitude;
-    double longDegrees = ownship.longitude;
+    double latDegrees = position.first;
+    double longDegrees = position.second;
     double groundSpeedKnots = ownship.speedKts;
     double trackDegrees = ownship.track;
 
     // TODO - whilst this might work it relies on the Pi having the correct time.
     // Given no RTC this may be unlikely.  Would be better to tee off and inbound 
-    // GPS feed.
+    // GPS feed. OR we take the time from the heartbeat as per spec!
     std::time_t t = std::time(0);   // get time now
     std::tm* now = std::localtime(&t);
      int day = now->tm_mday;

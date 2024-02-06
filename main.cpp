@@ -6,6 +6,7 @@
 #include "socket.h"
 #include "transport.h"
 #include "message_handler.h"
+#include "outbound_flarm_converter.h"
 #include "state.h"
 
 
@@ -13,10 +14,13 @@
 const size_t buffer_size = 16384;
 static uint8_t buffer[buffer_size];
 
+// send to cout for the time being
+OutboundFlarmConverter outbound(std::cout);
+
 // Holds the application state.  Gets updated
 // by the message handler. 
 // Can tell you you're abou to die....
-static State state;
+static State state(&outbound);
 
 static void showPacket(uint8_t* buffer, size_t len){
     std::cout << "Received " << len << " bytes" << std::endl;
