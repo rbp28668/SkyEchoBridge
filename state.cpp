@@ -1,6 +1,7 @@
 // SkyEchoBridge
 // Copyright R Bruce Porteous 2024
 #include <iostream>
+#include <iomanip>
 #include <vector>
 #include <cmath>
 #include <algorithm>
@@ -9,6 +10,12 @@
 
 State::State(OutboundFlarmConverter* outbound)
 : outbound(outbound)
+ , heartbeatTime(0)
+ , gpsAvailable(false)
+ , maintRequired(false)
+ , batteryLow(false)
+ , utcOk(false)
+ , heartbeatReceived(false)
 {
 
 }
@@ -19,21 +26,28 @@ State::~State(){
     }
 }
 
+/// @brief Receives a traffic report from the GDL-90 source
+/// @param target 
 void State::receivedTraffic(Target& target){
+    
     std::cout << "Traffic Lat:" << target.latitude << " lon: " << target.longitude << " Alt:" << target.altFeet << "  " << std::string(target.callsign, 8) << std::endl;
+    
     // All Traffic Reports output from the GDL 90 have a Time of Applicability of the beginning of the
     // current second. Therefore, there is no explicit Time of Reception field in the Traffic Report. The
     // Time Stamp conveyed in the most recent Heartbeat message is the Time of Applicability for all
     // Traffic Reports output in that second.
-
+    
+    if(!heartbeatReceived) return;  // startup race condition - no timing until first heartbeat.
     if(target.fixInvalid()) return; // no point tracking as no position info.
 
     TrackedTarget* tracked(0);
-    int identity = target.identity();
+    unsigned int identity = target.identity();
     auto it = traffic.find(identity);
     if( it != traffic.end()) {
+        //std::cout<< "Existing target " << std::hex << std::setw(8) << identity << std::endl;
         tracked = it->second;
      } else {
+        //std::cout<< "New target " << std::hex << std::setw(8) << identity << std::endl;
         tracked = new TrackedTarget(); // TODO make constructor to take a Target.
         traffic[identity] = tracked;
     }
@@ -41,6 +55,8 @@ void State::receivedTraffic(Target& target){
     tracked->markUpdated(heartbeatTime);
 }
 
+/// @brief Receives an ownship report from the GDL-90 source
+/// @param target 
 void State::receivedOwnship(Target& target){
     if(!target.fixInvalid()) {
         ownship.updateFrom(target);
@@ -53,46 +69,63 @@ void State::receivedOwnship(Target& target){
      
 }
 
+/// @brief  Receives a HAT message from the GDL-90 source
+/// @param feet 
 void State::setHeightAboveTerrain(int feet){
     heightAboveTerrain = feet;
 }
 
+/// @brief receives an ownship geometric altitude report from the GDL-90 source.
+/// @param altFeet 
+/// @param verticalFigureOfMerit 
+/// @param verticalWarning 
 void State::setOwnshipGeometricAltitude(int altFeet, int verticalFigureOfMerit, bool verticalWarning){
     ownship.setGeometricAltitude(altFeet, verticalFigureOfMerit, verticalWarning);
 }
 
+/// @brief Receves a heartbeat message from the GDL-90 source.
+/// @param gpsAvailable 
+/// @param maintRequired 
+/// @param batteryLow 
+/// @param utcOk 
+/// @param ts 
+/// @param receivedMsgCount 
 void State::setHeartbeat(bool gpsAvailable, bool maintRequired, bool batteryLow, bool utcOk, uint32_t ts, uint32_t receivedMsgCount){
     
     // Initially send all the previous stuff.
     // Need to be careful this doesn't take so long that we lose
     // inbound messages.  Ideally we'll put this on a Q and thread it.
-    processCurrentState();
+    if(this->heartbeatReceived){
+        processCurrentState();
+    }
 
     this->heartbeatTime = ts;
     this->gpsAvailable = gpsAvailable;
     this->maintRequired = maintRequired;
     this->batteryLow = batteryLow;
     this->utcOk = utcOk;
+
+    this->heartbeatReceived = true;
 }
 
-
+/// @brief  Removes any targets that haven't had an update for the last 30 seconds.
 void State::pruneOldTargets() {
 
-    // First find keys of items to prune
-    auto toPrune = std::vector<unsigned int>(traffic.size());
+     // First find keys of items to prune
+    std::vector<unsigned int> toPrune;
+  
     for( auto t : traffic) {
         if(heartbeatTime - t.second->lastUpdateTime() > 30){  //TODO make 30 explicit constant
-            toPrune.push_back(t.first);
+            unsigned int id = t.first;
+            toPrune.push_back(id);
         }
     }
-
-    // then delete them
+     // then delete them
     for(auto i : toPrune){
         TrackedTarget* target = traffic.at(i);
         traffic.erase(i);
         delete target;
     }
- 
 }
 
 /// @brief Aims to come up with a number describing the immediate threat of a target
@@ -143,11 +176,13 @@ void State::processCurrentState(){
     // for ownship (position not received or too old)
     if(ownship.hasValidPosition(heartbeatTime)){
 
-        std::vector<TrackedTarget*> targetsToReport(traffic.size());
+        std::vector<TrackedTarget*> targetsToReport;
 
         auto ownshipPosition = ownship.extrapolatePosition(heartbeatTime);
         for( auto t : traffic) {
             TrackedTarget* target = t.second;
+            //std::cout << "Processing " << std::setw(8) << std::hex << t.first << " " << std::string(target->callsign,8) << std::endl;
+            
             auto targetPosition = target->extrapolatePosition(heartbeatTime);
 
             auto dist = Target::distance(targetPosition, ownshipPosition);

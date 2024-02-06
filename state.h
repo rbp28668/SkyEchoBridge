@@ -22,7 +22,7 @@ class State {
     OwnShip ownship;
     
     // Use the Target's identity() function as key.
-    std::unordered_map<int, TrackedTarget*> traffic;
+    std::unordered_map<unsigned int, TrackedTarget*> traffic;
 
 
     std::list<TrackedTarget*> activeTraffic;
@@ -33,7 +33,7 @@ class State {
     bool maintRequired;
     bool batteryLow;
     bool utcOk;
-    long lastHeartbeatTime;
+    bool heartbeatReceived;
 
     int heightAboveTerrain;
 
