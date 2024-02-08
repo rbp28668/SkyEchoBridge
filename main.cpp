@@ -9,6 +9,7 @@
 #include "outbound_flarm_converter.h"
 #include "state.h"
 #include "config.h"
+#include "fcs.h"
 
 // Set up a default configuration.
 static Config config;
@@ -37,6 +38,10 @@ static void showPacket(uint8_t* buffer, size_t len){
 
 int main(int argc, char* argv[]){
     std::cout << "SkyEcho2 Bridge Version " << VERSION_MAJOR << '.' << VERSION_MINOR << std::endl;
+
+    #ifndef NDEBUG
+    FCS::validateTable();
+    #endif
 
     Packet packet(buffer, buffer_size);
 

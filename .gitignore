@@ -1,3 +1,5 @@
 # All the build artefacts under CMakeFiles
 CMakeFiles/**
 build/**
+TrafficGen/CMakeFiles/**
+TrafficGen/TrafficGen

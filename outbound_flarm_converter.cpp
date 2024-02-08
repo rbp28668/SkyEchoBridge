@@ -133,7 +133,7 @@ void OutboundFlarmConverter::sendOwnshipData(unsigned int utcSeconds, const OwnS
     double trackDegrees = ownship.track;
 
     // TODO - whilst this might work it relies on the Pi having the correct time.
-    // Given no RTC this may be unlikely.  Would be better to tee off and inbound 
+    // Given no RTC this may be unlikely.  Would be better to tee off an inbound 
     // GPS feed. OR we take the time from the heartbeat as per spec!
     std::time_t t = std::time(0);   // get time now
     std::tm* now = std::localtime(&t);
@@ -142,12 +142,12 @@ void OutboundFlarmConverter::sendOwnshipData(unsigned int utcSeconds, const OwnS
     int year = (now->tm_year) % 100;
     
     double magneticVariationDegrees = 0;
-    int altFeet = ownship.altFeet;
-    float gpsHeight = ownship.altFeet;
+    int altitude = int(floor(ownship.altFeet * 0.3048)); //output in metres.
+    float gpsHeight = ownship.altFeet * 0.3048; 
 
     nmea.GPRMC(os, utcTime, latDegrees, longDegrees, groundSpeedKnots, trackDegrees, day, month, year, magneticVariationDegrees);
     os.flush();
-    nmea.PGRMZ(os, altFeet);
+    nmea.PGRMZ(os, altitude);
     os.flush();
     nmea.GPGGA(os, utcTime, latDegrees, longDegrees, gpsHeight);
     os.flush();

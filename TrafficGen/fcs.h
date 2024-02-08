@@ -9,10 +9,6 @@ class FCS {
     static uint16_t lookup[256];
 
     public:
-    
-    #ifndef NDEBUG
-    static void validateTable();
-    #endif
 
     static uint16_t compute(uint8_t *block, size_t length);
 };

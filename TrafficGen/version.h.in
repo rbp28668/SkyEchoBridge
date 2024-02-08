@@ -1,0 +1,2 @@
+#define VERSION_MAJOR @TrafficGen_VERSION_MAJOR@
+#define VERSION_MINOR @TrafficGen_VERSION_MINOR@

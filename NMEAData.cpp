@@ -138,7 +138,7 @@ void NMEAData::GPGGA(std::ostream& os, double utcTime, double latDegrees, double
 	oss << "12,"; // number of satellites
 	oss << "10,"; // Dilution of Position (DoP)
 	oss << std::setprecision(1) << std::fixed << gpsHeight << ',';
-	oss << "M,"; // in Metres
+	oss << heightUnits << ","; // in selected units
 	oss << ",,,,"; // height of geoid, units, DGPS time, DGPS station
 	oss << "0000";
 
@@ -172,12 +172,12 @@ void NMEAData::GPRMC(std::ostream& os, double utcTime, double latDegrees, double
 }
 
 
-void NMEAData::PGRMZ(std::ostream& os, int altFeet){
+void NMEAData::PGRMZ(std::ostream& os, int altitude){
 	std::ostringstream oss;
 
 	oss << "PGRMZ,";
-	oss << altFeet;
-	oss << ",F,2";  // valid
+	oss << altitude;
+	oss << "," << heightUnits << ",2";  // valid
 	wrap(os, oss.str());
 }
 

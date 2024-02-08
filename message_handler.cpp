@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <assert.h>
+#include <math.h>
 #include "message_handler.h"
 #include "fcs.h"
 #include "target.h"
@@ -78,8 +79,8 @@ void MessageHandler::processTargetMessage(Target* target, uint8_t* msg, size_t m
 
     // ttTrack/Heading: 8-bit angular weighted binary. Resolution = 360/256 degrees.
     // 0 = North, 128 = South. See Miscellaneous field for Track/Heading indication.
-    target->track = int(msg[17]) * 360.0f / 256.0f;
-
+    target->track = int(floor(msg[17] * 360.0f / 256.0f + 0.5f));
+     
     // eeEmitter Category
     target->emitter = msg[18];
 
@@ -191,7 +192,6 @@ void MessageHandler::onMessage(uint8_t* msg, size_t len){
 
         switch(static_cast<MessageType>(messageId)){
             case MessageType::Heartbeat:
-                std::cout << "Heartbeat" << std::endl;
                 assert(len == 7);
                 handleHeartbeat(msg, len);
                 break;
@@ -209,7 +209,6 @@ void MessageHandler::onMessage(uint8_t* msg, size_t len){
                 break;
 
             case MessageType::OwnshipReport:
-                std::cout << "Ownship Report" << std::endl;
                 assert(len == 28);
                 handleOwnshipReport(msg, len);
                 break;
@@ -237,7 +236,7 @@ void MessageHandler::onMessage(uint8_t* msg, size_t len){
                 break;
 
             case MessageType::IdMessage:
-                std::cout << "ID Message" << std::endl;
+                // std::cout << "ID Message" << std::endl;
                 // Technically a ForeFlight message - see https://www.foreflight.com/connect/spec/
                 // Byte 2 determines sub message type
                 break;

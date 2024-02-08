@@ -5,8 +5,6 @@
 #include <list>
 #include <unordered_map>
 
-#include <sys/sysinfo.h>
-
 #include "tracked_target.h"
 #include "ownship.h"
 
@@ -37,11 +35,6 @@ class State {
     bool heartbeatReceived;
 
     int heightAboveTerrain;
-
-    // use system uptime as a proxy for time as clock likely not to be set properly.
-    struct sysinfo uptime_info;
-    long uptimeSeconds() { ::sysinfo(&uptime_info); return uptime_info.uptime;}
-    long lastUptime() { return uptime_info.uptime;}
 
     void pruneOldTargets();
     float calculateThreat(float minDist, float verticalSeparation, float atTimeT);
