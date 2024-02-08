@@ -12,8 +12,13 @@ add_executable(TrafficGen
     target_message.cpp
     fcs.cpp
     socket.cpp
+    lua.cpp
+    simulation.cpp
     main.cpp 
 )
+
+target_link_libraries(TrafficGen  liblua.a)
+target_link_libraries(TrafficGen -L./Lua/lua-5.4.6/)
 
 target_include_directories(TrafficGen PUBLIC
                            "${PROJECT_BINARY_DIR}"

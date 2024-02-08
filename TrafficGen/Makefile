@@ -201,6 +201,30 @@ heartbeat_message.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TrafficGen.dir/build.make CMakeFiles/TrafficGen.dir/heartbeat_message.cpp.s
 .PHONY : heartbeat_message.cpp.s
 
+lua.o: lua.cpp.o
+.PHONY : lua.o
+
+# target to build an object file
+lua.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TrafficGen.dir/build.make CMakeFiles/TrafficGen.dir/lua.cpp.o
+.PHONY : lua.cpp.o
+
+lua.i: lua.cpp.i
+.PHONY : lua.i
+
+# target to preprocess a source file
+lua.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TrafficGen.dir/build.make CMakeFiles/TrafficGen.dir/lua.cpp.i
+.PHONY : lua.cpp.i
+
+lua.s: lua.cpp.s
+.PHONY : lua.s
+
+# target to generate assembly for a file
+lua.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TrafficGen.dir/build.make CMakeFiles/TrafficGen.dir/lua.cpp.s
+.PHONY : lua.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -224,6 +248,30 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TrafficGen.dir/build.make CMakeFiles/TrafficGen.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+simulation.o: simulation.cpp.o
+.PHONY : simulation.o
+
+# target to build an object file
+simulation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TrafficGen.dir/build.make CMakeFiles/TrafficGen.dir/simulation.cpp.o
+.PHONY : simulation.cpp.o
+
+simulation.i: simulation.cpp.i
+.PHONY : simulation.i
+
+# target to preprocess a source file
+simulation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TrafficGen.dir/build.make CMakeFiles/TrafficGen.dir/simulation.cpp.i
+.PHONY : simulation.cpp.i
+
+simulation.s: simulation.cpp.s
+.PHONY : simulation.s
+
+# target to generate assembly for a file
+simulation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TrafficGen.dir/build.make CMakeFiles/TrafficGen.dir/simulation.cpp.s
+.PHONY : simulation.cpp.s
 
 socket.o: socket.cpp.o
 .PHONY : socket.o
@@ -291,9 +339,15 @@ help:
 	@echo "... heartbeat_message.o"
 	@echo "... heartbeat_message.i"
 	@echo "... heartbeat_message.s"
+	@echo "... lua.o"
+	@echo "... lua.i"
+	@echo "... lua.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... simulation.o"
+	@echo "... simulation.i"
+	@echo "... simulation.s"
 	@echo "... socket.o"
 	@echo "... socket.i"
 	@echo "... socket.s"
