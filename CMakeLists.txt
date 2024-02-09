@@ -17,6 +17,7 @@ add_executable(SkyEcho2
     ownship.cpp
     tracked_target.cpp
     outbound_flarm_converter.cpp
+    stream_adapter.cpp
     config.cpp
     main.cpp 
 )

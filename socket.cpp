@@ -21,7 +21,7 @@ uint16_t Packet::port(){
     return ntohs(source.sin_port);
 }
 
-/// @brief Gets teh address of the source of the data
+/// @brief Gets the address of the source of the data
 /// @return 
 std::string Packet::addr(){
     return std::string(inet_ntoa(source.sin_addr)); // copy

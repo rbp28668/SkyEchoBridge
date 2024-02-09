@@ -247,6 +247,9 @@ void MessageHandler::onMessage(uint8_t* msg, size_t len){
         }
     } else {
         std::cout << "FCS mismatch" << std::endl;
+        #ifndef NDEBUG
+        exit(1);
+        #endif
     }
   
 

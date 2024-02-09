@@ -27,8 +27,7 @@
         destination.sin_family = AF_INET;
         destination.sin_port = htons(port);
         destination.sin_addr.s_addr = inet_addr(host.c_str());
-        destination.sin_addr.s_addr = 0x0100007F; // BODGE localhost
-     }
+    }
 
     int Socket::send(const uint8_t* data, size_t len){
         int nBytes = ::sendto(sock, data, len, 0, reinterpret_cast<sockaddr*>(&destination), sizeof(destination));

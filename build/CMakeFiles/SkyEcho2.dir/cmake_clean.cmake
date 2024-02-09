@@ -17,6 +17,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/SkyEcho2.dir/socket.cpp.o.d"
   "CMakeFiles/SkyEcho2.dir/state.cpp.o"
   "CMakeFiles/SkyEcho2.dir/state.cpp.o.d"
+  "CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.o"
+  "CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.o.d"
   "CMakeFiles/SkyEcho2.dir/target.cpp.o"
   "CMakeFiles/SkyEcho2.dir/target.cpp.o.d"
   "CMakeFiles/SkyEcho2.dir/tracked_target.cpp.o"

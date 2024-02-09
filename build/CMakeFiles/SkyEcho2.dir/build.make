@@ -209,10 +209,24 @@ CMakeFiles/SkyEcho2.dir/outbound_flarm_converter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SkyEcho2.dir/outbound_flarm_converter.cpp.s"
 	/usr/bin/aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rbp28668/SkyEcho/cpp/outbound_flarm_converter.cpp -o CMakeFiles/SkyEcho2.dir/outbound_flarm_converter.cpp.s
 
+CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.o: CMakeFiles/SkyEcho2.dir/flags.make
+CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.o: /home/rbp28668/SkyEcho/cpp/stream_adapter.cpp
+CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.o: CMakeFiles/SkyEcho2.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rbp28668/SkyEcho/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.o"
+	/usr/bin/aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.o -MF CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.o.d -o CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.o -c /home/rbp28668/SkyEcho/cpp/stream_adapter.cpp
+
+CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.i"
+	/usr/bin/aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rbp28668/SkyEcho/cpp/stream_adapter.cpp > CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.i
+
+CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.s"
+	/usr/bin/aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rbp28668/SkyEcho/cpp/stream_adapter.cpp -o CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.s
+
 CMakeFiles/SkyEcho2.dir/config.cpp.o: CMakeFiles/SkyEcho2.dir/flags.make
 CMakeFiles/SkyEcho2.dir/config.cpp.o: /home/rbp28668/SkyEcho/cpp/config.cpp
 CMakeFiles/SkyEcho2.dir/config.cpp.o: CMakeFiles/SkyEcho2.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rbp28668/SkyEcho/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/SkyEcho2.dir/config.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rbp28668/SkyEcho/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/SkyEcho2.dir/config.cpp.o"
 	/usr/bin/aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SkyEcho2.dir/config.cpp.o -MF CMakeFiles/SkyEcho2.dir/config.cpp.o.d -o CMakeFiles/SkyEcho2.dir/config.cpp.o -c /home/rbp28668/SkyEcho/cpp/config.cpp
 
 CMakeFiles/SkyEcho2.dir/config.cpp.i: cmake_force
@@ -226,7 +240,7 @@ CMakeFiles/SkyEcho2.dir/config.cpp.s: cmake_force
 CMakeFiles/SkyEcho2.dir/main.cpp.o: CMakeFiles/SkyEcho2.dir/flags.make
 CMakeFiles/SkyEcho2.dir/main.cpp.o: /home/rbp28668/SkyEcho/cpp/main.cpp
 CMakeFiles/SkyEcho2.dir/main.cpp.o: CMakeFiles/SkyEcho2.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rbp28668/SkyEcho/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/SkyEcho2.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rbp28668/SkyEcho/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/SkyEcho2.dir/main.cpp.o"
 	/usr/bin/aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SkyEcho2.dir/main.cpp.o -MF CMakeFiles/SkyEcho2.dir/main.cpp.o.d -o CMakeFiles/SkyEcho2.dir/main.cpp.o -c /home/rbp28668/SkyEcho/cpp/main.cpp
 
 CMakeFiles/SkyEcho2.dir/main.cpp.i: cmake_force
@@ -249,6 +263,7 @@ SkyEcho2_OBJECTS = \
 "CMakeFiles/SkyEcho2.dir/ownship.cpp.o" \
 "CMakeFiles/SkyEcho2.dir/tracked_target.cpp.o" \
 "CMakeFiles/SkyEcho2.dir/outbound_flarm_converter.cpp.o" \
+"CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.o" \
 "CMakeFiles/SkyEcho2.dir/config.cpp.o" \
 "CMakeFiles/SkyEcho2.dir/main.cpp.o"
 
@@ -265,11 +280,12 @@ SkyEcho2: CMakeFiles/SkyEcho2.dir/target.cpp.o
 SkyEcho2: CMakeFiles/SkyEcho2.dir/ownship.cpp.o
 SkyEcho2: CMakeFiles/SkyEcho2.dir/tracked_target.cpp.o
 SkyEcho2: CMakeFiles/SkyEcho2.dir/outbound_flarm_converter.cpp.o
+SkyEcho2: CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.o
 SkyEcho2: CMakeFiles/SkyEcho2.dir/config.cpp.o
 SkyEcho2: CMakeFiles/SkyEcho2.dir/main.cpp.o
 SkyEcho2: CMakeFiles/SkyEcho2.dir/build.make
 SkyEcho2: CMakeFiles/SkyEcho2.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rbp28668/SkyEcho/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable SkyEcho2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rbp28668/SkyEcho/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable SkyEcho2"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SkyEcho2.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

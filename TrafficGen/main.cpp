@@ -12,7 +12,7 @@
 int main(int argc, char* argv[]){
     std::cout << "TrafficGen Version " << VERSION_MAJOR << '.' << VERSION_MINOR << std::endl;
 
-    Socket socket("localhost", 4000);
+    Socket socket("127.0.0.1", 4000);
  
     Simulation simulation(&socket);
 

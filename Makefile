@@ -345,6 +345,30 @@ state.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/state.cpp.s
 .PHONY : state.cpp.s
 
+stream_adapter.o: stream_adapter.cpp.o
+.PHONY : stream_adapter.o
+
+# target to build an object file
+stream_adapter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.o
+.PHONY : stream_adapter.cpp.o
+
+stream_adapter.i: stream_adapter.cpp.i
+.PHONY : stream_adapter.i
+
+# target to preprocess a source file
+stream_adapter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.i
+.PHONY : stream_adapter.cpp.i
+
+stream_adapter.s: stream_adapter.cpp.s
+.PHONY : stream_adapter.s
+
+# target to generate assembly for a file
+stream_adapter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.s
+.PHONY : stream_adapter.cpp.s
+
 target.o: target.cpp.o
 .PHONY : target.o
 
@@ -453,6 +477,9 @@ help:
 	@echo "... state.o"
 	@echo "... state.i"
 	@echo "... state.s"
+	@echo "... stream_adapter.o"
+	@echo "... stream_adapter.i"
+	@echo "... stream_adapter.s"
 	@echo "... target.o"
 	@echo "... target.i"
 	@echo "... target.s"
