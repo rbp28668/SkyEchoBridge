@@ -74,10 +74,11 @@ void OutboundFlarmConverter::sendTarget(const TrackedTarget& target){
     int relativeVertical = int( floorf(target.relativeVertical() + 0.5f));
     bool isICAO = target.addressType == 0 || target.addressType == 2;
     uint32_t id = target.address;
+    int track = int(floor(target.track + 0.5f));
     int groundSpeed = target.speedKts * 0.5144444444f;   // kts to m/S
     float climbRate = target.verticalVelocityUnknown() ? 0.0f : target.verticalVelocity * 0.00508f;   // feet per min to m/S
     char acType = convertAircraftType(target.emitter);
-    nmea.PFLAA(os, alarm, relativeNorth, relativeEast, relativeVertical, isICAO, id, groundSpeed, climbRate, acType);
+    nmea.PFLAA(os, alarm, relativeNorth, relativeEast, relativeVertical, isICAO, id, track, groundSpeed, climbRate, acType);
     os.flush();
 }
 
@@ -99,7 +100,7 @@ void OutboundFlarmConverter::sendHeartbeat(int rxCount, bool gpsValid, const Own
 
         alarm = primaryTarget->alarm();
         relativeBearing = int( floorf(primaryTarget->relativeBearing() + 0.5f));
-        
+        std::cout << "Relative bearing " << relativeBearing << std::endl;
         // Alarm or advisory?  Prioritise alarm!
         if(primaryTarget->alarm() > 0) {
             alarmType = 2;
@@ -142,9 +143,9 @@ void OutboundFlarmConverter::sendOwnshipData(unsigned int utcSeconds, const OwnS
     int year = (now->tm_year) % 100;
     
     double magneticVariationDegrees = 0;
-    int altitude = int(floor(ownship.altFeet * 0.3048)); //output in metres.
-    float gpsHeight = ownship.altFeet * 0.3048; 
-
+    int altitude = int(floor(ownship.altFeet * (nmea.heightUnits == 'M' ? 0.3048 : 1) + 0.5)); 
+    float gpsHeight = ownship.altFeet * (nmea.heightUnits == 'M' ? 0.3048 : 1); 
+    std::cout << "Sending height " << altitude << "," << gpsHeight << nmea.heightUnits << std::endl;
     nmea.GPRMC(os, utcTime, latDegrees, longDegrees, groundSpeedKnots, trackDegrees, day, month, year, magneticVariationDegrees);
     os.flush();
     nmea.PGRMZ(os, altitude);

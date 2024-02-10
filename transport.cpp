@@ -16,11 +16,6 @@ void Transport::process(uint8_t* buffer, size_t len){
     size_t end = 0;
     int idx = 0; // message index for debug
 
-    for(int i=0; i< len; ++i){
-        std::cout << ((i==0) ? "" : ",") << std::hex << std::setw(2) << std::setfill('0') << int(buffer[i]);
-    }
-    std::cout << std::endl;
-
     while(pos < len) {
         // Find the first flag character
         while((pos < len) && (buffer[pos] != Flag)) ++pos;

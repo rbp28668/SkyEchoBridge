@@ -22,7 +22,7 @@ class TargetMessage : public Message{
     uint32_t address;
     double latitude;
     double longitude;
-    int altFeet;
+    float altFeet;
     uint8_t miscIndicators;
     uint8_t nic;    // Navigation Integrity Category (NIC)
     uint8_t nacp;   // Navigation Accuracy Category for Position (NACp)
@@ -33,7 +33,9 @@ class TargetMessage : public Message{
     char callsign[8];
     uint8_t emergency;
 
-    
+    // For simulation
+    float descentFPM;
+
     protected:
     
     static constexpr double earthEquatorialRadius = 6378.1 * 1000.0; //  metres
@@ -47,6 +49,9 @@ class TargetMessage : public Message{
 
     void setCallsign(const std::string& cs);
     void build();
+
+    void move(double north, double east);
+    void tick();
 };
 
 class Ownship : public TargetMessage

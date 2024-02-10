@@ -125,6 +125,7 @@ unsigned int NMEAData::checksum(const std::string& in) const {
 
 // Writes the GPS GGA sentence to the output.
 void NMEAData::GPGGA(std::ostream& os, double utcTime, double latDegrees, double longDegrees, float gpsHeight){
+	std::cout << "GPS Height " << gpsHeight << std::endl;
 
 	std::ostringstream oss;
 
@@ -174,10 +175,10 @@ void NMEAData::GPRMC(std::ostream& os, double utcTime, double latDegrees, double
 
 void NMEAData::PGRMZ(std::ostream& os, int altitude){
 	std::ostringstream oss;
-
+	std::cout << "Altitude " << altitude << std::endl;
 	oss << "PGRMZ,";
-	oss << altitude;
-	oss << "," << heightUnits << ",2";  // valid
+	oss << altitude << ",";
+	oss << heightUnits << ",2";  // valid
 	wrap(os, oss.str());
 }
 
@@ -216,7 +217,11 @@ void NMEAData::PFLAU(std::ostream& os, int rx, int gps, int alarm, int relativeB
 
 }
 
-void NMEAData::PFLAA(std::ostream& os, int alarm, int relativeNorth, int relativeEast, int relativeVertical, bool isICAO, uint32_t id, int groundSpeed, float climbRate, char acType){
+
+// PFLAA,<AlarmLevel>,<RelativeNorth>,<RelativeEast>,
+// <RelativeVertical>,<IDType>,<ID>,<Track>,<TurnRate>,<GroundSpeed>,
+// <ClimbRate>,<AcftType>[,<NoTrack>][,<Source>,<RSSI>]
+void NMEAData::PFLAA(std::ostream& os, int alarm, int relativeNorth, int relativeEast, int relativeVertical, bool isICAO, uint32_t id, int track, int groundSpeed, float climbRate, char acType){
 	std::ostringstream oss;
 	oss << "PFLAA,";
 	oss << alarm << ",";
@@ -229,6 +234,8 @@ void NMEAData::PFLAA(std::ostream& os, int alarm, int relativeNorth, int relativ
 		oss << std::setw(0) << std::dec;
 	}	
 	oss << ",";
+	oss << track << ",";
+	oss << ",";  // Turn rate: "Currently this field is empty"
 	oss << groundSpeed << ",";
 	oss << std::setprecision(1);
 	oss << climbRate << ",";

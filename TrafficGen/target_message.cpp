@@ -21,6 +21,7 @@ TargetMessage::TargetMessage()
     , track(0)   // see miscIndicators for exactly what this means.
     , callsign{ ' ',' ',' ',' ',' ',' ',' ',' '}
     , emergency(0)
+    , descentFPM(0) // would be nice!
 
 {
 
@@ -60,7 +61,7 @@ void TargetMessage::build() {
     message[9] = (lon & 0x00FF00) >> 8;
     message[10] = (lon & 0x0000FF);
 
-    int alt = (altFeet + 1000) / 25;
+    int alt = int(floor((altFeet + 1000) / 25 + 0.5));
     message[11] = (alt & 0x0FF0) >> 4;
     message[12] = (alt & 0x000F) << 4;
 
@@ -93,3 +94,35 @@ void TargetMessage::build() {
 
     message[27] = (emergency & 0x0F) << 4;
 }
+
+    void TargetMessage::move(double north, double east){
+        double metresPerDegreeLat =  M_PI * earthPolarRadius / 180.0;  // polar circumference / 360
+        double metresPerDegreeLon =  M_PI * earthEquatorialRadius / 180.0 * std::cos(latitude * M_PI / 180);
+
+        double deltaLat = north / metresPerDegreeLat;
+        double deltaLon = east / metresPerDegreeLon;
+
+        latitude += deltaLat;
+        longitude += deltaLon;
+    }
+    void TargetMessage::tick(){
+        //  North/South length per degree lattitude is pretty constant whereas the longitude circle shrinks.
+        double metresPerDegreeLat =  M_PI * earthPolarRadius / 180.0;  // polar circumference / 360
+        double metresPerDegreeLon =  M_PI * earthEquatorialRadius / 180.0 * std::cos(latitude * M_PI / 180);
+
+        double trackRadians = track * M_PI/180;
+        double speedMs = speedKts * 0.51444444444;   
+
+        int deltaSeconds = 1; // assume called once a second.
+        double deltaEW = speedMs * deltaSeconds * sin(trackRadians);
+        double deltaNS = speedMs * deltaSeconds * cos(trackRadians);
+
+        double deltaLat = deltaNS / metresPerDegreeLat;
+        double deltaLon = deltaEW / metresPerDegreeLon;
+
+        latitude += deltaLat;
+        longitude += deltaLon;
+
+        altFeet -= descentFPM / 60.0;
+        
+    }

@@ -5,6 +5,7 @@
 #include <string>
 #include<arpa/inet.h>
 #include<sys/socket.h>
+#include "stream_receiver.h"
 
 class Socket;
 
@@ -26,13 +27,26 @@ class Packet {
     ssize_t received() { return bytes_rec;}
 };
 
-class Socket {
+/// @brief A UDP socket capable of reading and writing
+/// @note Implements StreamReceiver so a connected socket can have
+/// an ostream wrapped round it via StreamAdapter and thus
+/// allow characters to be written easily into UDP packets
+/// which are sent when flush() is called.
+class Socket : public StreamReceiver {
 
     struct sockaddr_in local;
-    int handle;
+    struct sockaddr_in destination;
+
+    int sock;
 
     public:
-    Socket(int port, in_addr_t addr = INADDR_ANY);
+    Socket();
     ~Socket();
+
+    void listen(int port, in_addr_t addr = INADDR_ANY);
+    void connect(const std::string& host, unsigned int port);
     ssize_t receive(Packet& packet);
+    int send(const uint8_t* data, size_t len);
+
+    virtual bool receive(const char* data, size_t length) { return send(reinterpret_cast<const uint8_t*>(data), length) == length;}
 };

@@ -6,15 +6,20 @@
 #include "version.h"
 #include "socket.h"
 #include "simulation.h"
-
+#include "ownship_scripting.h"
 
 
 int main(int argc, char* argv[]){
     std::cout << "TrafficGen Version " << VERSION_MAJOR << '.' << VERSION_MINOR << std::endl;
 
     Socket socket("127.0.0.1", 4000);
+
  
     Simulation simulation(&socket);
+
+    Lua lua(&simulation);
+    OwnShipScripting::registerMethods(lua);
+
 
     simulation.ownship().address = 0x405603;
     simulation.ownship().setCallsign("GLIDR952");
@@ -25,7 +30,7 @@ int main(int argc, char* argv[]){
     simulation.ownship().nacp = 10;
     simulation.ownship().altFeet = 3000;
     simulation.ownship().speedKts = 70;
-    simulation.ownship().track = 42;
+    simulation.ownship().track = 195;
     simulation.ownship().miscIndicators = 0x81;  // airborn and true track.
 
 
@@ -34,14 +39,14 @@ int main(int argc, char* argv[]){
     traffic->setCallsign("GCKFY");
     traffic->emitter = 9; // glider
     traffic->latitude = 52;
-    traffic->longitude = -0.499;
+    traffic->longitude = -0.5;
     traffic->nic = 10;
     traffic->nacp = 10;
     traffic->altFeet = 3000;
-    traffic->speedKts = 70;
-    traffic->track = 42;
+    traffic->speedKts = 71;
+    traffic->track = 199; // slightly converging
     traffic->miscIndicators = 0x81;  // airborn and true track.
-
+    traffic->move(-500,500);
     while(true){
         simulation.wait();
         simulation.tick();

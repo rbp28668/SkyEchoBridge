@@ -197,6 +197,8 @@ void State::processCurrentState(){
             target->setThreat(0);
             target->setAlarm(0);
 
+            // TODO - set Relative Bearing
+            
             // Is this close enough to report?
             // 240kts, 4 NM a minute - 7.4km - say 10 to get a minute's warning
             if(abs(target->relativeVertical()) < config->ignoreHeight() 

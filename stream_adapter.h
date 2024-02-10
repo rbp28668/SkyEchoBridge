@@ -34,7 +34,7 @@ protected:
                                        std::ios_base::out) override;
 
 public:
-    OSAStreambuf(StreamReceiver *receiver) : receiver(receiver) {}
+    OSAStreambuf(StreamReceiver *receiver) : receiver(receiver) {reset_ptr();}
     ~OSAStreambuf() { sync(); }
 };
 

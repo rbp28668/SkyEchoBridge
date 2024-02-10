@@ -55,6 +55,7 @@ void Simulation::tick()
     showPacket(frame.data(), frame.length());
 
     // Ownship
+    _ownship.tick();
     _ownship.build();
     frame.wrap(&_ownship);
     bytes = socket->send(frame.data(), frame.length());
@@ -64,6 +65,7 @@ void Simulation::tick()
     // targets
     for (auto t : _traffic)
     {
+        t->tick();
         t->build();
         frame.wrap(t);
         bytes = socket->send(frame.data(), frame.length());
