@@ -3,7 +3,7 @@
 
 void OwnShipScripting::registerMethods(Lua& lua)
 {
-    Lua::Module module = lua.startModule("tug");
+    Lua::Module module = lua.startModule("ownship");
     module.add("setLocation", OwnShipScripting::setLocation);
     module.add("setHeight", OwnShipScripting::setHeight);
     module.add("setTrack", OwnShipScripting::setTrack);

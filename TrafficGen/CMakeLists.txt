@@ -14,6 +14,8 @@ add_executable(TrafficGen
     socket.cpp
     lua.cpp
     simulation.cpp
+    simulation_scripting.cpp
+    ownship_scripting.cpp
     main.cpp 
 )
 

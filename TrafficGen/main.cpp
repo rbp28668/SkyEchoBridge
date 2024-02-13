@@ -7,6 +7,7 @@
 #include "socket.h"
 #include "simulation.h"
 #include "ownship_scripting.h"
+#include "simulation_scripting.h"
 
 
 int main(int argc, char* argv[]){
@@ -19,7 +20,7 @@ int main(int argc, char* argv[]){
 
     Lua lua(&simulation);
     OwnShipScripting::registerMethods(lua);
-
+    SimulationScripting::registerMethods(lua);
 
     simulation.ownship().address = 0x405603;
     simulation.ownship().setCallsign("GLIDR952");
@@ -47,9 +48,18 @@ int main(int argc, char* argv[]){
     traffic->track = 199; // slightly converging
     traffic->miscIndicators = 0x81;  // airborn and true track.
     traffic->move(-500,500);
-    while(true){
-        simulation.wait();
-        simulation.tick();
+
+    for(int i=1; i<argc; ++i){
+        std::string file(argv[i]);
+        std::string err("Unable to load and run LUA file ");
+        err.append(file);
+        lua.runFile(file, err);
+
     }
+
+    // while(true){
+    //     simulation.wait();
+    //     simulation.tick();
+    // }
     return 0;
 }
