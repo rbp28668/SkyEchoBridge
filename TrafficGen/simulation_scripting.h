@@ -4,6 +4,12 @@
 
 class SimulationScripting
 {
+
+	// Functions for userdata metatable
+	static const  luaL_Reg traffic_m [];
+	// Functions for derived object
+	static const  luaL_Reg traffic_o [];
+
 public:
 	static 	void registerMethods(Lua& lua);
 private:
