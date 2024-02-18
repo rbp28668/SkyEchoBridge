@@ -17,6 +17,7 @@ static void showPacket(const uint8_t *buffer, size_t len)
 
 Simulation::Simulation(Socket *socket)
     : socket(socket)
+    , nextAddress(1)
 {
     now = Clock::time();
 }
@@ -27,8 +28,22 @@ Simulation::~Simulation(){
     }
 }
 
+static std::string& toCallsign(std::string& cs, unsigned int number, int digits){
+     if(digits == 0) return cs;
+    unsigned int digit = number % 26;
+    number = number / 26;
+    return toCallsign(cs, number, digits-1).append(1,char('A' + digit));
+}
+
 Traffic* Simulation::newTarget(){
     Traffic* t = new Traffic();
+    t->address = nextAddress;
+
+    std::string cs = "GC";
+    cs = toCallsign(cs,nextAddress-1,3);
+    t->setCallsign(cs);
+
+    ++nextAddress;
     _traffic.push_back(t);
     return t;
 }

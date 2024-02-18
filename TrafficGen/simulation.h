@@ -18,11 +18,15 @@ class Simulation {
 
     Socket* socket;
 
+    uint32_t nextAddress;
+
+
+
 public:
     Simulation(Socket* socket);
     ~Simulation();
 
-    Ownship& ownship() { return _ownship;}
+    Ownship* ownship() { return &_ownship;}
     Traffic* newTarget();
 
     void wait();
