@@ -49,7 +49,8 @@ public:
 	~Lua();
 
 	Module startModule(const char* name);
-
+	lua_State* State() {return L;}
+	
 	// Retrieve this instance from the lua registry.
 	static Lua* get(lua_State* L);
 

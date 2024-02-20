@@ -249,30 +249,6 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TrafficGen.dir/build.make CMakeFiles/TrafficGen.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-ownship_scripting.o: ownship_scripting.cpp.o
-.PHONY : ownship_scripting.o
-
-# target to build an object file
-ownship_scripting.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TrafficGen.dir/build.make CMakeFiles/TrafficGen.dir/ownship_scripting.cpp.o
-.PHONY : ownship_scripting.cpp.o
-
-ownship_scripting.i: ownship_scripting.cpp.i
-.PHONY : ownship_scripting.i
-
-# target to preprocess a source file
-ownship_scripting.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TrafficGen.dir/build.make CMakeFiles/TrafficGen.dir/ownship_scripting.cpp.i
-.PHONY : ownship_scripting.cpp.i
-
-ownship_scripting.s: ownship_scripting.cpp.s
-.PHONY : ownship_scripting.s
-
-# target to generate assembly for a file
-ownship_scripting.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TrafficGen.dir/build.make CMakeFiles/TrafficGen.dir/ownship_scripting.cpp.s
-.PHONY : ownship_scripting.cpp.s
-
 simulation.o: simulation.cpp.o
 .PHONY : simulation.o
 
@@ -393,9 +369,6 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... ownship_scripting.o"
-	@echo "... ownship_scripting.i"
-	@echo "... ownship_scripting.s"
 	@echo "... simulation.o"
 	@echo "... simulation.i"
 	@echo "... simulation.s"

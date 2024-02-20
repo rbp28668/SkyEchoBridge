@@ -51,6 +51,9 @@ class TargetMessage : public Message{
     void build();
 
     void move(double north, double east);
+    void makeConflictingTo(TargetMessage* other, double targetRangeNM, double relativeBearing);
+    double distanceTo(TargetMessage* other);
+    
     void tick();
 };
 
