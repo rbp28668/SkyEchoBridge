@@ -28,7 +28,7 @@ public:
 
     Ownship* ownship() { return &_ownship;}
     Traffic* newTarget();
-
+    Traffic* createFrom( TargetMessage* source);
     void wait();
     void tick();
 };

@@ -48,6 +48,24 @@ Traffic* Simulation::newTarget(){
     return t;
 }
 
+Traffic* Simulation::createFrom( TargetMessage* source){
+    Traffic* traffic = newTarget();
+
+    traffic->latitude = source->latitude;
+    traffic->longitude = source->longitude;
+    traffic->altFeet = source->altFeet;
+    traffic->miscIndicators = source->miscIndicators;
+    traffic->emitter = source->emitter; // What sort of thing this is - see 3.5.1.10 EMITTER CATEGORY
+    traffic->speedKts = source->speedKts;   // Note 0xFFF or 4095 is unknown.
+    traffic->verticalVelocity = source->verticalVelocity; // 0x800 is unknown.
+    traffic->track = source->track;    // see miscIndicators for exactly what this means.
+
+   // For simulation
+     traffic->descentFPM = source->descentFPM;
+
+    return traffic;
+}
+
 void Simulation::wait()
 {
     auto then = now;
@@ -61,20 +79,20 @@ void Simulation::wait()
 void Simulation::tick()
 {
 
-   std::cout << "Sending at " << now << std::endl;
+    //std::cout << "Sending at " << now << std::endl;
     
     heartbeat.build();
     frame.wrap(&heartbeat);
     int bytes = socket->send(frame.data(), frame.length());
-    std::cout << "Sent " << bytes << " for heartbeat ";
-    showPacket(frame.data(), frame.length());
+    //std::cout << "Sent " << bytes << " for heartbeat ";
+    //showPacket(frame.data(), frame.length());
 
     // Ownship
     _ownship.tick();
     _ownship.build();
     frame.wrap(&_ownship);
     bytes = socket->send(frame.data(), frame.length());
-    std::cout << "Sent " << bytes << " for ownship" << std::endl;
+    //std::cout << "Sent " << bytes << " for ownship" << std::endl;
     // showPacket(frame.data(), frame.length());
 
     // targets
@@ -84,6 +102,6 @@ void Simulation::tick()
         t->build();
         frame.wrap(t);
         bytes = socket->send(frame.data(), frame.length());
-        std::cout << "Sent " << bytes << " for traffic" << std::endl;
+        //std::cout << "Sent " << bytes << " for traffic" << std::endl;
     }
 }

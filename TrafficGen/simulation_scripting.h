@@ -54,9 +54,12 @@ private:
 	// Misc
 	static int getLocation(lua_State *L);
 	static int move(lua_State *L);
-
+	static int makeConflictingTo(lua_State *L);
+	static int distanceTo(lua_State *L);
+	
 	static int wrapTarget(lua_State* L, TargetMessage* target);
 	static int createTarget(lua_State* L);
+	static int createFromTarget(lua_State* L);
 	static int createLightTarget(lua_State* L);
 
 	static int tick(lua_State* L);

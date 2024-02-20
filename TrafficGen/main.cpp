@@ -6,7 +6,6 @@
 #include "version.h"
 #include "socket.h"
 #include "simulation.h"
-#include "ownship_scripting.h"
 #include "simulation_scripting.h"
 
 
@@ -31,7 +30,6 @@ int main(int argc, char* argv[]){
     simulation.ownship()->miscIndicators = 0x81;  // airborn and true track.
 
     Lua lua(&simulation);
-    //OwnShipScripting::registerMethods(lua);
     SimulationScripting::registerMethods(lua);
     SimulationScripting::addOwnship(lua, simulation.ownship());
 

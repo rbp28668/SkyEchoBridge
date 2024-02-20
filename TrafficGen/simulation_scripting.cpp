@@ -205,28 +205,7 @@ static void registerConstants(lua_State *L, const char *name, const ConstantT *c
     lua_setglobal(L, name);
 }
 
-// modified so the userdata is retrieved from the upvalue
-// Effectively these functions are closures that have
-// captured the base object.
-int SimulationScripting::getLocation(lua_State *L)
-{
-    Traffic *traffic = getTraffic(L);
-    double lat = traffic->latitude;
-    double lon = traffic->longitude;
-    lua_pushnumber(L, lat);
-    lua_pushnumber(L, lon);
-    return 2;
-}
 
-// move( north, east)
-int SimulationScripting::move(lua_State *L)
-{
-    Traffic *traffic = getTraffic(L);
-    double north = luaL_checknumber(L, 1);
-    double east = luaL_checknumber(L, 2);
-    traffic->move(north, east);
-    return 0;
-}
 
 
 // Methods for the derived object. Note these are closures
@@ -266,8 +245,11 @@ const luaL_Reg SimulationScripting::traffic_methods[] = {
     {"setTrack", SimulationScripting::setTrack},
     {"setCallsign", SimulationScripting::setCallsign},
     {"setEmergency", SimulationScripting::setEmergency},
+
     {"getLocation", SimulationScripting::getLocation},
     {"move", SimulationScripting::move},
+    {"makeConflictingTo", SimulationScripting::makeConflictingTo},
+    {"distanceTo", SimulationScripting::distanceTo},
     {nullptr, nullptr}};
 
 //////////////////////////////////////////////////////////////////////
@@ -301,7 +283,7 @@ int SimulationScripting::getLatitude(lua_State *L)
 int SimulationScripting::getLongitude(lua_State *L)
 {
     Traffic *traffic = getTraffic(L);
-    lua_pushnumber(L, traffic->latitude);
+    lua_pushnumber(L, traffic->longitude);
     return 1;
 }
 int SimulationScripting::getAltFeet(lua_State *L)
@@ -339,7 +321,7 @@ int SimulationScripting::getEmitter(lua_State *L)
 int SimulationScripting::getSpeedKts(lua_State *L)
 {
     Traffic *traffic = getTraffic(L);
-    lua_pushnumber(L, traffic->latitude);
+    lua_pushnumber(L, traffic->speedKts);
     return 1;
 }
 
@@ -475,10 +457,50 @@ int SimulationScripting::setEmergency(lua_State *L)
     return 0;
 }
 
-// Create userdata and metatable for a base clstd::cout << "Main - Simulation at " << &simulation << std::endl;ass. Then derive from
-// that so that we can add extra functions.
-// Note that derived class methods are all closures that capture
-// the userdata object as an upvalue.
+////////////////////////////////////////////////////////////////////////////////////
+// MISC TRAFFIC
+int SimulationScripting::getLocation(lua_State *L)
+{
+    Traffic *traffic = getTraffic(L);
+    double lat = traffic->latitude;
+    double lon = traffic->longitude;
+    lua_pushnumber(L, lat);
+    lua_pushnumber(L, lon);
+    return 2;
+}
+
+// move( north, east)
+int SimulationScripting::move(lua_State *L)
+{
+    Traffic *traffic = getTraffic(L);
+    double north = luaL_checknumber(L, 1);
+    double east = luaL_checknumber(L, 2);
+    traffic->move(north, east);
+    return 0;
+}
+
+int SimulationScripting::makeConflictingTo(lua_State *L)
+{
+    Traffic *traffic = getTraffic(L);
+    Traffic *other = *(Traffic **)luaL_checkudata(L, 2, "TrafficGen.Target");
+    double targetRangeNM = luaL_checknumber(L, 3);
+    double relativeBearing = luaL_checknumber(L, 4);
+    traffic->makeConflictingTo(other, targetRangeNM, relativeBearing);
+    return 0;
+}
+
+int SimulationScripting::distanceTo(lua_State *L){
+    Traffic *traffic = getTraffic(L);
+    Traffic *other = *(Traffic **)luaL_checkudata(L, 2, "TrafficGen.Target");
+    double dist = traffic->distanceTo(other);
+    lua_pushnumber(L, dist);
+    return 1;
+  
+}
+////////////////////////////////////////////////////////////////////////////////////////////
+// SIMULATION
+
+// Create userdata and metatable
 int SimulationScripting::createTarget(lua_State *L)
 {
     Simulation *simulation = *(Simulation **)lua_getextraspace(L);
@@ -486,14 +508,25 @@ int SimulationScripting::createTarget(lua_State *L)
     return wrapTarget(L, target);
 }
 
+/// @brief Create a target based on an existing one.
+/// Lua Param is the source target.
+/// @param L
+/// @return New target.
+int SimulationScripting::createFromTarget(lua_State *L)
+{
+    Simulation *simulation = *(Simulation **)lua_getextraspace(L);
+    TargetMessage *other = getTraffic(L); // first parameter
+    Traffic *target = simulation->createFrom(other);
+    return wrapTarget(L, target);
+}
+
 // Wraps the ownship with userdata and sets it as a global.
 void SimulationScripting::addOwnship(Lua &lua, Ownship *ownship)
 {
-    return;
     lua_State *L = lua.State();
-    std::cout << "Ownship " << ownship->latitude << " " << ownship->longitude << " " << std::string(ownship->callsign, 8) << std::endl;
+    //std::cout << "Ownship " << ownship->latitude << " " << ownship->longitude << " " << std::string(ownship->callsign, 8) << std::endl;
     wrapTarget(L, ownship);
-    assert(lua_istable(L, -1)); // confirm TOS is actually a table
+    assert(lua_isuserdata(L, -1)); // confirm TOS is a userdata object.
     lua_setglobal(L, "ownship");
 }
 
@@ -518,7 +551,7 @@ int SimulationScripting::wrapTarget(lua_State *L, TargetMessage *target)
     // One way or another, TOS has the metatable for this.
     // UD, meta
     lua_setmetatable(L, -2); // UD, meta  (pops a table from the stack and sets it as the metatable of the object at the given index.)
-    return 1; // Should be just the userdata now.
+    return 1;                // Should be just the userdata now.
 }
 
 int SimulationScripting::tick(lua_State *L)
@@ -536,6 +569,7 @@ void SimulationScripting::registerMethods(Lua &lua)
     Lua::Module module = lua.startModule("simulation");
     module.add("tick", SimulationScripting::tick);
     module.add("createTarget", SimulationScripting::createTarget);
+    module.add("createTargetFrom", SimulationScripting::createFromTarget);
     module.add("showTable", luaShowtable);
 
     lua_State *L = lua.State();
