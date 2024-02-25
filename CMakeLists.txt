@@ -18,6 +18,11 @@ add_executable(SkyEcho2
     tracked_target.cpp
     outbound_flarm_converter.cpp
     stream_adapter.cpp
+    outbound_pipe.cpp
+    outbound_pipe_stream_receiver.cpp
+    serial_port.cpp
+    serial_stream_receiver.cpp
+    stdout_stream_receiver.cpp
     config.cpp
     main.cpp 
 )

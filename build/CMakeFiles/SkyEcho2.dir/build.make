@@ -223,10 +223,80 @@ CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.s"
 	/usr/bin/aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rbp28668/SkyEcho/cpp/stream_adapter.cpp -o CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.s
 
+CMakeFiles/SkyEcho2.dir/outbound_pipe.cpp.o: CMakeFiles/SkyEcho2.dir/flags.make
+CMakeFiles/SkyEcho2.dir/outbound_pipe.cpp.o: /home/rbp28668/SkyEcho/cpp/outbound_pipe.cpp
+CMakeFiles/SkyEcho2.dir/outbound_pipe.cpp.o: CMakeFiles/SkyEcho2.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rbp28668/SkyEcho/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/SkyEcho2.dir/outbound_pipe.cpp.o"
+	/usr/bin/aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SkyEcho2.dir/outbound_pipe.cpp.o -MF CMakeFiles/SkyEcho2.dir/outbound_pipe.cpp.o.d -o CMakeFiles/SkyEcho2.dir/outbound_pipe.cpp.o -c /home/rbp28668/SkyEcho/cpp/outbound_pipe.cpp
+
+CMakeFiles/SkyEcho2.dir/outbound_pipe.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SkyEcho2.dir/outbound_pipe.cpp.i"
+	/usr/bin/aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rbp28668/SkyEcho/cpp/outbound_pipe.cpp > CMakeFiles/SkyEcho2.dir/outbound_pipe.cpp.i
+
+CMakeFiles/SkyEcho2.dir/outbound_pipe.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SkyEcho2.dir/outbound_pipe.cpp.s"
+	/usr/bin/aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rbp28668/SkyEcho/cpp/outbound_pipe.cpp -o CMakeFiles/SkyEcho2.dir/outbound_pipe.cpp.s
+
+CMakeFiles/SkyEcho2.dir/outbound_pipe_stream_receiver.cpp.o: CMakeFiles/SkyEcho2.dir/flags.make
+CMakeFiles/SkyEcho2.dir/outbound_pipe_stream_receiver.cpp.o: /home/rbp28668/SkyEcho/cpp/outbound_pipe_stream_receiver.cpp
+CMakeFiles/SkyEcho2.dir/outbound_pipe_stream_receiver.cpp.o: CMakeFiles/SkyEcho2.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rbp28668/SkyEcho/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/SkyEcho2.dir/outbound_pipe_stream_receiver.cpp.o"
+	/usr/bin/aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SkyEcho2.dir/outbound_pipe_stream_receiver.cpp.o -MF CMakeFiles/SkyEcho2.dir/outbound_pipe_stream_receiver.cpp.o.d -o CMakeFiles/SkyEcho2.dir/outbound_pipe_stream_receiver.cpp.o -c /home/rbp28668/SkyEcho/cpp/outbound_pipe_stream_receiver.cpp
+
+CMakeFiles/SkyEcho2.dir/outbound_pipe_stream_receiver.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SkyEcho2.dir/outbound_pipe_stream_receiver.cpp.i"
+	/usr/bin/aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rbp28668/SkyEcho/cpp/outbound_pipe_stream_receiver.cpp > CMakeFiles/SkyEcho2.dir/outbound_pipe_stream_receiver.cpp.i
+
+CMakeFiles/SkyEcho2.dir/outbound_pipe_stream_receiver.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SkyEcho2.dir/outbound_pipe_stream_receiver.cpp.s"
+	/usr/bin/aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rbp28668/SkyEcho/cpp/outbound_pipe_stream_receiver.cpp -o CMakeFiles/SkyEcho2.dir/outbound_pipe_stream_receiver.cpp.s
+
+CMakeFiles/SkyEcho2.dir/serial_port.cpp.o: CMakeFiles/SkyEcho2.dir/flags.make
+CMakeFiles/SkyEcho2.dir/serial_port.cpp.o: /home/rbp28668/SkyEcho/cpp/serial_port.cpp
+CMakeFiles/SkyEcho2.dir/serial_port.cpp.o: CMakeFiles/SkyEcho2.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rbp28668/SkyEcho/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/SkyEcho2.dir/serial_port.cpp.o"
+	/usr/bin/aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SkyEcho2.dir/serial_port.cpp.o -MF CMakeFiles/SkyEcho2.dir/serial_port.cpp.o.d -o CMakeFiles/SkyEcho2.dir/serial_port.cpp.o -c /home/rbp28668/SkyEcho/cpp/serial_port.cpp
+
+CMakeFiles/SkyEcho2.dir/serial_port.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SkyEcho2.dir/serial_port.cpp.i"
+	/usr/bin/aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rbp28668/SkyEcho/cpp/serial_port.cpp > CMakeFiles/SkyEcho2.dir/serial_port.cpp.i
+
+CMakeFiles/SkyEcho2.dir/serial_port.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SkyEcho2.dir/serial_port.cpp.s"
+	/usr/bin/aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rbp28668/SkyEcho/cpp/serial_port.cpp -o CMakeFiles/SkyEcho2.dir/serial_port.cpp.s
+
+CMakeFiles/SkyEcho2.dir/serial_stream_receiver.cpp.o: CMakeFiles/SkyEcho2.dir/flags.make
+CMakeFiles/SkyEcho2.dir/serial_stream_receiver.cpp.o: /home/rbp28668/SkyEcho/cpp/serial_stream_receiver.cpp
+CMakeFiles/SkyEcho2.dir/serial_stream_receiver.cpp.o: CMakeFiles/SkyEcho2.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rbp28668/SkyEcho/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/SkyEcho2.dir/serial_stream_receiver.cpp.o"
+	/usr/bin/aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SkyEcho2.dir/serial_stream_receiver.cpp.o -MF CMakeFiles/SkyEcho2.dir/serial_stream_receiver.cpp.o.d -o CMakeFiles/SkyEcho2.dir/serial_stream_receiver.cpp.o -c /home/rbp28668/SkyEcho/cpp/serial_stream_receiver.cpp
+
+CMakeFiles/SkyEcho2.dir/serial_stream_receiver.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SkyEcho2.dir/serial_stream_receiver.cpp.i"
+	/usr/bin/aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rbp28668/SkyEcho/cpp/serial_stream_receiver.cpp > CMakeFiles/SkyEcho2.dir/serial_stream_receiver.cpp.i
+
+CMakeFiles/SkyEcho2.dir/serial_stream_receiver.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SkyEcho2.dir/serial_stream_receiver.cpp.s"
+	/usr/bin/aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rbp28668/SkyEcho/cpp/serial_stream_receiver.cpp -o CMakeFiles/SkyEcho2.dir/serial_stream_receiver.cpp.s
+
+CMakeFiles/SkyEcho2.dir/stdout_stream_receiver.cpp.o: CMakeFiles/SkyEcho2.dir/flags.make
+CMakeFiles/SkyEcho2.dir/stdout_stream_receiver.cpp.o: /home/rbp28668/SkyEcho/cpp/stdout_stream_receiver.cpp
+CMakeFiles/SkyEcho2.dir/stdout_stream_receiver.cpp.o: CMakeFiles/SkyEcho2.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rbp28668/SkyEcho/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/SkyEcho2.dir/stdout_stream_receiver.cpp.o"
+	/usr/bin/aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SkyEcho2.dir/stdout_stream_receiver.cpp.o -MF CMakeFiles/SkyEcho2.dir/stdout_stream_receiver.cpp.o.d -o CMakeFiles/SkyEcho2.dir/stdout_stream_receiver.cpp.o -c /home/rbp28668/SkyEcho/cpp/stdout_stream_receiver.cpp
+
+CMakeFiles/SkyEcho2.dir/stdout_stream_receiver.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SkyEcho2.dir/stdout_stream_receiver.cpp.i"
+	/usr/bin/aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rbp28668/SkyEcho/cpp/stdout_stream_receiver.cpp > CMakeFiles/SkyEcho2.dir/stdout_stream_receiver.cpp.i
+
+CMakeFiles/SkyEcho2.dir/stdout_stream_receiver.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SkyEcho2.dir/stdout_stream_receiver.cpp.s"
+	/usr/bin/aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rbp28668/SkyEcho/cpp/stdout_stream_receiver.cpp -o CMakeFiles/SkyEcho2.dir/stdout_stream_receiver.cpp.s
+
 CMakeFiles/SkyEcho2.dir/config.cpp.o: CMakeFiles/SkyEcho2.dir/flags.make
 CMakeFiles/SkyEcho2.dir/config.cpp.o: /home/rbp28668/SkyEcho/cpp/config.cpp
 CMakeFiles/SkyEcho2.dir/config.cpp.o: CMakeFiles/SkyEcho2.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rbp28668/SkyEcho/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/SkyEcho2.dir/config.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rbp28668/SkyEcho/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/SkyEcho2.dir/config.cpp.o"
 	/usr/bin/aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SkyEcho2.dir/config.cpp.o -MF CMakeFiles/SkyEcho2.dir/config.cpp.o.d -o CMakeFiles/SkyEcho2.dir/config.cpp.o -c /home/rbp28668/SkyEcho/cpp/config.cpp
 
 CMakeFiles/SkyEcho2.dir/config.cpp.i: cmake_force
@@ -240,7 +310,7 @@ CMakeFiles/SkyEcho2.dir/config.cpp.s: cmake_force
 CMakeFiles/SkyEcho2.dir/main.cpp.o: CMakeFiles/SkyEcho2.dir/flags.make
 CMakeFiles/SkyEcho2.dir/main.cpp.o: /home/rbp28668/SkyEcho/cpp/main.cpp
 CMakeFiles/SkyEcho2.dir/main.cpp.o: CMakeFiles/SkyEcho2.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rbp28668/SkyEcho/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/SkyEcho2.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rbp28668/SkyEcho/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/SkyEcho2.dir/main.cpp.o"
 	/usr/bin/aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SkyEcho2.dir/main.cpp.o -MF CMakeFiles/SkyEcho2.dir/main.cpp.o.d -o CMakeFiles/SkyEcho2.dir/main.cpp.o -c /home/rbp28668/SkyEcho/cpp/main.cpp
 
 CMakeFiles/SkyEcho2.dir/main.cpp.i: cmake_force
@@ -264,6 +334,11 @@ SkyEcho2_OBJECTS = \
 "CMakeFiles/SkyEcho2.dir/tracked_target.cpp.o" \
 "CMakeFiles/SkyEcho2.dir/outbound_flarm_converter.cpp.o" \
 "CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.o" \
+"CMakeFiles/SkyEcho2.dir/outbound_pipe.cpp.o" \
+"CMakeFiles/SkyEcho2.dir/outbound_pipe_stream_receiver.cpp.o" \
+"CMakeFiles/SkyEcho2.dir/serial_port.cpp.o" \
+"CMakeFiles/SkyEcho2.dir/serial_stream_receiver.cpp.o" \
+"CMakeFiles/SkyEcho2.dir/stdout_stream_receiver.cpp.o" \
 "CMakeFiles/SkyEcho2.dir/config.cpp.o" \
 "CMakeFiles/SkyEcho2.dir/main.cpp.o"
 
@@ -281,11 +356,16 @@ SkyEcho2: CMakeFiles/SkyEcho2.dir/ownship.cpp.o
 SkyEcho2: CMakeFiles/SkyEcho2.dir/tracked_target.cpp.o
 SkyEcho2: CMakeFiles/SkyEcho2.dir/outbound_flarm_converter.cpp.o
 SkyEcho2: CMakeFiles/SkyEcho2.dir/stream_adapter.cpp.o
+SkyEcho2: CMakeFiles/SkyEcho2.dir/outbound_pipe.cpp.o
+SkyEcho2: CMakeFiles/SkyEcho2.dir/outbound_pipe_stream_receiver.cpp.o
+SkyEcho2: CMakeFiles/SkyEcho2.dir/serial_port.cpp.o
+SkyEcho2: CMakeFiles/SkyEcho2.dir/serial_stream_receiver.cpp.o
+SkyEcho2: CMakeFiles/SkyEcho2.dir/stdout_stream_receiver.cpp.o
 SkyEcho2: CMakeFiles/SkyEcho2.dir/config.cpp.o
 SkyEcho2: CMakeFiles/SkyEcho2.dir/main.cpp.o
 SkyEcho2: CMakeFiles/SkyEcho2.dir/build.make
 SkyEcho2: CMakeFiles/SkyEcho2.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rbp28668/SkyEcho/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable SkyEcho2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rbp28668/SkyEcho/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking CXX executable SkyEcho2"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SkyEcho2.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

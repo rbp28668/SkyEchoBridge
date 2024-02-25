@@ -273,6 +273,54 @@ outbound_flarm_converter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/outbound_flarm_converter.cpp.s
 .PHONY : outbound_flarm_converter.cpp.s
 
+outbound_pipe.o: outbound_pipe.cpp.o
+.PHONY : outbound_pipe.o
+
+# target to build an object file
+outbound_pipe.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/outbound_pipe.cpp.o
+.PHONY : outbound_pipe.cpp.o
+
+outbound_pipe.i: outbound_pipe.cpp.i
+.PHONY : outbound_pipe.i
+
+# target to preprocess a source file
+outbound_pipe.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/outbound_pipe.cpp.i
+.PHONY : outbound_pipe.cpp.i
+
+outbound_pipe.s: outbound_pipe.cpp.s
+.PHONY : outbound_pipe.s
+
+# target to generate assembly for a file
+outbound_pipe.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/outbound_pipe.cpp.s
+.PHONY : outbound_pipe.cpp.s
+
+outbound_pipe_stream_receiver.o: outbound_pipe_stream_receiver.cpp.o
+.PHONY : outbound_pipe_stream_receiver.o
+
+# target to build an object file
+outbound_pipe_stream_receiver.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/outbound_pipe_stream_receiver.cpp.o
+.PHONY : outbound_pipe_stream_receiver.cpp.o
+
+outbound_pipe_stream_receiver.i: outbound_pipe_stream_receiver.cpp.i
+.PHONY : outbound_pipe_stream_receiver.i
+
+# target to preprocess a source file
+outbound_pipe_stream_receiver.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/outbound_pipe_stream_receiver.cpp.i
+.PHONY : outbound_pipe_stream_receiver.cpp.i
+
+outbound_pipe_stream_receiver.s: outbound_pipe_stream_receiver.cpp.s
+.PHONY : outbound_pipe_stream_receiver.s
+
+# target to generate assembly for a file
+outbound_pipe_stream_receiver.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/outbound_pipe_stream_receiver.cpp.s
+.PHONY : outbound_pipe_stream_receiver.cpp.s
+
 ownship.o: ownship.cpp.o
 .PHONY : ownship.o
 
@@ -296,6 +344,54 @@ ownship.s: ownship.cpp.s
 ownship.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/ownship.cpp.s
 .PHONY : ownship.cpp.s
+
+serial_port.o: serial_port.cpp.o
+.PHONY : serial_port.o
+
+# target to build an object file
+serial_port.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/serial_port.cpp.o
+.PHONY : serial_port.cpp.o
+
+serial_port.i: serial_port.cpp.i
+.PHONY : serial_port.i
+
+# target to preprocess a source file
+serial_port.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/serial_port.cpp.i
+.PHONY : serial_port.cpp.i
+
+serial_port.s: serial_port.cpp.s
+.PHONY : serial_port.s
+
+# target to generate assembly for a file
+serial_port.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/serial_port.cpp.s
+.PHONY : serial_port.cpp.s
+
+serial_stream_receiver.o: serial_stream_receiver.cpp.o
+.PHONY : serial_stream_receiver.o
+
+# target to build an object file
+serial_stream_receiver.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/serial_stream_receiver.cpp.o
+.PHONY : serial_stream_receiver.cpp.o
+
+serial_stream_receiver.i: serial_stream_receiver.cpp.i
+.PHONY : serial_stream_receiver.i
+
+# target to preprocess a source file
+serial_stream_receiver.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/serial_stream_receiver.cpp.i
+.PHONY : serial_stream_receiver.cpp.i
+
+serial_stream_receiver.s: serial_stream_receiver.cpp.s
+.PHONY : serial_stream_receiver.s
+
+# target to generate assembly for a file
+serial_stream_receiver.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/serial_stream_receiver.cpp.s
+.PHONY : serial_stream_receiver.cpp.s
 
 socket.o: socket.cpp.o
 .PHONY : socket.o
@@ -344,6 +440,30 @@ state.s: state.cpp.s
 state.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/state.cpp.s
 .PHONY : state.cpp.s
+
+stdout_stream_receiver.o: stdout_stream_receiver.cpp.o
+.PHONY : stdout_stream_receiver.o
+
+# target to build an object file
+stdout_stream_receiver.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/stdout_stream_receiver.cpp.o
+.PHONY : stdout_stream_receiver.cpp.o
+
+stdout_stream_receiver.i: stdout_stream_receiver.cpp.i
+.PHONY : stdout_stream_receiver.i
+
+# target to preprocess a source file
+stdout_stream_receiver.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/stdout_stream_receiver.cpp.i
+.PHONY : stdout_stream_receiver.cpp.i
+
+stdout_stream_receiver.s: stdout_stream_receiver.cpp.s
+.PHONY : stdout_stream_receiver.s
+
+# target to generate assembly for a file
+stdout_stream_receiver.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SkyEcho2.dir/build.make CMakeFiles/SkyEcho2.dir/stdout_stream_receiver.cpp.s
+.PHONY : stdout_stream_receiver.cpp.s
 
 stream_adapter.o: stream_adapter.cpp.o
 .PHONY : stream_adapter.o
@@ -468,15 +588,30 @@ help:
 	@echo "... outbound_flarm_converter.o"
 	@echo "... outbound_flarm_converter.i"
 	@echo "... outbound_flarm_converter.s"
+	@echo "... outbound_pipe.o"
+	@echo "... outbound_pipe.i"
+	@echo "... outbound_pipe.s"
+	@echo "... outbound_pipe_stream_receiver.o"
+	@echo "... outbound_pipe_stream_receiver.i"
+	@echo "... outbound_pipe_stream_receiver.s"
 	@echo "... ownship.o"
 	@echo "... ownship.i"
 	@echo "... ownship.s"
+	@echo "... serial_port.o"
+	@echo "... serial_port.i"
+	@echo "... serial_port.s"
+	@echo "... serial_stream_receiver.o"
+	@echo "... serial_stream_receiver.i"
+	@echo "... serial_stream_receiver.s"
 	@echo "... socket.o"
 	@echo "... socket.i"
 	@echo "... socket.s"
 	@echo "... state.o"
 	@echo "... state.i"
 	@echo "... state.s"
+	@echo "... stdout_stream_receiver.o"
+	@echo "... stdout_stream_receiver.i"
+	@echo "... stdout_stream_receiver.s"
 	@echo "... stream_adapter.o"
 	@echo "... stream_adapter.i"
 	@echo "... stream_adapter.s"

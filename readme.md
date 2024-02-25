@@ -15,3 +15,14 @@ shouldn't be that hard to change.
 ## Building
 This uses GCC and CMake.  You should just be able to use cmake . followed by make to get an 
 executable.
+
+# Output
+## Console
+Default output and probably the least useful.  It should however be possible to pipe stdout into another program (but see Named Pipe below).
+
+## Serial
+Outputs on the Pi's serial output.
+
+## UDP network
+This will send NMEA/FLARM data out in uDP packets.  These can be received by XCSoar IF the networking supports it - but the SkyEcho won't forward packets between connected devices.  It is however useful for testing.
+## Named pipe

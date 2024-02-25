@@ -47,7 +47,7 @@ print("T: ", t:latitude(), t:longitude())
 
 t:makeConflictingTo(ownship, 2, 90)
 
-for i = 1,120,1 do
+for i = 1,180,1 do
     simulation.tick();
     print(i, t:latitude(), t:longitude(), ownship:distanceTo(t))
 end

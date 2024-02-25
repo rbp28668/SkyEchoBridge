@@ -1,0 +1,2 @@
+#define VERSION_MAJOR @FlarmMerge_VERSION_MAJOR@
+#define VERSION_MINOR @FlarmMerge_VERSION_MINOR@
