@@ -25,8 +25,5 @@ InboundPipe::~InboundPipe()
 int InboundPipe::read(uint8_t *buffer, size_t max)
 {
     int bytes = ::read(_fd, buffer, max);
-    if (bytes == EAGAIN) {
-        bytes = 0;
-    }
     return bytes;
 }

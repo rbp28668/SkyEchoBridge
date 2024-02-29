@@ -1,7 +1,12 @@
 # All the build artefacts under CMakeFiles
 CMakeFiles/**
 build/**
+
 TrafficGen/CMakeFiles/**
 TrafficGen/TrafficGen
 TrafficGen/**/*.o
 TrafficGen/Lua/lua-5.4.6.tar.gz
+
+FlarmMerge/CMakeFiles/**
+FlarmMerge/FlarmMerge
+FlarmMerge/**/*.o

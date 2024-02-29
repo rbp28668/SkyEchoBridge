@@ -135,7 +135,244 @@ CMakeFiles/FlarmMerge.dir/flarm_message.cpp.o: flarm_message.cpp \
   /usr/include/c++/12/bits/hash_bytes.h \
   /usr/include/c++/12/bits/basic_string.tcc \
   /usr/include/assert.h \
+  /usr/include/memory.h \
+  /usr/include/string.h \
+  /usr/include/strings.h \
   flarm_message.h
+
+CMakeFiles/FlarmMerge.dir/flarm_receiver.cpp.o: flarm_receiver.cpp \
+  /usr/include/stdc-predef.h \
+  flarm_receiver.h \
+  /usr/include/c++/12/cstdint \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/c++config.h \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/os_defines.h \
+  /usr/include/features.h \
+  /usr/include/features-time64.h \
+  /usr/include/aarch64-linux-gnu/bits/wordsize.h \
+  /usr/include/aarch64-linux-gnu/bits/timesize.h \
+  /usr/include/aarch64-linux-gnu/sys/cdefs.h \
+  /usr/include/aarch64-linux-gnu/bits/long-double.h \
+  /usr/include/aarch64-linux-gnu/gnu/stubs.h \
+  /usr/include/aarch64-linux-gnu/gnu/stubs-lp64.h \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/cpu_defines.h \
+  /usr/lib/gcc/aarch64-linux-gnu/12/include/stdint.h \
+  /usr/include/stdint.h \
+  /usr/include/aarch64-linux-gnu/bits/libc-header-start.h \
+  /usr/include/aarch64-linux-gnu/bits/types.h \
+  /usr/include/aarch64-linux-gnu/bits/typesizes.h \
+  /usr/include/aarch64-linux-gnu/bits/time64.h \
+  /usr/include/aarch64-linux-gnu/bits/wchar.h \
+  /usr/include/aarch64-linux-gnu/bits/stdint-intn.h \
+  /usr/include/aarch64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/c++/12/stdlib.h \
+  /usr/include/c++/12/cstdlib \
+  /usr/include/stdlib.h \
+  /usr/lib/gcc/aarch64-linux-gnu/12/include/stddef.h \
+  /usr/include/aarch64-linux-gnu/bits/waitflags.h \
+  /usr/include/aarch64-linux-gnu/bits/waitstatus.h \
+  /usr/include/aarch64-linux-gnu/bits/floatn.h \
+  /usr/include/aarch64-linux-gnu/bits/floatn-common.h \
+  /usr/include/aarch64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/aarch64-linux-gnu/sys/types.h \
+  /usr/include/aarch64-linux-gnu/bits/types/clock_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/clockid_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/time_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/timer_t.h \
+  /usr/include/endian.h \
+  /usr/include/aarch64-linux-gnu/bits/endian.h \
+  /usr/include/aarch64-linux-gnu/bits/endianness.h \
+  /usr/include/aarch64-linux-gnu/bits/byteswap.h \
+  /usr/include/aarch64-linux-gnu/bits/uintn-identity.h \
+  /usr/include/aarch64-linux-gnu/sys/select.h \
+  /usr/include/aarch64-linux-gnu/bits/select.h \
+  /usr/include/aarch64-linux-gnu/bits/types/sigset_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__sigset_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_timeval.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_timespec.h \
+  /usr/include/aarch64-linux-gnu/bits/pthreadtypes.h \
+  /usr/include/aarch64-linux-gnu/bits/thread-shared-types.h \
+  /usr/include/aarch64-linux-gnu/bits/pthreadtypes-arch.h \
+  /usr/include/aarch64-linux-gnu/bits/atomic_wide_counter.h \
+  /usr/include/aarch64-linux-gnu/bits/struct_mutex.h \
+  /usr/include/aarch64-linux-gnu/bits/struct_rwlock.h \
+  /usr/include/alloca.h \
+  /usr/include/aarch64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/c++/12/bits/std_abs.h \
+  /usr/include/ctype.h
+
+CMakeFiles/FlarmMerge.dir/home/rbp28668/SkyEcho/cpp/serial_port.cpp.o: /home/rbp28668/SkyEcho/cpp/serial_port.cpp \
+  /usr/include/stdc-predef.h \
+  /usr/include/aarch64-linux-gnu/sys/ioctl.h \
+  /usr/include/features.h \
+  /usr/include/features-time64.h \
+  /usr/include/aarch64-linux-gnu/bits/wordsize.h \
+  /usr/include/aarch64-linux-gnu/bits/timesize.h \
+  /usr/include/aarch64-linux-gnu/sys/cdefs.h \
+  /usr/include/aarch64-linux-gnu/bits/long-double.h \
+  /usr/include/aarch64-linux-gnu/gnu/stubs.h \
+  /usr/include/aarch64-linux-gnu/gnu/stubs-lp64.h \
+  /usr/include/aarch64-linux-gnu/bits/ioctls.h \
+  /usr/include/aarch64-linux-gnu/asm/ioctls.h \
+  /usr/include/asm-generic/ioctls.h \
+  /usr/include/linux/ioctl.h \
+  /usr/include/aarch64-linux-gnu/asm/ioctl.h \
+  /usr/include/asm-generic/ioctl.h \
+  /usr/include/aarch64-linux-gnu/bits/ioctl-types.h \
+  /usr/include/aarch64-linux-gnu/sys/ttydefaults.h \
+  /usr/include/c++/12/cstring \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/c++config.h \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/os_defines.h \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/cpu_defines.h \
+  /usr/include/string.h \
+  /usr/include/aarch64-linux-gnu/bits/libc-header-start.h \
+  /usr/lib/gcc/aarch64-linux-gnu/12/include/stddef.h \
+  /usr/include/aarch64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/strings.h \
+  /home/rbp28668/SkyEcho/cpp/serial_port.h \
+  /usr/include/unistd.h \
+  /usr/include/aarch64-linux-gnu/bits/posix_opt.h \
+  /usr/include/aarch64-linux-gnu/bits/environments.h \
+  /usr/include/aarch64-linux-gnu/bits/types.h \
+  /usr/include/aarch64-linux-gnu/bits/typesizes.h \
+  /usr/include/aarch64-linux-gnu/bits/time64.h \
+  /usr/include/aarch64-linux-gnu/bits/confname.h \
+  /usr/include/aarch64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/aarch64-linux-gnu/bits/getopt_core.h \
+  /usr/include/aarch64-linux-gnu/bits/unistd_ext.h \
+  /usr/include/linux/close_range.h \
+  /usr/include/fcntl.h \
+  /usr/include/aarch64-linux-gnu/bits/fcntl.h \
+  /usr/include/aarch64-linux-gnu/bits/fcntl-linux.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_iovec.h \
+  /usr/include/linux/falloc.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_timespec.h \
+  /usr/include/aarch64-linux-gnu/bits/endian.h \
+  /usr/include/aarch64-linux-gnu/bits/endianness.h \
+  /usr/include/aarch64-linux-gnu/bits/types/time_t.h \
+  /usr/include/aarch64-linux-gnu/bits/stat.h \
+  /usr/include/aarch64-linux-gnu/bits/struct_stat.h \
+  /usr/include/termios.h \
+  /usr/include/aarch64-linux-gnu/bits/termios.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-struct.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-c_cc.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-c_iflag.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-c_oflag.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-baud.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-c_cflag.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-c_lflag.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-tcflow.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-misc.h \
+  /usr/include/errno.h \
+  /usr/include/aarch64-linux-gnu/bits/errno.h \
+  /usr/include/linux/errno.h \
+  /usr/include/aarch64-linux-gnu/asm/errno.h \
+  /usr/include/asm-generic/errno.h \
+  /usr/include/asm-generic/errno-base.h \
+  /usr/include/aarch64-linux-gnu/bits/types/error_t.h \
+  /usr/include/c++/12/cstdint \
+  /usr/lib/gcc/aarch64-linux-gnu/12/include/stdint.h \
+  /usr/include/stdint.h \
+  /usr/include/aarch64-linux-gnu/bits/wchar.h \
+  /usr/include/aarch64-linux-gnu/bits/stdint-intn.h \
+  /usr/include/aarch64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/c++/12/string \
+  /usr/include/c++/12/bits/stringfwd.h \
+  /usr/include/c++/12/bits/memoryfwd.h \
+  /usr/include/c++/12/bits/char_traits.h \
+  /usr/include/c++/12/bits/postypes.h \
+  /usr/include/c++/12/cwchar \
+  /usr/include/wchar.h \
+  /usr/include/aarch64-linux-gnu/bits/floatn.h \
+  /usr/include/aarch64-linux-gnu/bits/floatn-common.h \
+  /usr/lib/gcc/aarch64-linux-gnu/12/include/stdarg.h \
+  /usr/include/aarch64-linux-gnu/bits/types/wint_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/mbstate_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__mbstate_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__FILE.h \
+  /usr/include/aarch64-linux-gnu/bits/types/FILE.h \
+  /usr/include/c++/12/type_traits \
+  /usr/include/c++/12/bits/allocator.h \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/c++allocator.h \
+  /usr/include/c++/12/bits/new_allocator.h \
+  /usr/include/c++/12/new \
+  /usr/include/c++/12/bits/exception.h \
+  /usr/include/c++/12/bits/functexcept.h \
+  /usr/include/c++/12/bits/exception_defines.h \
+  /usr/include/c++/12/bits/move.h \
+  /usr/include/c++/12/bits/cpp_type_traits.h \
+  /usr/include/c++/12/bits/localefwd.h \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/c++locale.h \
+  /usr/include/c++/12/clocale \
+  /usr/include/locale.h \
+  /usr/include/aarch64-linux-gnu/bits/locale.h \
+  /usr/include/c++/12/iosfwd \
+  /usr/include/c++/12/cctype \
+  /usr/include/ctype.h \
+  /usr/include/c++/12/bits/ostream_insert.h \
+  /usr/include/c++/12/bits/cxxabi_forced.h \
+  /usr/include/c++/12/bits/stl_iterator_base_types.h \
+  /usr/include/c++/12/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/12/bits/concept_check.h \
+  /usr/include/c++/12/debug/assertions.h \
+  /usr/include/c++/12/bits/stl_iterator.h \
+  /usr/include/c++/12/ext/type_traits.h \
+  /usr/include/c++/12/bits/ptr_traits.h \
+  /usr/include/c++/12/bits/stl_function.h \
+  /usr/include/c++/12/backward/binders.h \
+  /usr/include/c++/12/ext/numeric_traits.h \
+  /usr/include/c++/12/bits/stl_algobase.h \
+  /usr/include/c++/12/bits/stl_pair.h \
+  /usr/include/c++/12/bits/utility.h \
+  /usr/include/c++/12/debug/debug.h \
+  /usr/include/c++/12/bits/predefined_ops.h \
+  /usr/include/c++/12/bits/refwrap.h \
+  /usr/include/c++/12/bits/invoke.h \
+  /usr/include/c++/12/bits/range_access.h \
+  /usr/include/c++/12/initializer_list \
+  /usr/include/c++/12/bits/basic_string.h \
+  /usr/include/c++/12/ext/alloc_traits.h \
+  /usr/include/c++/12/bits/alloc_traits.h \
+  /usr/include/c++/12/bits/stl_construct.h \
+  /usr/include/c++/12/ext/string_conversions.h \
+  /usr/include/c++/12/cstdlib \
+  /usr/include/stdlib.h \
+  /usr/include/aarch64-linux-gnu/bits/waitflags.h \
+  /usr/include/aarch64-linux-gnu/bits/waitstatus.h \
+  /usr/include/aarch64-linux-gnu/sys/types.h \
+  /usr/include/aarch64-linux-gnu/bits/types/clock_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/clockid_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/timer_t.h \
+  /usr/include/endian.h \
+  /usr/include/aarch64-linux-gnu/bits/byteswap.h \
+  /usr/include/aarch64-linux-gnu/bits/uintn-identity.h \
+  /usr/include/aarch64-linux-gnu/sys/select.h \
+  /usr/include/aarch64-linux-gnu/bits/select.h \
+  /usr/include/aarch64-linux-gnu/bits/types/sigset_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__sigset_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_timeval.h \
+  /usr/include/aarch64-linux-gnu/bits/pthreadtypes.h \
+  /usr/include/aarch64-linux-gnu/bits/thread-shared-types.h \
+  /usr/include/aarch64-linux-gnu/bits/pthreadtypes-arch.h \
+  /usr/include/aarch64-linux-gnu/bits/atomic_wide_counter.h \
+  /usr/include/aarch64-linux-gnu/bits/struct_mutex.h \
+  /usr/include/aarch64-linux-gnu/bits/struct_rwlock.h \
+  /usr/include/alloca.h \
+  /usr/include/aarch64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/c++/12/bits/std_abs.h \
+  /usr/include/c++/12/cstdio \
+  /usr/include/stdio.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__fpos_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__fpos64_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_FILE.h \
+  /usr/include/aarch64-linux-gnu/bits/types/cookie_io_functions_t.h \
+  /usr/include/aarch64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/c++/12/cerrno \
+  /usr/include/c++/12/bits/charconv.h \
+  /usr/include/c++/12/bits/functional_hash.h \
+  /usr/include/c++/12/bits/hash_bytes.h \
+  /usr/include/c++/12/bits/basic_string.tcc
 
 CMakeFiles/FlarmMerge.dir/inbound_pipe.cpp.o: inbound_pipe.cpp \
   /usr/include/stdc-predef.h \
@@ -219,6 +456,118 @@ CMakeFiles/FlarmMerge.dir/inbound_pipe.cpp.o: inbound_pipe.cpp \
   /usr/include/asm-generic/errno.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/aarch64-linux-gnu/bits/types/error_t.h
+
+CMakeFiles/FlarmMerge.dir/inbound_pipe_epoll_adapter.cpp.o: inbound_pipe_epoll_adapter.cpp \
+  /usr/include/stdc-predef.h \
+  /usr/include/assert.h \
+  /usr/include/features.h \
+  /usr/include/features-time64.h \
+  /usr/include/aarch64-linux-gnu/bits/wordsize.h \
+  /usr/include/aarch64-linux-gnu/bits/timesize.h \
+  /usr/include/aarch64-linux-gnu/sys/cdefs.h \
+  /usr/include/aarch64-linux-gnu/bits/long-double.h \
+  /usr/include/aarch64-linux-gnu/gnu/stubs.h \
+  /usr/include/aarch64-linux-gnu/gnu/stubs-lp64.h \
+  inbound_pipe_epoll_adapter.h \
+  epoll_adapter.h \
+  /usr/include/c++/12/cstdint \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/c++config.h \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/os_defines.h \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/cpu_defines.h \
+  /usr/lib/gcc/aarch64-linux-gnu/12/include/stdint.h \
+  /usr/include/stdint.h \
+  /usr/include/aarch64-linux-gnu/bits/libc-header-start.h \
+  /usr/include/aarch64-linux-gnu/bits/types.h \
+  /usr/include/aarch64-linux-gnu/bits/typesizes.h \
+  /usr/include/aarch64-linux-gnu/bits/time64.h \
+  /usr/include/aarch64-linux-gnu/bits/wchar.h \
+  /usr/include/aarch64-linux-gnu/bits/stdint-intn.h \
+  /usr/include/aarch64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/aarch64-linux-gnu/sys/epoll.h \
+  /usr/include/aarch64-linux-gnu/sys/types.h \
+  /usr/include/aarch64-linux-gnu/bits/types/clock_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/clockid_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/time_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/timer_t.h \
+  /usr/lib/gcc/aarch64-linux-gnu/12/include/stddef.h \
+  /usr/include/endian.h \
+  /usr/include/aarch64-linux-gnu/bits/endian.h \
+  /usr/include/aarch64-linux-gnu/bits/endianness.h \
+  /usr/include/aarch64-linux-gnu/bits/byteswap.h \
+  /usr/include/aarch64-linux-gnu/bits/uintn-identity.h \
+  /usr/include/aarch64-linux-gnu/sys/select.h \
+  /usr/include/aarch64-linux-gnu/bits/select.h \
+  /usr/include/aarch64-linux-gnu/bits/types/sigset_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__sigset_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_timeval.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_timespec.h \
+  /usr/include/aarch64-linux-gnu/bits/pthreadtypes.h \
+  /usr/include/aarch64-linux-gnu/bits/thread-shared-types.h \
+  /usr/include/aarch64-linux-gnu/bits/pthreadtypes-arch.h \
+  /usr/include/aarch64-linux-gnu/bits/atomic_wide_counter.h \
+  /usr/include/aarch64-linux-gnu/bits/struct_mutex.h \
+  /usr/include/aarch64-linux-gnu/bits/struct_rwlock.h \
+  /usr/include/aarch64-linux-gnu/bits/epoll.h \
+  message_merge.h \
+  /usr/include/c++/12/vector \
+  /usr/include/c++/12/bits/stl_algobase.h \
+  /usr/include/c++/12/bits/functexcept.h \
+  /usr/include/c++/12/bits/exception_defines.h \
+  /usr/include/c++/12/bits/cpp_type_traits.h \
+  /usr/include/c++/12/ext/type_traits.h \
+  /usr/include/c++/12/ext/numeric_traits.h \
+  /usr/include/c++/12/bits/stl_pair.h \
+  /usr/include/c++/12/type_traits \
+  /usr/include/c++/12/bits/move.h \
+  /usr/include/c++/12/bits/utility.h \
+  /usr/include/c++/12/bits/stl_iterator_base_types.h \
+  /usr/include/c++/12/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/12/bits/concept_check.h \
+  /usr/include/c++/12/debug/assertions.h \
+  /usr/include/c++/12/bits/stl_iterator.h \
+  /usr/include/c++/12/bits/ptr_traits.h \
+  /usr/include/c++/12/debug/debug.h \
+  /usr/include/c++/12/bits/predefined_ops.h \
+  /usr/include/c++/12/bits/allocator.h \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/c++allocator.h \
+  /usr/include/c++/12/bits/new_allocator.h \
+  /usr/include/c++/12/new \
+  /usr/include/c++/12/bits/exception.h \
+  /usr/include/c++/12/bits/memoryfwd.h \
+  /usr/include/c++/12/bits/stl_construct.h \
+  /usr/include/c++/12/bits/stl_uninitialized.h \
+  /usr/include/c++/12/ext/alloc_traits.h \
+  /usr/include/c++/12/bits/alloc_traits.h \
+  /usr/include/c++/12/bits/stl_vector.h \
+  /usr/include/c++/12/initializer_list \
+  /usr/include/c++/12/bits/stl_bvector.h \
+  /usr/include/c++/12/bits/functional_hash.h \
+  /usr/include/c++/12/bits/hash_bytes.h \
+  /usr/include/c++/12/bits/refwrap.h \
+  /usr/include/c++/12/bits/invoke.h \
+  /usr/include/c++/12/bits/stl_function.h \
+  /usr/include/c++/12/backward/binders.h \
+  /usr/include/c++/12/bits/range_access.h \
+  /usr/include/c++/12/bits/vector.tcc \
+  /usr/include/c++/12/list \
+  /usr/include/c++/12/bits/stl_list.h \
+  /usr/include/c++/12/bits/allocated_ptr.h \
+  /usr/include/c++/12/ext/aligned_buffer.h \
+  /usr/include/c++/12/bits/list.tcc \
+  /usr/include/c++/12/stdlib.h \
+  /usr/include/c++/12/cstdlib \
+  /usr/include/stdlib.h \
+  /usr/include/aarch64-linux-gnu/bits/waitflags.h \
+  /usr/include/aarch64-linux-gnu/bits/waitstatus.h \
+  /usr/include/aarch64-linux-gnu/bits/floatn.h \
+  /usr/include/aarch64-linux-gnu/bits/floatn-common.h \
+  /usr/include/aarch64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/alloca.h \
+  /usr/include/aarch64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/c++/12/bits/std_abs.h \
+  flarm_receiver.h \
+  inbound_pipe.h
 
 CMakeFiles/FlarmMerge.dir/main.cpp.o: main.cpp \
   /usr/include/stdc-predef.h \
@@ -400,15 +749,61 @@ CMakeFiles/FlarmMerge.dir/main.cpp.o: main.cpp \
   /usr/include/c++/12/bits/ostream.tcc \
   /usr/include/c++/12/istream \
   /usr/include/c++/12/bits/istream.tcc \
-  version.h
+  /usr/include/aarch64-linux-gnu/sys/epoll.h \
+  /usr/include/aarch64-linux-gnu/bits/epoll.h \
+  /usr/include/c++/12/cstring \
+  /usr/include/string.h \
+  /usr/include/strings.h \
+  version.h \
+  message_merge.h \
+  /usr/include/c++/12/vector \
+  /usr/include/c++/12/bits/stl_uninitialized.h \
+  /usr/include/c++/12/bits/stl_vector.h \
+  /usr/include/c++/12/bits/stl_bvector.h \
+  /usr/include/c++/12/bits/vector.tcc \
+  /usr/include/c++/12/list \
+  /usr/include/c++/12/bits/stl_list.h \
+  /usr/include/c++/12/bits/allocated_ptr.h \
+  /usr/include/c++/12/ext/aligned_buffer.h \
+  /usr/include/c++/12/bits/list.tcc \
+  /usr/include/c++/12/stdlib.h \
+  flarm_receiver.h \
+  inbound_pipe.h \
+  /home/rbp28668/SkyEcho/cpp/serial_port.h \
+  /usr/include/unistd.h \
+  /usr/include/aarch64-linux-gnu/bits/posix_opt.h \
+  /usr/include/aarch64-linux-gnu/bits/environments.h \
+  /usr/include/aarch64-linux-gnu/bits/confname.h \
+  /usr/include/aarch64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/aarch64-linux-gnu/bits/getopt_core.h \
+  /usr/include/aarch64-linux-gnu/bits/unistd_ext.h \
+  /usr/include/linux/close_range.h \
+  /usr/include/fcntl.h \
+  /usr/include/aarch64-linux-gnu/bits/fcntl.h \
+  /usr/include/aarch64-linux-gnu/bits/fcntl-linux.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_iovec.h \
+  /usr/include/linux/falloc.h \
+  /usr/include/aarch64-linux-gnu/bits/stat.h \
+  /usr/include/aarch64-linux-gnu/bits/struct_stat.h \
+  /usr/include/termios.h \
+  /usr/include/aarch64-linux-gnu/bits/termios.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-struct.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-c_cc.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-c_iflag.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-c_oflag.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-baud.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-c_cflag.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-c_lflag.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-tcflow.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-misc.h \
+  /usr/include/aarch64-linux-gnu/sys/ttydefaults.h \
+  inbound_pipe_epoll_adapter.h \
+  epoll_adapter.h \
+  serial_epoll_adapter.h
 
 CMakeFiles/FlarmMerge.dir/message_merge.cpp.o: message_merge.cpp \
   /usr/include/stdc-predef.h \
-  message_merge.h \
-  /usr/include/c++/12/vector \
-  /usr/include/c++/12/bits/stl_algobase.h \
-  /usr/include/aarch64-linux-gnu/c++/12/bits/c++config.h \
-  /usr/include/aarch64-linux-gnu/c++/12/bits/os_defines.h \
+  /usr/include/assert.h \
   /usr/include/features.h \
   /usr/include/features-time64.h \
   /usr/include/aarch64-linux-gnu/bits/wordsize.h \
@@ -417,6 +812,11 @@ CMakeFiles/FlarmMerge.dir/message_merge.cpp.o: message_merge.cpp \
   /usr/include/aarch64-linux-gnu/bits/long-double.h \
   /usr/include/aarch64-linux-gnu/gnu/stubs.h \
   /usr/include/aarch64-linux-gnu/gnu/stubs-lp64.h \
+  message_merge.h \
+  /usr/include/c++/12/vector \
+  /usr/include/c++/12/bits/stl_algobase.h \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/c++config.h \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/os_defines.h \
   /usr/include/aarch64-linux-gnu/c++/12/bits/cpu_defines.h \
   /usr/include/c++/12/bits/functexcept.h \
   /usr/include/c++/12/bits/exception_defines.h \
@@ -461,7 +861,71 @@ CMakeFiles/FlarmMerge.dir/message_merge.cpp.o: message_merge.cpp \
   /usr/include/c++/12/bits/allocated_ptr.h \
   /usr/include/c++/12/ext/aligned_buffer.h \
   /usr/include/c++/12/bits/list.tcc \
-  flarm_message.h \
+  /usr/include/c++/12/stdlib.h \
+  /usr/include/c++/12/cstdlib \
+  /usr/include/stdlib.h \
+  /usr/include/aarch64-linux-gnu/bits/libc-header-start.h \
+  /usr/lib/gcc/aarch64-linux-gnu/12/include/stddef.h \
+  /usr/include/aarch64-linux-gnu/bits/waitflags.h \
+  /usr/include/aarch64-linux-gnu/bits/waitstatus.h \
+  /usr/include/aarch64-linux-gnu/bits/floatn.h \
+  /usr/include/aarch64-linux-gnu/bits/floatn-common.h \
+  /usr/include/aarch64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/aarch64-linux-gnu/sys/types.h \
+  /usr/include/aarch64-linux-gnu/bits/types.h \
+  /usr/include/aarch64-linux-gnu/bits/typesizes.h \
+  /usr/include/aarch64-linux-gnu/bits/time64.h \
+  /usr/include/aarch64-linux-gnu/bits/types/clock_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/clockid_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/time_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/timer_t.h \
+  /usr/include/aarch64-linux-gnu/bits/stdint-intn.h \
+  /usr/include/endian.h \
+  /usr/include/aarch64-linux-gnu/bits/endian.h \
+  /usr/include/aarch64-linux-gnu/bits/endianness.h \
+  /usr/include/aarch64-linux-gnu/bits/byteswap.h \
+  /usr/include/aarch64-linux-gnu/bits/uintn-identity.h \
+  /usr/include/aarch64-linux-gnu/sys/select.h \
+  /usr/include/aarch64-linux-gnu/bits/select.h \
+  /usr/include/aarch64-linux-gnu/bits/types/sigset_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__sigset_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_timeval.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_timespec.h \
+  /usr/include/aarch64-linux-gnu/bits/pthreadtypes.h \
+  /usr/include/aarch64-linux-gnu/bits/thread-shared-types.h \
+  /usr/include/aarch64-linux-gnu/bits/pthreadtypes-arch.h \
+  /usr/include/aarch64-linux-gnu/bits/atomic_wide_counter.h \
+  /usr/include/aarch64-linux-gnu/bits/struct_mutex.h \
+  /usr/include/aarch64-linux-gnu/bits/struct_rwlock.h \
+  /usr/include/alloca.h \
+  /usr/include/aarch64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/c++/12/bits/std_abs.h \
+  flarm_receiver.h \
+  /usr/include/c++/12/cstdint \
+  /usr/lib/gcc/aarch64-linux-gnu/12/include/stdint.h \
+  /usr/include/stdint.h \
+  /usr/include/aarch64-linux-gnu/bits/wchar.h \
+  /usr/include/aarch64-linux-gnu/bits/stdint-uintn.h \
+  flarm_message.h
+
+CMakeFiles/FlarmMerge.dir/serial_epoll_adapter.cpp.o: serial_epoll_adapter.cpp \
+  /usr/include/stdc-predef.h \
+  /usr/include/assert.h \
+  /usr/include/features.h \
+  /usr/include/features-time64.h \
+  /usr/include/aarch64-linux-gnu/bits/wordsize.h \
+  /usr/include/aarch64-linux-gnu/bits/timesize.h \
+  /usr/include/aarch64-linux-gnu/sys/cdefs.h \
+  /usr/include/aarch64-linux-gnu/bits/long-double.h \
+  /usr/include/aarch64-linux-gnu/gnu/stubs.h \
+  /usr/include/aarch64-linux-gnu/gnu/stubs-lp64.h \
+  serial_epoll_adapter.h \
+  epoll_adapter.h \
+  /usr/include/c++/12/cstdint \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/c++config.h \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/os_defines.h \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/cpu_defines.h \
   /usr/lib/gcc/aarch64-linux-gnu/12/include/stdint.h \
   /usr/include/stdint.h \
   /usr/include/aarch64-linux-gnu/bits/libc-header-start.h \
@@ -470,42 +934,176 @@ CMakeFiles/FlarmMerge.dir/message_merge.cpp.o: message_merge.cpp \
   /usr/include/aarch64-linux-gnu/bits/time64.h \
   /usr/include/aarch64-linux-gnu/bits/wchar.h \
   /usr/include/aarch64-linux-gnu/bits/stdint-intn.h \
-  /usr/include/aarch64-linux-gnu/bits/stdint-uintn.h
+  /usr/include/aarch64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/aarch64-linux-gnu/sys/epoll.h \
+  /usr/include/aarch64-linux-gnu/sys/types.h \
+  /usr/include/aarch64-linux-gnu/bits/types/clock_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/clockid_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/time_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/timer_t.h \
+  /usr/lib/gcc/aarch64-linux-gnu/12/include/stddef.h \
+  /usr/include/endian.h \
+  /usr/include/aarch64-linux-gnu/bits/endian.h \
+  /usr/include/aarch64-linux-gnu/bits/endianness.h \
+  /usr/include/aarch64-linux-gnu/bits/byteswap.h \
+  /usr/include/aarch64-linux-gnu/bits/uintn-identity.h \
+  /usr/include/aarch64-linux-gnu/sys/select.h \
+  /usr/include/aarch64-linux-gnu/bits/select.h \
+  /usr/include/aarch64-linux-gnu/bits/types/sigset_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__sigset_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_timeval.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_timespec.h \
+  /usr/include/aarch64-linux-gnu/bits/pthreadtypes.h \
+  /usr/include/aarch64-linux-gnu/bits/thread-shared-types.h \
+  /usr/include/aarch64-linux-gnu/bits/pthreadtypes-arch.h \
+  /usr/include/aarch64-linux-gnu/bits/atomic_wide_counter.h \
+  /usr/include/aarch64-linux-gnu/bits/struct_mutex.h \
+  /usr/include/aarch64-linux-gnu/bits/struct_rwlock.h \
+  /usr/include/aarch64-linux-gnu/bits/epoll.h \
+  message_merge.h \
+  /usr/include/c++/12/vector \
+  /usr/include/c++/12/bits/stl_algobase.h \
+  /usr/include/c++/12/bits/functexcept.h \
+  /usr/include/c++/12/bits/exception_defines.h \
+  /usr/include/c++/12/bits/cpp_type_traits.h \
+  /usr/include/c++/12/ext/type_traits.h \
+  /usr/include/c++/12/ext/numeric_traits.h \
+  /usr/include/c++/12/bits/stl_pair.h \
+  /usr/include/c++/12/type_traits \
+  /usr/include/c++/12/bits/move.h \
+  /usr/include/c++/12/bits/utility.h \
+  /usr/include/c++/12/bits/stl_iterator_base_types.h \
+  /usr/include/c++/12/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/12/bits/concept_check.h \
+  /usr/include/c++/12/debug/assertions.h \
+  /usr/include/c++/12/bits/stl_iterator.h \
+  /usr/include/c++/12/bits/ptr_traits.h \
+  /usr/include/c++/12/debug/debug.h \
+  /usr/include/c++/12/bits/predefined_ops.h \
+  /usr/include/c++/12/bits/allocator.h \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/c++allocator.h \
+  /usr/include/c++/12/bits/new_allocator.h \
+  /usr/include/c++/12/new \
+  /usr/include/c++/12/bits/exception.h \
+  /usr/include/c++/12/bits/memoryfwd.h \
+  /usr/include/c++/12/bits/stl_construct.h \
+  /usr/include/c++/12/bits/stl_uninitialized.h \
+  /usr/include/c++/12/ext/alloc_traits.h \
+  /usr/include/c++/12/bits/alloc_traits.h \
+  /usr/include/c++/12/bits/stl_vector.h \
+  /usr/include/c++/12/initializer_list \
+  /usr/include/c++/12/bits/stl_bvector.h \
+  /usr/include/c++/12/bits/functional_hash.h \
+  /usr/include/c++/12/bits/hash_bytes.h \
+  /usr/include/c++/12/bits/refwrap.h \
+  /usr/include/c++/12/bits/invoke.h \
+  /usr/include/c++/12/bits/stl_function.h \
+  /usr/include/c++/12/backward/binders.h \
+  /usr/include/c++/12/bits/range_access.h \
+  /usr/include/c++/12/bits/vector.tcc \
+  /usr/include/c++/12/list \
+  /usr/include/c++/12/bits/stl_list.h \
+  /usr/include/c++/12/bits/allocated_ptr.h \
+  /usr/include/c++/12/ext/aligned_buffer.h \
+  /usr/include/c++/12/bits/list.tcc \
+  /usr/include/c++/12/stdlib.h \
+  /usr/include/c++/12/cstdlib \
+  /usr/include/stdlib.h \
+  /usr/include/aarch64-linux-gnu/bits/waitflags.h \
+  /usr/include/aarch64-linux-gnu/bits/waitstatus.h \
+  /usr/include/aarch64-linux-gnu/bits/floatn.h \
+  /usr/include/aarch64-linux-gnu/bits/floatn-common.h \
+  /usr/include/aarch64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/alloca.h \
+  /usr/include/aarch64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/c++/12/bits/std_abs.h \
+  flarm_receiver.h \
+  /home/rbp28668/SkyEcho/cpp/serial_port.h \
+  /usr/include/unistd.h \
+  /usr/include/aarch64-linux-gnu/bits/posix_opt.h \
+  /usr/include/aarch64-linux-gnu/bits/environments.h \
+  /usr/include/aarch64-linux-gnu/bits/confname.h \
+  /usr/include/aarch64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/aarch64-linux-gnu/bits/getopt_core.h \
+  /usr/include/aarch64-linux-gnu/bits/unistd_ext.h \
+  /usr/include/linux/close_range.h \
+  /usr/include/fcntl.h \
+  /usr/include/aarch64-linux-gnu/bits/fcntl.h \
+  /usr/include/aarch64-linux-gnu/bits/fcntl-linux.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_iovec.h \
+  /usr/include/linux/falloc.h \
+  /usr/include/aarch64-linux-gnu/bits/stat.h \
+  /usr/include/aarch64-linux-gnu/bits/struct_stat.h \
+  /usr/include/termios.h \
+  /usr/include/aarch64-linux-gnu/bits/termios.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-struct.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-c_cc.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-c_iflag.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-c_oflag.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-baud.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-c_cflag.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-c_lflag.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-tcflow.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-misc.h \
+  /usr/include/aarch64-linux-gnu/sys/ttydefaults.h \
+  /usr/include/errno.h \
+  /usr/include/aarch64-linux-gnu/bits/errno.h \
+  /usr/include/linux/errno.h \
+  /usr/include/aarch64-linux-gnu/asm/errno.h \
+  /usr/include/asm-generic/errno.h \
+  /usr/include/asm-generic/errno-base.h \
+  /usr/include/aarch64-linux-gnu/bits/types/error_t.h \
+  /usr/include/c++/12/string \
+  /usr/include/c++/12/bits/stringfwd.h \
+  /usr/include/c++/12/bits/char_traits.h \
+  /usr/include/c++/12/bits/postypes.h \
+  /usr/include/c++/12/cwchar \
+  /usr/include/wchar.h \
+  /usr/lib/gcc/aarch64-linux-gnu/12/include/stdarg.h \
+  /usr/include/aarch64-linux-gnu/bits/types/wint_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/mbstate_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__mbstate_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__FILE.h \
+  /usr/include/aarch64-linux-gnu/bits/types/FILE.h \
+  /usr/include/c++/12/bits/localefwd.h \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/c++locale.h \
+  /usr/include/c++/12/clocale \
+  /usr/include/locale.h \
+  /usr/include/aarch64-linux-gnu/bits/locale.h \
+  /usr/include/c++/12/iosfwd \
+  /usr/include/c++/12/cctype \
+  /usr/include/ctype.h \
+  /usr/include/c++/12/bits/ostream_insert.h \
+  /usr/include/c++/12/bits/cxxabi_forced.h \
+  /usr/include/c++/12/bits/basic_string.h \
+  /usr/include/c++/12/ext/string_conversions.h \
+  /usr/include/c++/12/cstdio \
+  /usr/include/stdio.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__fpos_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__fpos64_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_FILE.h \
+  /usr/include/aarch64-linux-gnu/bits/types/cookie_io_functions_t.h \
+  /usr/include/aarch64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/c++/12/cerrno \
+  /usr/include/c++/12/bits/charconv.h \
+  /usr/include/c++/12/bits/basic_string.tcc \
+  flarm_message.h
 
-
-/usr/include/c++/12/bits/list.tcc:
-
-/usr/include/c++/12/bits/allocated_ptr.h:
-
-/usr/include/c++/12/list:
-
-/usr/include/c++/12/bits/stl_bvector.h:
-
-/usr/include/c++/12/bits/stl_uninitialized.h:
 
 message_merge.cpp:
+
+serial_epoll_adapter.h:
 
 /usr/include/c++/12/bits/istream.tcc:
 
 /usr/include/aarch64-linux-gnu/c++/12/bits/ctype_inline.h:
 
-/usr/include/c++/12/vector:
-
-/usr/include/c++/12/bits/streambuf_iterator.h:
-
-/usr/include/c++/12/bits/stl_list.h:
-
-/usr/include/wctype.h:
-
 /usr/include/c++/12/bits/basic_ios.h:
-
-/usr/include/c++/12/bits/streambuf.tcc:
 
 /usr/include/aarch64-linux-gnu/sys/single_threaded.h:
 
 /usr/include/aarch64-linux-gnu/c++/12/bits/atomic_word.h:
-
-/usr/include/aarch64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/struct_itimerspec.h:
 
@@ -531,8 +1129,6 @@ message_merge.cpp:
 
 /usr/include/c++/12/bits/ios_base.h:
 
-/usr/include/c++/12/typeinfo:
-
 /usr/include/c++/12/exception:
 
 /usr/include/c++/12/ios:
@@ -542,6 +1138,44 @@ message_merge.cpp:
 /usr/include/sched.h:
 
 /usr/include/c++/12/iostream:
+
+/usr/include/c++/12/bits/list.tcc:
+
+/usr/include/wctype.h:
+
+/usr/include/c++/12/bits/stl_list.h:
+
+/usr/include/c++/12/list:
+
+/usr/include/c++/12/bits/stl_bvector.h:
+
+/usr/include/c++/12/typeinfo:
+
+/usr/include/aarch64-linux-gnu/bits/epoll.h:
+
+/usr/include/aarch64-linux-gnu/sys/epoll.h:
+
+/usr/include/c++/12/bits/streambuf.tcc:
+
+inbound_pipe_epoll_adapter.cpp:
+
+inbound_pipe.cpp:
+
+/usr/include/aarch64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
+
+/usr/include/aarch64-linux-gnu/bits/termios-tcflow.h:
+
+/usr/include/aarch64-linux-gnu/bits/termios-c_lflag.h:
+
+/usr/include/aarch64-linux-gnu/bits/termios-c_cflag.h:
+
+/usr/include/aarch64-linux-gnu/bits/termios-c_iflag.h:
+
+/usr/include/aarch64-linux-gnu/bits/termios-struct.h:
+
+/usr/include/aarch64-linux-gnu/bits/termios.h:
+
+/usr/include/termios.h:
 
 /usr/include/aarch64-linux-gnu/bits/struct_stat.h:
 
@@ -561,7 +1195,35 @@ message_merge.cpp:
 
 /usr/include/unistd.h:
 
-inbound_pipe.cpp:
+/home/rbp28668/SkyEcho/cpp/serial_port.h:
+
+/usr/include/c++/12/cstring:
+
+/usr/include/aarch64-linux-gnu/bits/ioctl-types.h:
+
+/usr/include/c++/12/bits/streambuf_iterator.h:
+
+/usr/include/c++/12/vector:
+
+/usr/include/asm-generic/ioctl.h:
+
+/usr/include/linux/ioctl.h:
+
+/usr/include/aarch64-linux-gnu/asm/ioctls.h:
+
+/usr/include/c++/12/bits/allocated_ptr.h:
+
+/usr/include/aarch64-linux-gnu/sys/ioctl.h:
+
+epoll_adapter.h:
+
+flarm_receiver.h:
+
+/usr/include/c++/12/bits/stl_uninitialized.h:
+
+/usr/include/string.h:
+
+/usr/include/memory.h:
 
 /usr/include/assert.h:
 
@@ -619,6 +1281,8 @@ inbound_pipe.h:
 
 /usr/include/c++/12/bits/char_traits.h:
 
+serial_epoll_adapter.cpp:
+
 /usr/include/c++/12/bits/hash_bytes.h:
 
 /usr/include/aarch64-linux-gnu/bits/libc-header-start.h:
@@ -661,7 +1325,11 @@ inbound_pipe.h:
 
 /usr/include/c++/12/bits/exception_ptr.h:
 
+/usr/include/aarch64-linux-gnu/bits/ioctls.h:
+
 /usr/include/aarch64-linux-gnu/sys/cdefs.h:
+
+/usr/include/aarch64-linux-gnu/bits/termios-c_cc.h:
 
 /usr/include/aarch64-linux-gnu/bits/uintn-identity.h:
 
@@ -687,9 +1355,13 @@ inbound_pipe.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/mbstate_t.h:
 
+flarm_receiver.cpp:
+
 /usr/include/asm-generic/errno-base.h:
 
 /usr/include/aarch64-linux-gnu/bits/wordsize.h:
+
+/home/rbp28668/SkyEcho/cpp/serial_port.cpp:
 
 /usr/include/aarch64-linux-gnu/c++/12/bits/c++config.h:
 
@@ -710,6 +1382,8 @@ message_merge.h:
 /usr/include/c++/12/ext/string_conversions.h:
 
 /usr/include/c++/12/ext/atomicity.h:
+
+/usr/include/strings.h:
 
 /usr/include/c++/12/string:
 
@@ -735,7 +1409,13 @@ message_merge.h:
 
 /usr/include/c++/12/bits/stringfwd.h:
 
+/usr/include/aarch64-linux-gnu/bits/termios-baud.h:
+
+/usr/include/aarch64-linux-gnu/bits/termios-c_oflag.h:
+
 /usr/include/aarch64-linux-gnu/bits/types/struct_timeval.h:
+
+/usr/include/aarch64-linux-gnu/sys/ttydefaults.h:
 
 /usr/include/c++/12/bits/memoryfwd.h:
 
@@ -795,7 +1475,11 @@ flarm_message.cpp:
 
 /usr/include/c++/12/bits/stl_vector.h:
 
+/usr/include/asm-generic/ioctls.h:
+
 /usr/include/aarch64-linux-gnu/bits/pthreadtypes-arch.h:
+
+/usr/include/aarch64-linux-gnu/bits/termios-misc.h:
 
 /usr/include/c++/12/bits/ptr_traits.h:
 
@@ -807,9 +1491,13 @@ flarm_message.cpp:
 
 /usr/include/aarch64-linux-gnu/bits/select.h:
 
+inbound_pipe_epoll_adapter.h:
+
 /usr/include/c++/12/ext/numeric_traits.h:
 
 /usr/include/c++/12/bits/stl_pair.h:
+
+/usr/include/aarch64-linux-gnu/asm/ioctl.h:
 
 /usr/include/aarch64-linux-gnu/bits/pthreadtypes.h:
 
@@ -843,11 +1531,11 @@ flarm_message.h:
 
 /usr/include/aarch64-linux-gnu/bits/waitstatus.h:
 
-/usr/include/c++/12/stdlib.h:
-
 /usr/include/aarch64-linux-gnu/bits/fcntl.h:
 
 /usr/include/aarch64-linux-gnu/bits/posix_opt.h:
+
+/usr/include/c++/12/stdlib.h:
 
 /usr/include/aarch64-linux-gnu/bits/floatn.h:
 

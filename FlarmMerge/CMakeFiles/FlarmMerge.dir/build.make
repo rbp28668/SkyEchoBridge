@@ -111,10 +111,52 @@ CMakeFiles/FlarmMerge.dir/inbound_pipe.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FlarmMerge.dir/inbound_pipe.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rbp28668/SkyEcho/cpp/FlarmMerge/inbound_pipe.cpp -o CMakeFiles/FlarmMerge.dir/inbound_pipe.cpp.s
 
+CMakeFiles/FlarmMerge.dir/home/rbp28668/SkyEcho/cpp/serial_port.cpp.o: CMakeFiles/FlarmMerge.dir/flags.make
+CMakeFiles/FlarmMerge.dir/home/rbp28668/SkyEcho/cpp/serial_port.cpp.o: /home/rbp28668/SkyEcho/cpp/serial_port.cpp
+CMakeFiles/FlarmMerge.dir/home/rbp28668/SkyEcho/cpp/serial_port.cpp.o: CMakeFiles/FlarmMerge.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rbp28668/SkyEcho/cpp/FlarmMerge/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/FlarmMerge.dir/home/rbp28668/SkyEcho/cpp/serial_port.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FlarmMerge.dir/home/rbp28668/SkyEcho/cpp/serial_port.cpp.o -MF CMakeFiles/FlarmMerge.dir/home/rbp28668/SkyEcho/cpp/serial_port.cpp.o.d -o CMakeFiles/FlarmMerge.dir/home/rbp28668/SkyEcho/cpp/serial_port.cpp.o -c /home/rbp28668/SkyEcho/cpp/serial_port.cpp
+
+CMakeFiles/FlarmMerge.dir/home/rbp28668/SkyEcho/cpp/serial_port.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FlarmMerge.dir/home/rbp28668/SkyEcho/cpp/serial_port.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rbp28668/SkyEcho/cpp/serial_port.cpp > CMakeFiles/FlarmMerge.dir/home/rbp28668/SkyEcho/cpp/serial_port.cpp.i
+
+CMakeFiles/FlarmMerge.dir/home/rbp28668/SkyEcho/cpp/serial_port.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FlarmMerge.dir/home/rbp28668/SkyEcho/cpp/serial_port.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rbp28668/SkyEcho/cpp/serial_port.cpp -o CMakeFiles/FlarmMerge.dir/home/rbp28668/SkyEcho/cpp/serial_port.cpp.s
+
+CMakeFiles/FlarmMerge.dir/inbound_pipe_epoll_adapter.cpp.o: CMakeFiles/FlarmMerge.dir/flags.make
+CMakeFiles/FlarmMerge.dir/inbound_pipe_epoll_adapter.cpp.o: inbound_pipe_epoll_adapter.cpp
+CMakeFiles/FlarmMerge.dir/inbound_pipe_epoll_adapter.cpp.o: CMakeFiles/FlarmMerge.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rbp28668/SkyEcho/cpp/FlarmMerge/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/FlarmMerge.dir/inbound_pipe_epoll_adapter.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FlarmMerge.dir/inbound_pipe_epoll_adapter.cpp.o -MF CMakeFiles/FlarmMerge.dir/inbound_pipe_epoll_adapter.cpp.o.d -o CMakeFiles/FlarmMerge.dir/inbound_pipe_epoll_adapter.cpp.o -c /home/rbp28668/SkyEcho/cpp/FlarmMerge/inbound_pipe_epoll_adapter.cpp
+
+CMakeFiles/FlarmMerge.dir/inbound_pipe_epoll_adapter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FlarmMerge.dir/inbound_pipe_epoll_adapter.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rbp28668/SkyEcho/cpp/FlarmMerge/inbound_pipe_epoll_adapter.cpp > CMakeFiles/FlarmMerge.dir/inbound_pipe_epoll_adapter.cpp.i
+
+CMakeFiles/FlarmMerge.dir/inbound_pipe_epoll_adapter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FlarmMerge.dir/inbound_pipe_epoll_adapter.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rbp28668/SkyEcho/cpp/FlarmMerge/inbound_pipe_epoll_adapter.cpp -o CMakeFiles/FlarmMerge.dir/inbound_pipe_epoll_adapter.cpp.s
+
+CMakeFiles/FlarmMerge.dir/serial_epoll_adapter.cpp.o: CMakeFiles/FlarmMerge.dir/flags.make
+CMakeFiles/FlarmMerge.dir/serial_epoll_adapter.cpp.o: serial_epoll_adapter.cpp
+CMakeFiles/FlarmMerge.dir/serial_epoll_adapter.cpp.o: CMakeFiles/FlarmMerge.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rbp28668/SkyEcho/cpp/FlarmMerge/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/FlarmMerge.dir/serial_epoll_adapter.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FlarmMerge.dir/serial_epoll_adapter.cpp.o -MF CMakeFiles/FlarmMerge.dir/serial_epoll_adapter.cpp.o.d -o CMakeFiles/FlarmMerge.dir/serial_epoll_adapter.cpp.o -c /home/rbp28668/SkyEcho/cpp/FlarmMerge/serial_epoll_adapter.cpp
+
+CMakeFiles/FlarmMerge.dir/serial_epoll_adapter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FlarmMerge.dir/serial_epoll_adapter.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rbp28668/SkyEcho/cpp/FlarmMerge/serial_epoll_adapter.cpp > CMakeFiles/FlarmMerge.dir/serial_epoll_adapter.cpp.i
+
+CMakeFiles/FlarmMerge.dir/serial_epoll_adapter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FlarmMerge.dir/serial_epoll_adapter.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rbp28668/SkyEcho/cpp/FlarmMerge/serial_epoll_adapter.cpp -o CMakeFiles/FlarmMerge.dir/serial_epoll_adapter.cpp.s
+
 CMakeFiles/FlarmMerge.dir/message_merge.cpp.o: CMakeFiles/FlarmMerge.dir/flags.make
 CMakeFiles/FlarmMerge.dir/message_merge.cpp.o: message_merge.cpp
 CMakeFiles/FlarmMerge.dir/message_merge.cpp.o: CMakeFiles/FlarmMerge.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rbp28668/SkyEcho/cpp/FlarmMerge/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/FlarmMerge.dir/message_merge.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rbp28668/SkyEcho/cpp/FlarmMerge/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/FlarmMerge.dir/message_merge.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FlarmMerge.dir/message_merge.cpp.o -MF CMakeFiles/FlarmMerge.dir/message_merge.cpp.o.d -o CMakeFiles/FlarmMerge.dir/message_merge.cpp.o -c /home/rbp28668/SkyEcho/cpp/FlarmMerge/message_merge.cpp
 
 CMakeFiles/FlarmMerge.dir/message_merge.cpp.i: cmake_force
@@ -128,7 +170,7 @@ CMakeFiles/FlarmMerge.dir/message_merge.cpp.s: cmake_force
 CMakeFiles/FlarmMerge.dir/main.cpp.o: CMakeFiles/FlarmMerge.dir/flags.make
 CMakeFiles/FlarmMerge.dir/main.cpp.o: main.cpp
 CMakeFiles/FlarmMerge.dir/main.cpp.o: CMakeFiles/FlarmMerge.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rbp28668/SkyEcho/cpp/FlarmMerge/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/FlarmMerge.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rbp28668/SkyEcho/cpp/FlarmMerge/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/FlarmMerge.dir/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FlarmMerge.dir/main.cpp.o -MF CMakeFiles/FlarmMerge.dir/main.cpp.o.d -o CMakeFiles/FlarmMerge.dir/main.cpp.o -c /home/rbp28668/SkyEcho/cpp/FlarmMerge/main.cpp
 
 CMakeFiles/FlarmMerge.dir/main.cpp.i: cmake_force
@@ -144,6 +186,9 @@ FlarmMerge_OBJECTS = \
 "CMakeFiles/FlarmMerge.dir/flarm_message.cpp.o" \
 "CMakeFiles/FlarmMerge.dir/flarm_receiver.cpp.o" \
 "CMakeFiles/FlarmMerge.dir/inbound_pipe.cpp.o" \
+"CMakeFiles/FlarmMerge.dir/home/rbp28668/SkyEcho/cpp/serial_port.cpp.o" \
+"CMakeFiles/FlarmMerge.dir/inbound_pipe_epoll_adapter.cpp.o" \
+"CMakeFiles/FlarmMerge.dir/serial_epoll_adapter.cpp.o" \
 "CMakeFiles/FlarmMerge.dir/message_merge.cpp.o" \
 "CMakeFiles/FlarmMerge.dir/main.cpp.o"
 
@@ -153,11 +198,14 @@ FlarmMerge_EXTERNAL_OBJECTS =
 FlarmMerge: CMakeFiles/FlarmMerge.dir/flarm_message.cpp.o
 FlarmMerge: CMakeFiles/FlarmMerge.dir/flarm_receiver.cpp.o
 FlarmMerge: CMakeFiles/FlarmMerge.dir/inbound_pipe.cpp.o
+FlarmMerge: CMakeFiles/FlarmMerge.dir/home/rbp28668/SkyEcho/cpp/serial_port.cpp.o
+FlarmMerge: CMakeFiles/FlarmMerge.dir/inbound_pipe_epoll_adapter.cpp.o
+FlarmMerge: CMakeFiles/FlarmMerge.dir/serial_epoll_adapter.cpp.o
 FlarmMerge: CMakeFiles/FlarmMerge.dir/message_merge.cpp.o
 FlarmMerge: CMakeFiles/FlarmMerge.dir/main.cpp.o
 FlarmMerge: CMakeFiles/FlarmMerge.dir/build.make
 FlarmMerge: CMakeFiles/FlarmMerge.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rbp28668/SkyEcho/cpp/FlarmMerge/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable FlarmMerge"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rbp28668/SkyEcho/cpp/FlarmMerge/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable FlarmMerge"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/FlarmMerge.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -11,6 +11,9 @@ add_executable(FlarmMerge
     flarm_message.cpp
     flarm_receiver.cpp
     inbound_pipe.cpp
+    ../serial_port.cpp
+    inbound_pipe_epoll_adapter.cpp
+    serial_epoll_adapter.cpp
     message_merge.cpp
     main.cpp 
 )

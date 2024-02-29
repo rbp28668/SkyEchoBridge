@@ -4,19 +4,51 @@
 #include "flarm_message.h"
 
 
-FlarmMessage::FlarmMessage(const char* data, size_t len){
+FlarmMessage::FlarmMessage(const char* data, size_t len)
+: _valid(true)
+, _alarmLevel(0)
+, _isTraffic(false)
+, _isHeartbeat(false)
+, _hasAdvisory(false)
+, _id(0)
+{
     assert(this);
     assert(len > 11); // $ + 5chars + * + 2checksum + <CR> + <LF>
     assert(data);
     assert(data[0] == '$');
+
     
     // If too big then assume invalid.
     if(len > sizeof(buffer)){
         len = sizeof(buffer);
-        valid = false;
-        validityChecked = true;
+        _valid = false;
     }
     memcpy(buffer,data,len);
+
+    if(_valid){
+        _valid = checkValid();
+    }
+    
+    if(_valid){
+        _alarmLevel = extractAlarmLevel();
+
+        // PFLAA message?
+        _isTraffic = startsWith("$PFLAA");
+
+        // PFLAU message?
+        _isHeartbeat = startsWith("$PFLAU");
+ 
+        if(_isHeartbeat){
+            _hasAdvisory = extractAdvisory();
+        }
+
+        if(_isTraffic){
+            _id = extractId();
+        }
+
+    }
+
+
 }
 
 bool FlarmMessage::startsWith(const char* str){
@@ -58,9 +90,7 @@ bool FlarmMessage::isFlarm(){
 
 // Should start with a $, have some letters, have a *, 2 checksum digits and a CRLF pair.
 // Checksum should be valid.
-bool FlarmMessage::isValid(){
-    if(validityChecked) return valid;
-
+bool FlarmMessage::checkValid(){
     bool isValid = buffer[0] == '$' &&
     isalpha(buffer[1]) &&
     isalpha(buffer[2]) &&
@@ -98,17 +128,12 @@ bool FlarmMessage::isValid(){
     isValid = isValid && (cs == csReceived);
 
     isValid = isValid && (buffer[idx++] == '\r') && (buffer[idx++] = '\n');
-
-    // Remember result
-    valid = isValid;
-    validityChecked = true;
-
     return isValid;
 }
 
 
 
-int FlarmMessage::alarmLevel(){
+int FlarmMessage::extractAlarmLevel(){
     int alarm = 0;
     if(isHeartbeat()){
         // PFLAU,<RX>,<TX>,<GPS>,<Power>,<AlarmLevel>,<RelativeBearing>,
@@ -130,7 +155,7 @@ int FlarmMessage::alarmLevel(){
 }
 
 // Only valid for heartbeat messages.
-bool FlarmMessage::hasAdvisory(){
+bool FlarmMessage::extractAdvisory(){
     assert(this);
     assert(isHeartbeat());
 
@@ -147,18 +172,9 @@ bool FlarmMessage::hasAdvisory(){
     return advisory;
 }
 
-// PFLAA message?
-bool FlarmMessage::isTraffic(){
-    return startsWith("$PFLAA");
-} 
-// PFLAU message?
-bool FlarmMessage::isHeartbeat(){
-    return startsWith("$PFLAU");
-} 
-
- // address and address type combined.
- // Only valid for traffic messages.
-uint32_t FlarmMessage::getId(){
+// address and address type combined.
+// Only valid for traffic messages.
+uint32_t FlarmMessage::extractId(){
     assert(this);    
     assert(isTraffic());
 

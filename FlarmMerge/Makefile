@@ -177,6 +177,30 @@ flarm_receiver.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/FlarmMerge.dir/build.make CMakeFiles/FlarmMerge.dir/flarm_receiver.cpp.s
 .PHONY : flarm_receiver.cpp.s
 
+home/rbp28668/SkyEcho/cpp/serial_port.o: home/rbp28668/SkyEcho/cpp/serial_port.cpp.o
+.PHONY : home/rbp28668/SkyEcho/cpp/serial_port.o
+
+# target to build an object file
+home/rbp28668/SkyEcho/cpp/serial_port.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FlarmMerge.dir/build.make CMakeFiles/FlarmMerge.dir/home/rbp28668/SkyEcho/cpp/serial_port.cpp.o
+.PHONY : home/rbp28668/SkyEcho/cpp/serial_port.cpp.o
+
+home/rbp28668/SkyEcho/cpp/serial_port.i: home/rbp28668/SkyEcho/cpp/serial_port.cpp.i
+.PHONY : home/rbp28668/SkyEcho/cpp/serial_port.i
+
+# target to preprocess a source file
+home/rbp28668/SkyEcho/cpp/serial_port.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FlarmMerge.dir/build.make CMakeFiles/FlarmMerge.dir/home/rbp28668/SkyEcho/cpp/serial_port.cpp.i
+.PHONY : home/rbp28668/SkyEcho/cpp/serial_port.cpp.i
+
+home/rbp28668/SkyEcho/cpp/serial_port.s: home/rbp28668/SkyEcho/cpp/serial_port.cpp.s
+.PHONY : home/rbp28668/SkyEcho/cpp/serial_port.s
+
+# target to generate assembly for a file
+home/rbp28668/SkyEcho/cpp/serial_port.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FlarmMerge.dir/build.make CMakeFiles/FlarmMerge.dir/home/rbp28668/SkyEcho/cpp/serial_port.cpp.s
+.PHONY : home/rbp28668/SkyEcho/cpp/serial_port.cpp.s
+
 inbound_pipe.o: inbound_pipe.cpp.o
 .PHONY : inbound_pipe.o
 
@@ -200,6 +224,30 @@ inbound_pipe.s: inbound_pipe.cpp.s
 inbound_pipe.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/FlarmMerge.dir/build.make CMakeFiles/FlarmMerge.dir/inbound_pipe.cpp.s
 .PHONY : inbound_pipe.cpp.s
+
+inbound_pipe_epoll_adapter.o: inbound_pipe_epoll_adapter.cpp.o
+.PHONY : inbound_pipe_epoll_adapter.o
+
+# target to build an object file
+inbound_pipe_epoll_adapter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FlarmMerge.dir/build.make CMakeFiles/FlarmMerge.dir/inbound_pipe_epoll_adapter.cpp.o
+.PHONY : inbound_pipe_epoll_adapter.cpp.o
+
+inbound_pipe_epoll_adapter.i: inbound_pipe_epoll_adapter.cpp.i
+.PHONY : inbound_pipe_epoll_adapter.i
+
+# target to preprocess a source file
+inbound_pipe_epoll_adapter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FlarmMerge.dir/build.make CMakeFiles/FlarmMerge.dir/inbound_pipe_epoll_adapter.cpp.i
+.PHONY : inbound_pipe_epoll_adapter.cpp.i
+
+inbound_pipe_epoll_adapter.s: inbound_pipe_epoll_adapter.cpp.s
+.PHONY : inbound_pipe_epoll_adapter.s
+
+# target to generate assembly for a file
+inbound_pipe_epoll_adapter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FlarmMerge.dir/build.make CMakeFiles/FlarmMerge.dir/inbound_pipe_epoll_adapter.cpp.s
+.PHONY : inbound_pipe_epoll_adapter.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -249,6 +297,30 @@ message_merge.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/FlarmMerge.dir/build.make CMakeFiles/FlarmMerge.dir/message_merge.cpp.s
 .PHONY : message_merge.cpp.s
 
+serial_epoll_adapter.o: serial_epoll_adapter.cpp.o
+.PHONY : serial_epoll_adapter.o
+
+# target to build an object file
+serial_epoll_adapter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FlarmMerge.dir/build.make CMakeFiles/FlarmMerge.dir/serial_epoll_adapter.cpp.o
+.PHONY : serial_epoll_adapter.cpp.o
+
+serial_epoll_adapter.i: serial_epoll_adapter.cpp.i
+.PHONY : serial_epoll_adapter.i
+
+# target to preprocess a source file
+serial_epoll_adapter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FlarmMerge.dir/build.make CMakeFiles/FlarmMerge.dir/serial_epoll_adapter.cpp.i
+.PHONY : serial_epoll_adapter.cpp.i
+
+serial_epoll_adapter.s: serial_epoll_adapter.cpp.s
+.PHONY : serial_epoll_adapter.s
+
+# target to generate assembly for a file
+serial_epoll_adapter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FlarmMerge.dir/build.make CMakeFiles/FlarmMerge.dir/serial_epoll_adapter.cpp.s
+.PHONY : serial_epoll_adapter.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -264,15 +336,24 @@ help:
 	@echo "... flarm_receiver.o"
 	@echo "... flarm_receiver.i"
 	@echo "... flarm_receiver.s"
+	@echo "... home/rbp28668/SkyEcho/cpp/serial_port.o"
+	@echo "... home/rbp28668/SkyEcho/cpp/serial_port.i"
+	@echo "... home/rbp28668/SkyEcho/cpp/serial_port.s"
 	@echo "... inbound_pipe.o"
 	@echo "... inbound_pipe.i"
 	@echo "... inbound_pipe.s"
+	@echo "... inbound_pipe_epoll_adapter.o"
+	@echo "... inbound_pipe_epoll_adapter.i"
+	@echo "... inbound_pipe_epoll_adapter.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
 	@echo "... message_merge.o"
 	@echo "... message_merge.i"
 	@echo "... message_merge.s"
+	@echo "... serial_epoll_adapter.o"
+	@echo "... serial_epoll_adapter.i"
+	@echo "... serial_epoll_adapter.s"
 .PHONY : help
 
 
