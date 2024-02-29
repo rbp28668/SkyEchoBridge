@@ -2,9 +2,40 @@
 // Copyright R Bruce Porteous 2024
 
 #pragma once
+#include <string>
 
 class Config {
 
+public:
+    // output type
+    enum class OutputType{
+        Console,
+        Socket,
+        Serial,
+        Pipe
+    };
+
+private:
+
+    // Listen port for SkyEcho messages
+    unsigned int _listenPort;
+
+    // Where to send the output
+    OutputType _outputType;
+
+    // Params for output via UDP
+    std::string _targetIp;
+    uint _targetPort;
+
+    // Params for output via serial port
+    std::string _serialDevice;
+    int _baudRate;
+
+    // Params for output via named pipe.
+    std::string _fifo;
+
+
+    // Algorithm parameters
     int _oldTarget;
     
     int _ignoreDistance;
@@ -23,6 +54,26 @@ class Config {
     public:
 
     Config();
+
+    // Listen for SkyEcho on this port.
+    uint listenPort() const { return _listenPort;}
+
+    // Where to send the output FLARM messages
+    Config::OutputType outputType() const { return _outputType;}
+    
+    // IP address to send Socket UDP output to.
+    const std::string& targetIp() const {return  _targetIp;}
+    // Port to send Socket UDP output to.
+    unsigned int targetPort() const {return _targetPort;}
+
+    // Which serial device to use to send data to.
+    const std::string& serialDevice() const { return _serialDevice;}
+    // baud rate to set serial device to.
+    const int baudRate() const {return  _baudRate;}
+
+    // location of fifo / named pipe (use mkfifo to create).
+    const std::string& fifo() const { return _fifo;}
+
 
     // If a target hasn't been received for this time stop tracking.
     int oldTarget() const  { return _oldTarget;}

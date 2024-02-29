@@ -9,4 +9,5 @@ class StreamReceiver {
     /// @param length 
     /// @return true for success, false for failure.
     virtual bool receive(const char* data, size_t length) = 0;
+    virtual ~StreamReceiver() {}
 };

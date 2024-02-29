@@ -3,7 +3,7 @@
 #include "serial_port.h"
 
 /// @brief Receives data from an output stream adapter
-class SerialStreamReceiver : StreamReceiver {
+class SerialStreamReceiver : public StreamReceiver {
 
     SerialPort serial;
 

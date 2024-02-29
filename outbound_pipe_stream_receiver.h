@@ -3,7 +3,7 @@
 #include "outbound_pipe.h"
 
 /// @brief Receives data from an output stream adapter
-class OutboundPipeStreamReceiver : StreamReceiver {
+class OutboundPipeStreamReceiver : public StreamReceiver {
 
     OutboundPipe pipe;
 

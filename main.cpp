@@ -8,6 +8,9 @@
 #include "message_handler.h"
 #include "outbound_flarm_converter.h"
 #include "stream_adapter.h"
+#include "stdout_stream_receiver.h"
+#include "serial_stream_receiver.h"
+#include "outbound_pipe_stream_receiver.h"
 #include "state.h"
 #include "config.h"
 #include "fcs.h"
@@ -39,19 +42,36 @@ int main(int argc, char* argv[]){
     FCS::validateTable();
     #endif
 
-    // Outbound socket to send to XCSoar
-    Socket outboundSocket;
-    outboundSocket.connect("192.168.0.95",4353);
+    // Magic up some form of output stream receiver
+    StreamReceiver* psr = nullptr;
+    switch(config.outputType()){
+        case Config::OutputType::Console:
+            psr = new StdoutStreamReceiver();
+        break;
+
+        case Config::OutputType::Pipe:
+            psr = new OutboundPipeStreamReceiver(config.fifo().c_str());
+        break;
+
+        case Config::OutputType::Serial:
+            psr = new SerialStreamReceiver(config.serialDevice().c_str(), config.baudRate());
+        break;
+
+        case Config::OutputType::Socket:
+            // Outbound socket to send to XCSoar
+            Socket* outboundSocket = new Socket();
+            outboundSocket->connect(config.targetIp(),config.targetPort());
+            psr = outboundSocket;
+            break;
+    }
+
 
     // Allow it to be used as an ostream.
-    OutputStreamAdapter osa(&outboundSocket);
+    OutputStreamAdapter osa(psr);
 
-    #if 1
     // And tell the FLARM convert to use it.
     OutboundFlarmConverter outbound(osa);
-    #else
-       OutboundFlarmConverter outbound(std::cout);
-    #endif
+
     // Holds the application state.  Gets updated
     // by the message handler. 
     // Can tell you you're abou to die....
@@ -59,7 +79,7 @@ int main(int argc, char* argv[]){
     Packet packet(buffer, buffer_size);
 
     Socket socket;
-    socket.listen(4000);
+    socket.listen(config.listenPort());
 
     MessageHandler handler(&state);
     Transport transport(&handler);
@@ -67,5 +87,8 @@ int main(int argc, char* argv[]){
         //showPacket(packet.buffer(), packet.received());
         transport.process(packet.buffer(), packet.received());
     }
+
+    if(psr) delete psr;
+    
     return 0;
 }
