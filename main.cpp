@@ -42,6 +42,10 @@ int main(int argc, char* argv[]){
     FCS::validateTable();
     #endif
 
+    if(!config.update(argc, argv)){
+        return 1;
+    }
+
     // Magic up some form of output stream receiver
     StreamReceiver* psr = nullptr;
     switch(config.outputType()){

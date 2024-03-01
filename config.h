@@ -51,9 +51,17 @@ private:
     int _threatBubbleDistance;
     int _threatBubbleHeight;
 
+    bool isOption(const std::string& arg, const std::string& option);
+    bool requiredParam(std::string &param, char *argv[], int idx, int argc, const char *err);
+    bool requiredParam(int &param, char *argv[], int idx, int argc, const char *err);
+    bool optionalParam(std::string &param, char *argv[], int idx, int argc);
+    bool optionalParam(int &param, char *argv[], int idx, int argc);
+
     public:
 
     Config();
+
+    bool update(int argc, char* argv[]);
 
     // Listen for SkyEcho on this port.
     uint listenPort() const { return _listenPort;}
