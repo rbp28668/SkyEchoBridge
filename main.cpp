@@ -2,6 +2,7 @@
 // Copyright R Bruce Porteous 2024
 #include <iostream>
 #include <iomanip>
+#include <math.h>
 #include "version.h"
 #include "socket.h"
 #include "transport.h"

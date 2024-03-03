@@ -26,6 +26,10 @@ The converted GLD-90 data is received over a named pipe.  This isolates this mer
 (which has some near-real-time constraints to deal with serial data) from the core SkyEchoBridge code.
 Using named pipes makes deploying this optional and avoids the program having to fork.
 
+Note - the SkyEcho2 program needs to be run with the --pipe option to send the data through the named pipe e.g.
+
+`./SkyEcho2 --pipe /opt/sky_echo/sky_echo_fifo`
+
 ## FLARM
 Note FLARM is a trademark of:
 
