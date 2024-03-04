@@ -1,3 +1,0 @@
-/home/rbp28668/SkyEcho/cpp/build/CMakeFiles/SkyEcho2.dir
-/home/rbp28668/SkyEcho/cpp/build/CMakeFiles/edit_cache.dir
-/home/rbp28668/SkyEcho/cpp/build/CMakeFiles/rebuild_cache.dir

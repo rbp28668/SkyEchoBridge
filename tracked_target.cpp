@@ -31,7 +31,7 @@ void TrackedTarget::setRelativeDistance(float nsMetres, float ewMetres){
     relativeNorthMetres = nsMetres;
     relativeEastMetres = ewMetres;
 
-    relativeDistanceMetres = fsqrt(nsMetres * nsMetres + ewMetres * ewMetres);
+    relativeDistanceMetres = sqrtf(nsMetres * nsMetres + ewMetres * ewMetres);
 
     // Relative bearing degrees - 0 is dead ahead, 90 on the right wingtip etc so range -180 to + 180
     // Swapping y and x rotates by 90 degrees so that this gives the target's bearing relative to the ownship
