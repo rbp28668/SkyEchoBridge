@@ -39,7 +39,7 @@ class Target {
     std::pair<double, double> extrapolatePosition(uint32_t deltaSeconds) const;
 
     public:
-    unsigned int identity() { return uint32_t(addressType) << 24 | address;}
+    uint32_t identity() { return uint32_t(addressType) << 24 | address;}
     void updateFrom(const Target& other);
     bool isSameTarget(const Target& other) const;
     bool fixInvalid() const;

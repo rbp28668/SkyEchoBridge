@@ -5,12 +5,21 @@
 #include <iomanip>
 #include <assert.h>
 
+/// @brief Creates a message transport bound to a given handler
+/// which will receive messages as they arrive.
+/// @param handler will have its onMessage method called for each
+/// received message.
 Transport::Transport(MessageHandler* handler)
 : handler(handler)
 {
 
 }
 
+/// @brief Process the memory buffer looking for GDL-90 messages.
+/// Will call the message handler's onMessage method for every
+/// message found.
+/// @param buffer is the data to process.
+/// @param len the number of bytes in the buffer to process.
 void Transport::process(uint8_t* buffer, size_t len){
     size_t pos = 0;
     size_t end = 0;

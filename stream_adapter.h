@@ -3,6 +3,10 @@
 
 // https://stackoverflow.com/questions/772355/how-to-inherit-from-stdostream
 
+
+/// @brief A Streambuf object that takes a StreamReceiver and passes
+/// the buffer contents to that receiver whenever flush is called 
+/// on the associated stream or the buffer overflows.
 class OSAStreambuf : public std::streambuf
 {
     StreamReceiver *receiver;
@@ -38,6 +42,8 @@ public:
     ~OSAStreambuf() { sync(); }
 };
 
+/// @brief  Provies a basic_ostream<char> that ends up writing the formatted
+/// data to a StreamReceiver.
 class OutputStreamAdapter : private OSAStreambuf, public std::basic_ostream<char>
 {
 
