@@ -23,6 +23,7 @@ class SerialPort {
     ~SerialPort();
 
     inline int fd() { return _fd;}
+    inline bool valid() const { return _fd != -1;}
 
     int bps() const { return _bps;}
     void setBps(int bps);

@@ -129,6 +129,30 @@ TrafficGen/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TrafficGen.dir/build.make CMakeFiles/TrafficGen.dir/build
 .PHONY : TrafficGen/fast
 
+config.o: config.cpp.o
+.PHONY : config.o
+
+# target to build an object file
+config.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TrafficGen.dir/build.make CMakeFiles/TrafficGen.dir/config.cpp.o
+.PHONY : config.cpp.o
+
+config.i: config.cpp.i
+.PHONY : config.i
+
+# target to preprocess a source file
+config.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TrafficGen.dir/build.make CMakeFiles/TrafficGen.dir/config.cpp.i
+.PHONY : config.cpp.i
+
+config.s: config.cpp.s
+.PHONY : config.s
+
+# target to generate assembly for a file
+config.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TrafficGen.dir/build.make CMakeFiles/TrafficGen.dir/config.cpp.s
+.PHONY : config.cpp.s
+
 fcs.o: fcs.cpp.o
 .PHONY : fcs.o
 
@@ -354,6 +378,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... TrafficGen"
+	@echo "... config.o"
+	@echo "... config.i"
+	@echo "... config.s"
 	@echo "... fcs.o"
 	@echo "... fcs.i"
 	@echo "... fcs.s"

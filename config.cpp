@@ -70,6 +70,8 @@ bool Config::requiredParam(int &param, char *argv[], int idx, int argc, const ch
         return false; // failed
     }
 
+    if(!isdigit(arg[0])) return false;
+
     param = atoi(arg.c_str());
     return true;
 }
@@ -103,6 +105,8 @@ bool Config::optionalParam(int &param, char *argv[], int idx, int argc)
     {
         return false; // failed
     }
+
+    if(!isdigit(arg[0])) return false;
 
     param = atoi(arg.c_str());
     return true;

@@ -55,19 +55,33 @@ int main(int argc, char* argv[]){
         break;
 
         case Config::OutputType::Pipe:
-            psr = new OutboundPipeStreamReceiver(config.fifo().c_str());
+        {
+            auto pipe = new OutboundPipeStreamReceiver(config.fifo().c_str());
+            if(!pipe->valid()){
+                return 2;
+            }
+            psr = pipe;
+        }
         break;
 
         case Config::OutputType::Serial:
-            psr = new SerialStreamReceiver(config.serialDevice().c_str(), config.baudRate());
+        {
+            auto ssr = new SerialStreamReceiver(config.serialDevice().c_str(), config.baudRate());
+            if(!ssr->valid()){
+                return 2;
+            }
+            psr = ssr;
+        }
         break;
 
         case Config::OutputType::Socket:
+        {
             // Outbound socket to send to XCSoar
             Socket* outboundSocket = new Socket();
             outboundSocket->connect(config.targetIp(),config.targetPort());
             psr = outboundSocket;
-            break;
+        }
+        break;
     }
 
 

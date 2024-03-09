@@ -13,9 +13,12 @@ struct FlarmMessageWriter {
     virtual void send(MessageMerge* pmm) = 0;
 };
 
+/// @brief This is the class that manages bringing the flarm (primary) and
+/// ADSB (secondary) data together.
 class MessageMerge
 {
 
+    /// @brief Shim class to receive data and pass it on as primary (flarm) data.
     class PrimaryReceiver : public FlarmReceiver
     {
         MessageMerge *mm;
@@ -24,6 +27,7 @@ class MessageMerge
         PrimaryReceiver(MessageMerge *mm) : mm(mm) {}
     };
 
+    /// @brief Shim class to receive data and pass it on as secondary(ADSB derived) data.
     class SecondaryReceiver : public FlarmReceiver
     {
         MessageMerge *mm;
@@ -32,13 +36,21 @@ class MessageMerge
         SecondaryReceiver(MessageMerge *mm) : mm(mm) {}
     };
 
-    FlarmMessage *primaryHeartbeat;     // From FLARM
-    FlarmMessage *secondaryHeartbeat;   // From ADSB
+    FlarmMessage *primaryHeartbeat = nullptr;     // From FLARM
+    FlarmMessage *secondaryHeartbeat = nullptr;   // From ADSB
     std::vector<FlarmMessage *> primaryTraffic; 
     std::vector<FlarmMessage *> secondaryTraffic;
     
+    // Incremented by receiving secondary heartbeat, zeroed 
+    // when receiving primary.  If > N (say 3) then primary
+    // is inactive and we're getting secondary.
+    int secondaryCount = 0;
+
+    bool secondaryActive() const { return secondaryCount > 3;}
+
+
     std::list<FlarmMessage *> send_queue;
-    FlarmMessageWriter* writer;
+    FlarmMessageWriter* writer = nullptr;
 
     PrimaryReceiver primaryReceiver;
     SecondaryReceiver secondaryReceiver;
@@ -50,7 +62,7 @@ class MessageMerge
     void send(FlarmMessage *msg);
 
 public:
-    MessageMerge(FlarmMessageWriter* writer = 0);
+    MessageMerge(FlarmMessageWriter* writer = nullptr);
     void setWriter(FlarmMessageWriter* writer);
     void receivePrimaryData(uint8_t *data, size_t nbytes);
     void receiveSecondaryData(uint8_t *data, size_t nbytes);

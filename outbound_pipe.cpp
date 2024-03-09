@@ -1,4 +1,6 @@
 #include "outbound_pipe.h"
+#include <iostream>
+#include <cstring>
 #include <unistd.h>
 #include <fcntl.h>
 #include <signal.h>
@@ -10,6 +12,9 @@ OutboundPipe::OutboundPipe(const char *fifo)
     : _fd(-1), _disconnected(false)
 {
     _fd = ::open(fifo, O_WRONLY | O_NONBLOCK);
+    if(_fd == -1){
+        std::cerr << "Unable to open outbound pipe " << fifo << " : " << strerror(errno) << std::endl;
+    }
     signal(SIGPIPE, SIG_IGN); // ignore broken pipe - write will return EPIPE error if no readers.
 }
 

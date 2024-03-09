@@ -15,6 +15,7 @@ add_executable(TrafficGen
     lua.cpp
     simulation.cpp
     simulation_scripting.cpp
+    config.cpp
     main.cpp 
 )
 

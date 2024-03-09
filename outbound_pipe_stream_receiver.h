@@ -10,5 +10,6 @@ class OutboundPipeStreamReceiver : public StreamReceiver {
     public:
     OutboundPipeStreamReceiver(const char *fifo) : pipe(fifo) {}
     inline int fd() { return pipe.fd(); }
-     virtual bool receive(const char* data, size_t length);
+    inline bool valid() const { return pipe.valid();}
+    virtual bool receive(const char* data, size_t length);
 };

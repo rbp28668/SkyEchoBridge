@@ -12,4 +12,5 @@ public:
     ~InboundPipe();
     inline int fd() { return _fd; }
     int read(uint8_t *buffer, size_t max);
+    bool valid() const { return _fd != -1;}
 };

@@ -7,12 +7,16 @@
 #include "socket.h"
 #include "simulation.h"
 #include "simulation_scripting.h"
+#include "config.h"
 
 
 int main(int argc, char* argv[]){
     std::cout << "TrafficGen Version " << VERSION_MAJOR << '.' << VERSION_MINOR << std::endl;
 
-    Socket socket("192.168.0.41", 4000);
+    Config config;
+    config.update(argc, argv);
+
+    Socket socket(config.targetIp(), config.targetPort());
 
  
     Simulation simulation(&socket);
@@ -33,12 +37,10 @@ int main(int argc, char* argv[]){
     SimulationScripting::registerMethods(lua);
     SimulationScripting::addOwnship(lua, simulation.ownship());
 
-    for(int i=1; i<argc; ++i){
-        std::string file(argv[i]);
+    for(auto file : config.files()){
         std::string err("Unable to load and run LUA file ");
         err.append(file);
         lua.runFile(file, err);
-
     }
 
     // while(true){

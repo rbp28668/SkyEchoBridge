@@ -63,6 +63,7 @@ int main(int argc, char* argv[]){
             return 4;
         }
         for(int i=0; i<count; ++i){
+            std::cout << "Epoll returned " << count << " event(s)" << std::endl;
             EpollAdapter* handler = reinterpret_cast<EpollAdapter*>( events[i].data.ptr);
             handler->onEvent(events[i].events);
         }   

@@ -1,4 +1,6 @@
 #include <assert.h>
+#include <string>
+#include <iostream>
 #include "serial_epoll_adapter.h"
 #include "flarm_message.h"
 
@@ -50,6 +52,7 @@ void SerialEpollAdapter::onEvent(uint32_t events)
         int nbytes = serial->read(buffer, sizeof(buffer));
         if(nbytes >= 0){
             merger->receivePrimaryData(buffer, nbytes);
+            std::cout << "Serial RX: " << std::string(reinterpret_cast<char*>(buffer), nbytes) << std::endl;
         }
     }
 
@@ -60,5 +63,6 @@ void SerialEpollAdapter::onEvent(uint32_t events)
 }
 
 void SerialEpollAdapter::send(MessageMerge* pmm){
+    std::cout << "Serial TX" << std::endl;
     sendData();   // or try to at least.
 }

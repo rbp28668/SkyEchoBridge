@@ -1,5 +1,7 @@
 #include <unistd.h>
 #include <fcntl.h>
+#include <iostream>
+#include <cstring>
 
 #include "inbound_pipe.h"
 #include <cerrno>
@@ -8,6 +10,9 @@ InboundPipe::InboundPipe(const char *fifo)
     : _fd(-1)
 {
     _fd = ::open(fifo, O_RDONLY | O_NONBLOCK);
+    if(_fd == -1){
+        std::cerr << "Unable to open pipe " << fifo << ": " << strerror(errno) << std::endl;
+    }
 }
 
 InboundPipe::~InboundPipe()

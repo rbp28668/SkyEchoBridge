@@ -12,6 +12,7 @@ public:
     ~OutboundPipe();
     inline int fd() { return _fd; }
     inline bool disconnected() const { return _disconnected;}
+    bool valid() const { return _fd != -1;}
 
     int write(const uint8_t *data, size_t len);
 };
