@@ -13,6 +13,7 @@ SerialEpollAdapter::SerialEpollAdapter(MessageMerge *merger, SerialPort* serial)
     assert(this);
     assert(merger);
     assert(serial);
+    merger->setWriter(this);
 }
 
 void SerialEpollAdapter::sendData() {
