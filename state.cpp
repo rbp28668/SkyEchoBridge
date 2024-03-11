@@ -60,7 +60,7 @@ void State::receivedTraffic(Target& target){
 /// @brief Receives an ownship report from the GDL-90 source
 /// @param target 
 void State::receivedOwnship(Target& target){
-    std::cout << "Ownship Lat:" << target.latitude << " lon: " << target.longitude << " Alt:" << target.altFeet << "  " << std::string(target.callsign, 8) << std::endl;
+    //std::cout << "Ownship Lat:" << target.latitude << " lon: " << target.longitude << " Alt:" << target.altFeet << "  " << std::string(target.callsign, 8) << std::endl;
  
     if(!target.fixInvalid()) {
         ownship.updateFrom(target);
@@ -96,7 +96,7 @@ void State::setOwnshipGeometricAltitude(int altFeet, int verticalFigureOfMerit, 
 /// @param receivedMsgCount 
 void State::setHeartbeat(bool gpsAvailable, bool maintRequired, bool batteryLow, bool utcOk, uint32_t ts, uint32_t receivedMsgCount){
     
-    std::cout << "Heartbeat at:" << ts << " gps: " << gpsAvailable << " UTC: " << utcOk << std::endl;
+    //std::cout << "Heartbeat at:" << ts << " gps: " << gpsAvailable << " UTC: " << utcOk << std::endl;
 
     // Initially send all the previous stuff.
     // Need to be careful this doesn't take so long that we lose

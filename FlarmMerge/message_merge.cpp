@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <set>
+#include <iostream>
 #include "message_merge.h"
 #include "flarm_message.h"
 
@@ -8,6 +9,11 @@
 /// @param data 
 /// @param nbytes 
 void MessageMerge::PrimaryReceiver::onReceive(const char *data, size_t nbytes){
+    assert(this);
+    assert(data);
+    assert(nbytes > 0);
+
+    std::cout << std::string(data, nbytes);  // should have crlf
     FlarmMessage* msg = mm->allocateMessage(data, nbytes);
     mm->receiveFlarm(msg);
 }
@@ -17,6 +23,10 @@ void MessageMerge::PrimaryReceiver::onReceive(const char *data, size_t nbytes){
 /// @param data 
 /// @param nbytes 
 void MessageMerge::SecondaryReceiver::onReceive(const char *data, size_t nbytes){
+    assert(this);
+    assert(data);
+    assert(nbytes > 0);
+    
     FlarmMessage* msg = mm->allocateMessage(data, nbytes);
     mm->receiveSecondary(msg);
 }
@@ -45,6 +55,10 @@ void MessageMerge::setWriter(FlarmMessageWriter* writer){
 /// Non-flarm (i.e. standard GPS) messages are passed through.
 /// @param msg 
 void MessageMerge::receiveFlarm(FlarmMessage* msg){
+    assert(this);
+    assert(msg);
+    assert(msg->length() > 0);
+
     if( msg->isValid()) {
         if(msg->isHeartbeat()) {
             secondaryCount = 0; 
@@ -70,6 +84,7 @@ void MessageMerge::receiveFlarm(FlarmMessage* msg){
 void MessageMerge::receiveSecondary(FlarmMessage* msg){
     assert(this);
     assert(msg);
+    assert(msg->length() > 0);
     if(msg->isValid()){
         if(msg->isHeartbeat()){
             if(secondaryHeartbeat != nullptr) delete secondaryHeartbeat;
@@ -190,6 +205,7 @@ void MessageMerge::send(FlarmMessage *msg){
     assert(this);
     assert(msg);
     assert(writer); // must be set up one way or another.
+    assert(msg->length() > 0);
     send_queue.push_back(msg);
     writer->send(this);
 }

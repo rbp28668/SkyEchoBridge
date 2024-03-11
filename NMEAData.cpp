@@ -125,7 +125,7 @@ unsigned int NMEAData::checksum(const std::string& in) const {
 
 // Writes the GPS GGA sentence to the output.
 void NMEAData::GPGGA(std::ostream& os, double utcTime, double latDegrees, double longDegrees, float gpsHeight){
-	std::cout << "GPS Height " << gpsHeight << std::endl;
+	//std::cout << "GPS Height " << gpsHeight << std::endl;
 
 	std::ostringstream oss;
 
@@ -175,7 +175,7 @@ void NMEAData::GPRMC(std::ostream& os, double utcTime, double latDegrees, double
 
 void NMEAData::PGRMZ(std::ostream& os, int altitude){
 	std::ostringstream oss;
-	std::cout << "Altitude " << altitude << std::endl;
+	//std::cout << "Altitude " << altitude << std::endl;
 	oss << "PGRMZ,";
 	oss << altitude << ",";
 	oss << heightUnits << ",2";  // valid

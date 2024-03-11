@@ -5,7 +5,8 @@
 
 
 FlarmMessage::FlarmMessage(const char* data, size_t len)
-: _valid(true)
+: _len(len)
+, _valid(true)
 , _alarmLevel(0)
 , _isTraffic(false)
 , _isHeartbeat(false)
@@ -19,11 +20,11 @@ FlarmMessage::FlarmMessage(const char* data, size_t len)
 
     
     // If too big then assume invalid.
-    if(len > sizeof(buffer)){
-        len = sizeof(buffer);
+    if(len > sizeof(_buffer)){
+        len = sizeof(_buffer);
         _valid = false;
     }
-    memcpy(buffer,data,len);
+    memcpy(_buffer,data,len);
 
     if(_valid){
         _valid = checkValid();
@@ -52,7 +53,7 @@ FlarmMessage::FlarmMessage(const char* data, size_t len)
 }
 
 bool FlarmMessage::startsWith(const char* str){
-    const char* pbuff = buffer;
+    const char* pbuff = _buffer;
     while(*str){
         if(*str != *pbuff) return false;
         ++str; ++pbuff;
@@ -68,15 +69,15 @@ bool FlarmMessage::startsWith(const char* str){
 const char* FlarmMessage::getField(int idx){
     
     // Treat 0 as special case as no preceding comma.
-    if(idx == 0) return buffer+1; // skip initial $
+    if(idx == 0) return _buffer+1; // skip initial $
 
     // Count the commas...
     int commas = 0;
-    for(int i=0; i<sizeof(buffer); ++i){
-        if(buffer[i] == ','){
+    for(int i=0; i<sizeof(_buffer); ++i){
+        if(_buffer[i] == ','){
             ++commas;
             if(commas == idx){
-                return buffer + i + 1; // point at character after comma.
+                return _buffer + i + 1; // point at character after comma.
             }
         }
     }
@@ -91,33 +92,33 @@ bool FlarmMessage::isFlarm(){
 // Should start with a $, have some letters, have a *, 2 checksum digits and a CRLF pair.
 // Checksum should be valid.
 bool FlarmMessage::checkValid(){
-    bool isValid = buffer[0] == '$' &&
-    isalpha(buffer[1]) &&
-    isalpha(buffer[2]) &&
-    isalpha(buffer[3]) &&
+    bool isValid = _buffer[0] == '$' &&
+    isalpha(_buffer[1]) &&
+    isalpha(_buffer[2]) &&
+    isalpha(_buffer[3]) &&
     true;
 
 
     // Look for terminator and calculate checksum as we go.
     int idx = 1;
 	unsigned int cs = 0;
-	for(int i=1; i<sizeof(buffer); ++i, ++idx) {
-        if(buffer[idx] == '*'){
+	for(int i=1; i<sizeof(_buffer); ++i, ++idx) {
+        if(_buffer[idx] == '*'){
             ++idx; // skip terminating *;
             break;
         }
-		unsigned char ch = buffer[idx];
+		unsigned char ch = _buffer[idx];
 		cs ^= ch;
 	}
 
-    if(idx >= sizeof(buffer)) return false; // no terminator
+    if(idx >= sizeof(_buffer)) return false; // no terminator
 
     // Ok, we've got the checksum in cs
     // Look to see if the buffer has the same checksum
     // Note - looking for exactly 2 hex digits here as well.
     const std::string digits("0123456789ABCDEF");
-    char csh = buffer[idx++];
-    char csl = buffer[idx++];
+    char csh = _buffer[idx++];
+    char csl = _buffer[idx++];
 
     int h = digits.find_first_of(csh);
     int l = digits.find_first_of(csl);    
@@ -127,7 +128,7 @@ bool FlarmMessage::checkValid(){
 
     isValid = isValid && (cs == csReceived);
 
-    isValid = isValid && (buffer[idx++] == '\r') && (buffer[idx++] = '\n');
+    isValid = isValid && (_buffer[idx++] == '\r') && (_buffer[idx++] = '\n');
     return isValid;
 }
 

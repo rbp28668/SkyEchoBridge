@@ -3,8 +3,8 @@
 
 class FlarmMessage {
 
-    char buffer[256];
-    int len;
+    char _buffer[256];
+    int _len;
 
     bool _valid;
     int _alarmLevel;
@@ -32,6 +32,6 @@ class FlarmMessage {
     uint32_t getId() {return _id; }  // address and address type combined.
 
     // Get the message for sending.
-    const char* data() const {return buffer;}
-    int length() const { return len;}
+    const char* data() const {return _buffer;}
+    int length() const { return _len;}
 };

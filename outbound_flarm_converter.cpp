@@ -100,7 +100,7 @@ void OutboundFlarmConverter::sendHeartbeat(int rxCount, bool gpsValid, const Own
 
         alarm = primaryTarget->alarm();
         relativeBearing = int( floorf(primaryTarget->relativeBearing() + 0.5f));
-        std::cout << "Relative bearing " << relativeBearing << std::endl;
+        //std::cout << "Relative bearing " << relativeBearing << std::endl;
         // Alarm or advisory?  Prioritise alarm!
         if(primaryTarget->alarm() > 0) {
             alarmType = 2;
@@ -145,7 +145,7 @@ void OutboundFlarmConverter::sendOwnshipData(unsigned int utcSeconds, const OwnS
     double magneticVariationDegrees = 0;
     int altitude = int(floor(ownship.altFeet * (nmea.heightUnits == 'M' ? 0.3048 : 1) + 0.5)); 
     float gpsHeight = ownship.altFeet * (nmea.heightUnits == 'M' ? 0.3048 : 1); 
-    std::cout << "Sending height " << altitude << "," << gpsHeight << nmea.heightUnits << std::endl;
+    //std::cout << "Sending height " << altitude << "," << gpsHeight << nmea.heightUnits << std::endl;
     nmea.GPRMC(os, utcTime, latDegrees, longDegrees, groundSpeedKnots, trackDegrees, day, month, year, magneticVariationDegrees);
     os.flush();
     nmea.PGRMZ(os, altitude);

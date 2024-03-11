@@ -107,7 +107,6 @@ bool Config::update(int argc, char *argv[])
         {
             std::cout << "TargetGen " << std::endl;
             std::cout << "--help                            - display this information." << std::endl;
-            std::cout << "--listen <port>                   - listen for GDL-90 packets on this port" << std::endl;
             std::cout << "--udp <ip_address> <port>         - set output device to UDP socket" << std::endl;
 
             return false;
