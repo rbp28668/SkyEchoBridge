@@ -173,12 +173,17 @@ void NMEAData::GPRMC(std::ostream& os, double utcTime, double latDegrees, double
 }
 
 
+/// @brief Garmin extension for altitude
+/// 2.2.8 Altitude (PGRMZ) : PGRMZ,<1>, f, <2>,<3>*hh<CR><LF> 
+/// @param os 
+/// @param altitude 
 void NMEAData::PGRMZ(std::ostream& os, int altitude){
 	std::ostringstream oss;
 	//std::cout << "Altitude " << altitude << std::endl;
 	oss << "PGRMZ,";
 	oss << altitude << ",";
-	oss << heightUnits << ",2";  // valid
+	oss << heightUnits << ",";
+	oss << "3,";  // 3d fix
 	wrap(os, oss.str());
 }
 

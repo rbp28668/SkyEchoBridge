@@ -75,8 +75,13 @@ void MessageMerge::receiveFlarm(FlarmMessage* msg){
         } else if(msg->isTraffic()){
             primaryTraffic.push_back(msg);
         } else {
-            // Probably just a normal GPS message.
-            send(msg);
+            // Probably just a normal GPS message.  
+            if(!secondaryActive() && hasPrimaryFix) {
+                send(msg);
+            } else {
+                delete msg;
+            }
+            
         }
     } else {
         delete msg; // not valid so discard.
