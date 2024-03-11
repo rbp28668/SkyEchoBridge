@@ -32,7 +32,7 @@ State::~State(){
 /// @param target 
 void State::receivedTraffic(Target& target){
     
-    std::cout << "Traffic Lat:" << target.latitude << " lon: " << target.longitude << " Alt:" << target.altFeet << "  " << std::string(target.callsign, 8) << std::endl;
+    //std::cout << "Traffic Lat:" << target.latitude << " lon: " << target.longitude << " Alt:" << target.altFeet << "  " << std::string(target.callsign, 8) << std::endl;
     
     // All Traffic Reports output from the GDL 90 have a Time of Applicability of the beginning of the
     // current second. Therefore, there is no explicit Time of Reception field in the Traffic Report. The

@@ -43,11 +43,11 @@ class MessageMerge
     
     // Incremented by receiving secondary heartbeat, zeroed 
     // when receiving primary.  If > N (say 3) then primary
-    // is inactive and we're getting secondary.
+    // is inactive but we're getting secondary information.
     int secondaryCount = 0;
-
     bool secondaryActive() const { return secondaryCount > 3;}
 
+    bool hasPrimaryFix = false;   // set true if the primary heartbeat has valid GPS.
 
     std::list<FlarmMessage *> send_queue;
     FlarmMessageWriter* writer = nullptr;

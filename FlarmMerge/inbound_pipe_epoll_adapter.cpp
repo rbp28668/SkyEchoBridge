@@ -20,7 +20,7 @@ void InboundPipeEpollAdapter::onEvent(uint32_t events)
         int nbytes = pipe->read(buffer, sizeof(buffer));
         if(nbytes >= 0){
             merger->receiveSecondaryData(buffer, nbytes);
-            std::cout << "Pipe RX: " << std::string(reinterpret_cast<char*>(buffer), nbytes) << std::endl;
+            //std::cout << "Pipe RX: " << std::string(reinterpret_cast<char*>(buffer), nbytes) << std::endl;
         }
     }
 

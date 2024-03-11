@@ -13,7 +13,7 @@ void MessageMerge::PrimaryReceiver::onReceive(const char *data, size_t nbytes){
     assert(data);
     assert(nbytes > 0);
 
-    std::cout << std::string(data, nbytes);  // should have crlf
+    //std::cout << std::string(data, nbytes);  // should have crlf
     FlarmMessage* msg = mm->allocateMessage(data, nbytes);
     mm->receiveFlarm(msg);
 }
@@ -33,7 +33,8 @@ void MessageMerge::SecondaryReceiver::onReceive(const char *data, size_t nbytes)
 
 /// @brief Creates a message merger. 
 /// Rule for message handling - delete it or send it.
-/// @param writer 
+/// @param writer to receive outbound messages, maybe null
+/// in which case setWriter should be called.
 MessageMerge::MessageMerge(FlarmMessageWriter* writer)
 : writer(writer)
 , primaryReceiver(this)
@@ -42,6 +43,9 @@ MessageMerge::MessageMerge(FlarmMessageWriter* writer)
     assert(this);
 }
 
+/// @brief Sets the writer for outbound messages.  Decouples
+/// setting the writer from creation of the merger.
+/// @param writer to receive messages, not null.
 void MessageMerge::setWriter(FlarmMessageWriter* writer){
     assert(this);
     assert(writer != nullptr);
@@ -64,6 +68,8 @@ void MessageMerge::receiveFlarm(FlarmMessage* msg){
             secondaryCount = 0; 
             if(primaryHeartbeat != nullptr) delete primaryHeartbeat;
             primaryHeartbeat = msg;
+            hasPrimaryFix = primaryHeartbeat->hasGps();
+
             sendHeartbeat(); // manage logic to decide which heartbeat to send.
             sendTraffic();   // And traffic 
         } else if(msg->isTraffic()){
@@ -91,6 +97,8 @@ void MessageMerge::receiveSecondary(FlarmMessage* msg){
             secondaryHeartbeat = msg;
             ++secondaryCount; // will be reset by receiving primary.
 
+            // Only send here if we're not getting primary messages. Otherwise
+            // actual sending will be triggered by receiving heartbeat from primary.
             if(secondaryActive()){
                 sendHeartbeat(); // manage logic to decide which heartbeat to send.
                 sendTraffic();   // And traffic 
@@ -98,8 +106,8 @@ void MessageMerge::receiveSecondary(FlarmMessage* msg){
         } else if(msg->isTraffic()) {
             secondaryTraffic.push_back(msg); // will dedupe later.
         } else { // Not a flarm specific message
-            // If primary has dropped out then we want to send it otherwise just drop.
-            if(secondaryActive()){
+            // If primary has dropped out or has no gps fix then we want to send it otherwise just drop.
+            if(secondaryActive() || !hasPrimaryFix){
                 send(msg);
             } else {
                 // Not one we're interested in
@@ -158,10 +166,8 @@ void MessageMerge::sendTraffic(){
     // Track Ids to remove any ADSB that already has a FLARM record
     std::set<uint32_t> addresses;
     
-
     std::vector<FlarmMessage*> traffic;
     traffic.reserve( primaryTraffic.size() + secondaryTraffic.size());
-
 
     for( auto t : primaryTraffic){
         uint32_t addr = t->getId();
@@ -214,6 +220,9 @@ void MessageMerge::send(FlarmMessage *msg){
 /// @param data 
 /// @param nbytes 
 void MessageMerge::receivePrimaryData(uint8_t* data, size_t nbytes){
+    assert(this);
+    assert(data);
+    assert(nbytes > 0);
     primaryReceiver.receive(data, nbytes);
 }
 
@@ -221,6 +230,9 @@ void MessageMerge::receivePrimaryData(uint8_t* data, size_t nbytes){
 /// @param data 
 /// @param nbytes 
 void MessageMerge::receiveSecondaryData(uint8_t* data, size_t nbytes){
+    assert(this);
+    assert(data);
+    assert(nbytes > 0);
     secondaryReceiver.receive(data, nbytes);
 }
 
@@ -231,6 +243,9 @@ void MessageMerge::receiveSecondaryData(uint8_t* data, size_t nbytes){
 /// @param len 
 /// @return 
 FlarmMessage* MessageMerge::allocateMessage(const char* data, size_t len){
+    assert(this);
+    assert(data);
+    assert(len > 0);
     FlarmMessage* msg = new FlarmMessage(data, len);
     return msg;
 }
