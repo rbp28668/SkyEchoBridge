@@ -187,27 +187,28 @@ void NMEAData::PFLAU(std::ostream& os, int rx, int gps, int alarm, int relativeB
 	oss << "PFLAU,";
 	if(rx < 0) rx = 0;
 	if(rx > 99) rx = 99;
-	oss << rx << ",";
-	oss << gps << ",";
-	oss << alarm << ",";
-	oss << "1,";  // power ok
-	if(relativeBearing != NMEAData::EMPTY) {
+	oss << rx << ",";						// RX
+	oss << ((gps != 0) ? 1 : 0) << ",";  	// TX only transmit when gps good.
+	oss << gps << ",";						// GPS
+	oss << 1 << ",";						// Power (ok)
+	oss << alarm << ",";					// Alarm
+	if(relativeBearing != NMEAData::EMPTY) { // Relative Bearing
 		oss << std::setw(3) << std::setfill('0');
 		oss << relativeBearing;
 		oss << std::setw(0);
 	} 
 	oss << ",";
-	oss << std::setw(1) << alarmType << ",";  
+	oss << std::setw(1) << alarmType << ",";  // Alarm Type
 	oss << std::setw(0);
-	if(relativeVertical != NMEAData::EMPTY) {
+	if(relativeVertical != NMEAData::EMPTY) { // Relative Vertical
 		oss << relativeVertical;
 	}
 	oss << ",";
-	if(relativeDistance != NMEAData::EMPTY) {
+	if(relativeDistance != NMEAData::EMPTY) { // Relative Distance
 		oss << relativeDistance;
 	}
 	oss << ",";
-	if(isICAO){
+	if(isICAO){								  // ICAO address
 		oss << std::setw(6) << std::setfill('0') << std::hex;
 		oss << id;
 		oss << std::setw(0) << std::dec;

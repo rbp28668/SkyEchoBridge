@@ -137,7 +137,12 @@ void MessageMerge::sendHeartbeat(){
         send(primaryHeartbeat);
         primaryHeartbeat = nullptr;
     } else {
+
         // Both primary and secondary have data
+        if(secondaryHeartbeat->hasGps() && !primaryHeartbeat->hasGps()){
+            toSend = secondaryHeartbeat;
+        }
+
         if(secondaryHeartbeat->hasAdvisory()  && !primaryHeartbeat->hasAdvisory() ){
             toSend = secondaryHeartbeat;
         }
