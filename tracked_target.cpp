@@ -27,6 +27,12 @@ std::pair<double, double> TrackedTarget::extrapolatePosition(uint32_t heartbeatT
     return Target::extrapolatePosition(dt);
 }
 
+/// @brief Sets relative distance of a target.  Data supplied as 
+/// cartesian coordinates (metres north/south & metres east/west)
+/// and is converted into relativeDistance and relativeBearing i.e.
+/// polar coordinates.
+/// @param nsMetres 
+/// @param ewMetres 
 void TrackedTarget::setRelativeDistance(float nsMetres, float ewMetres){
     relativeNorthMetres = nsMetres;
     relativeEastMetres = ewMetres;
@@ -36,7 +42,6 @@ void TrackedTarget::setRelativeDistance(float nsMetres, float ewMetres){
     // Relative bearing degrees - 0 is dead ahead, 90 on the right wingtip etc so range -180 to + 180
     // Swapping y and x rotates by 90 degrees so that this gives the target's bearing relative to the ownship
     relativeBearingDegrees = atan2f(ewMetres, nsMetres) * 180 / M_PI;  
-    relativeBearingDegrees -= track;
     if(relativeBearingDegrees < -180) {
         relativeBearingDegrees += 360;
     } else if(relativeBearingDegrees > 180){

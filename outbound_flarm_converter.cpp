@@ -8,13 +8,12 @@
 #include "ownship.h"
 #include "tracked_target.h"
 
-OutboundFlarmConverter::OutboundFlarmConverter(std::ostream& os)
-: os(os)
+OutboundFlarmConverter::OutboundFlarmConverter(std::ostream &os)
+    : os(os)
 {
-
 }
 
-// Flarm categories are: 
+// Flarm categories are:
 // 0 = (reserved)
 // 1 = glider/motor glider (turbo, self-launch, jet) / TMG
 // 2 = tow plane/tug plane
@@ -54,41 +53,43 @@ static char typeLookup[] = {
     'F', // 19 - Point Obstacle (includes tethered balloons)
     'F', // 20 - Cluster Obstacle
     'F', // 21 - Line Obstacle
- 
+
 };
-char OutboundFlarmConverter::convertAircraftType(uint8_t emitter){
+char OutboundFlarmConverter::convertAircraftType(uint8_t emitter)
+{
     char result = 'A'; // unknown
 
-    if(emitter < sizeof(typeLookup)) {
+    if (emitter < sizeof(typeLookup))
+    {
         result = typeLookup[emitter];
     }
     return result;
 }
 
+void OutboundFlarmConverter::sendTarget(const TrackedTarget &target)
+{
 
-void OutboundFlarmConverter::sendTarget(const TrackedTarget& target){
-    
     int alarm = target.alarm();
-    int relativeNorth = int( floorf(target.relativeNorth() + 0.5f));
-    int relativeEast = int( floorf(target.relativeEast() + 0.5f));
-    int relativeVertical = int( floorf(target.relativeVertical() + 0.5f));
+    int relativeNorth = int(floorf(target.relativeNorth() + 0.5f));
+    int relativeEast = int(floorf(target.relativeEast() + 0.5f));
+    int relativeVertical = int(floorf(target.relativeVertical() + 0.5f));
     bool isICAO = target.addressType == 0 || target.addressType == 2;
     uint32_t id = target.address;
     int track = int(floor(target.track + 0.5f));
-    int groundSpeed = target.speedKts * 0.5144444444f;   // kts to m/S
-    float climbRate = target.verticalVelocityUnknown() ? 0.0f : target.verticalVelocity * 0.00508f;   // feet per min to m/S
+    int groundSpeed = target.speedKts * 0.5144444444f;                                              // kts to m/S
+    float climbRate = target.verticalVelocityUnknown() ? 0.0f : target.verticalVelocity * 0.00508f; // feet per min to m/S
     char acType = convertAircraftType(target.emitter);
     nmea.PFLAA(os, alarm, relativeNorth, relativeEast, relativeVertical, isICAO, id, track, groundSpeed, climbRate, acType);
     os.flush();
 }
 
-void OutboundFlarmConverter::sendHeartbeat(int rxCount, bool gpsValid, bool tx, const OwnShip& ownship, TrackedTarget* primaryTarget){
+void OutboundFlarmConverter::sendHeartbeat(int rxCount, bool gpsValid, bool tx, const OwnShip &ownship, TrackedTarget *primaryTarget)
+{
 
-    int gps = gpsValid ? ( ownship.speedKts > 20 ? 2 : 1) : 0;  // 0 invalid, 1 ok - on ground 2 ok - in air. Use speed as proxy for ground.
-   
+    int gps = gpsValid ? (ownship.speedKts > 20 ? 2 : 1) : 0; // 0 invalid, 1 ok - on ground 2 ok - in air. Use speed as proxy for ground.
 
     int alarm = 0;
-    int relativeBearing =  NMEAData::EMPTY;
+    int relativeBearing = NMEAData::EMPTY;
     // 0 = no aircraft within range or no-alarm traffic information
     // 2 = aircraft alarm
     // 4 = traffic advisory (sent once each time an aircraft enters within distance 1.5 km and vertical distance  300 m from own ship;
@@ -98,17 +99,31 @@ void OutboundFlarmConverter::sendHeartbeat(int rxCount, bool gpsValid, bool tx, 
     bool isICAO = false;
     uint32_t id = 0;
 
-    if(primaryTarget  ){
+    if (primaryTarget)
+    {
 
         alarm = primaryTarget->alarm();
-        relativeBearing = int( floorf(primaryTarget->relativeBearing() + 0.5f));
-        //std::cout << "Relative bearing " << relativeBearing << std::endl;
+
+        relativeBearing = int(floorf(primaryTarget->relativeBearing() - ownship.track + 0.5f));
+        if (relativeBearing < -180)
+        {
+            relativeBearing += 360;
+        }
+        else if (relativeBearing > 180)
+        {
+            relativeBearing -= 360;
+        }
+
         // Alarm or advisory?  Prioritise alarm!
-        if(primaryTarget->alarm() > 0) {
+        if (primaryTarget->alarm() > 0)
+        {
             alarmType = 2;
-        } else {
-            if(primaryTarget->advisory() && !primaryTarget->advisorySent()) {
-                alarm = 1;   // for traffic advisory
+        }
+        else
+        {
+            if (primaryTarget->advisory() && !primaryTarget->advisorySent())
+            {
+                alarm = 1;     // for traffic advisory
                 alarmType = 4; // traffic advisory
                 primaryTarget->markAdvisorySent();
             }
@@ -117,16 +132,17 @@ void OutboundFlarmConverter::sendHeartbeat(int rxCount, bool gpsValid, bool tx, 
         relativeVertical = primaryTarget->relativeVertical();
         relativeDistance = primaryTarget->relativeDistance();
 
+        // std::cout << "Relative bearing " << relativeBearing << std::endl;
         isICAO = primaryTarget->addressType == 0 || primaryTarget->addressType == 2;
         id = primaryTarget->address;
-
     }
     nmea.PFLAU(os, rxCount, tx, gps, alarm, relativeBearing, alarmType, relativeVertical, relativeDistance, isICAO, id);
     os.flush();
 }
 
-void OutboundFlarmConverter::sendOwnshipData(unsigned int utcSeconds, const OwnShip& ownship){
-    
+void OutboundFlarmConverter::sendOwnshipData(unsigned int utcSeconds, const OwnShip &ownship)
+{
+
     auto position = ownship.extrapolatePosition(utcSeconds);
 
     double utcTime = utcSeconds;
@@ -136,18 +152,18 @@ void OutboundFlarmConverter::sendOwnshipData(unsigned int utcSeconds, const OwnS
     double trackDegrees = ownship.track;
 
     // TODO - whilst this might work it relies on the Pi having the correct time.
-    // Given no RTC this may be unlikely.  Would be better to tee off an inbound 
+    // Given no RTC this may be unlikely.  Would be better to tee off an inbound
     // GPS feed. OR we take the time from the heartbeat as per spec!
-    std::time_t t = std::time(0);   // get time now
-    std::tm* now = std::localtime(&t);
-     int day = now->tm_mday;
-    int month = now->tm_mon +1;
+    std::time_t t = std::time(0); // get time now
+    std::tm *now = std::localtime(&t);
+    int day = now->tm_mday;
+    int month = now->tm_mon + 1;
     int year = (now->tm_year) % 100;
-    
+
     double magneticVariationDegrees = 0;
-    int altitude = int(floor(ownship.altFeet * (nmea.heightUnits == 'M' ? 0.3048 : 1) + 0.5)); 
-    float gpsHeight = ownship.altFeet * (nmea.heightUnits == 'M' ? 0.3048 : 1); 
-    //std::cout << "Sending height " << altitude << "," << gpsHeight << nmea.heightUnits << std::endl;
+    int altitude = int(floor(ownship.altFeet * (nmea.heightUnits == 'M' ? 0.3048 : 1) + 0.5));
+    float gpsHeight = ownship.altFeet * (nmea.heightUnits == 'M' ? 0.3048 : 1);
+    // std::cout << "Sending height " << altitude << "," << gpsHeight << nmea.heightUnits << std::endl;
     nmea.GPRMC(os, utcTime, latDegrees, longDegrees, groundSpeedKnots, trackDegrees, day, month, year, magneticVariationDegrees);
     os.flush();
     nmea.PGRMZ(os, altitude);

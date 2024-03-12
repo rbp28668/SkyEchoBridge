@@ -27,5 +27,7 @@ print("T: ", t:latitude(), t:longitude())
 
 for i = 1,180,1 do
     simulation.tick();
-    print(i, t:latitude(), t:longitude(), ownship:distanceTo(t))
+    dlat = t:latitude() - ownship:latitude()
+    dlon = t:longitude() - ownship:longitude()
+    print(i, t:latitude(), t:longitude(), ownship:distanceTo(t), dlat, dlon )
 end

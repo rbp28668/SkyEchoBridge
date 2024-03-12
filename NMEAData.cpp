@@ -230,22 +230,23 @@ void NMEAData::PFLAU(std::ostream& os, int rx, bool tx, int gps, int alarm, int 
 void NMEAData::PFLAA(std::ostream& os, int alarm, int relativeNorth, int relativeEast, int relativeVertical, bool isICAO, uint32_t id, int track, int groundSpeed, float climbRate, char acType){
 	std::ostringstream oss;
 	oss << "PFLAA,";
-	oss << alarm << ",";
-	oss << relativeNorth << ",";
-	oss << relativeEast << ",";
-	oss << relativeVertical << ",";
-	if(isICAO){
+	oss << alarm << ",";            		// Alarm Level
+	oss << relativeNorth << ",";			// Relative North
+	oss << relativeEast << ",";				// Relative East
+	oss << relativeVertical << ",";			// Relative Vertical
+	oss << ( isICAO ? 1 : 0) << ",";		// ID Type
+	if(isICAO){								// ID
 		oss << std::setw(6) << std::setfill('0') << std::hex;
 		oss << id;
 		oss << std::setw(0) << std::dec;
 	}	
 	oss << ",";
-	oss << track << ",";
-	oss << ",";  // Turn rate: "Currently this field is empty"
-	oss << groundSpeed << ",";
+	oss << track << ",";					// Track
+	oss << ",";  							// Turn rate: "Currently this field is empty"
+	oss << groundSpeed << ",";				// ground speed
 	oss << std::setprecision(1);
-	oss << climbRate << ",";
-	oss << acType;
+	oss << climbRate << ",";				// climb rate
+	oss << acType;							// aircraft type
 
 	wrap(os, oss.str());
 
