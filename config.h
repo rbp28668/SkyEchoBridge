@@ -34,6 +34,8 @@ private:
     // Params for output via named pipe.
     std::string _fifo;
 
+    // Suppress tx flag if set
+    bool _notx;
 
     // Algorithm parameters
     int _oldTarget;
@@ -82,6 +84,9 @@ private:
     // location of fifo / named pipe (use mkfifo to create).
     const std::string& fifo() const { return _fifo;}
 
+    // If true, set the tx flag to zero on the output PFLAU.
+    // Allows indication that primary isn't transmitting if displaying secondary data.
+    const bool NoTx() const { return _notx;}
 
     // If a target hasn't been received for this time stop tracking.
     int oldTarget() const  { return _oldTarget;}

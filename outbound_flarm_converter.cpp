@@ -82,9 +82,11 @@ void OutboundFlarmConverter::sendTarget(const TrackedTarget& target){
     os.flush();
 }
 
-void OutboundFlarmConverter::sendHeartbeat(int rxCount, bool gpsValid, const OwnShip& ownship, TrackedTarget* primaryTarget){
+void OutboundFlarmConverter::sendHeartbeat(int rxCount, bool gpsValid, bool tx, const OwnShip& ownship, TrackedTarget* primaryTarget){
 
     int gps = gpsValid ? ( ownship.speedKts > 20 ? 2 : 1) : 0;  // 0 invalid, 1 ok - on ground 2 ok - in air. Use speed as proxy for ground.
+   
+
     int alarm = 0;
     int relativeBearing =  NMEAData::EMPTY;
     // 0 = no aircraft within range or no-alarm traffic information
@@ -119,7 +121,7 @@ void OutboundFlarmConverter::sendHeartbeat(int rxCount, bool gpsValid, const Own
         id = primaryTarget->address;
 
     }
-    nmea.PFLAU(os, rxCount, gps, alarm, relativeBearing, alarmType, relativeVertical, relativeDistance, isICAO, id);
+    nmea.PFLAU(os, rxCount, tx, gps, alarm, relativeBearing, alarmType, relativeVertical, relativeDistance, isICAO, id);
     os.flush();
 }
 

@@ -15,6 +15,9 @@ Config::Config()
       _fifo("/opt/sky_echo/sky_echo_fifo")
 
       ,
+      _notx(false)
+      
+      ,
       _oldTarget(30)
 
       ,
@@ -134,7 +137,7 @@ bool Config::update(int argc, char *argv[])
             std::cout << "--pipe <fifo>                     - set output device to named pipe." << std::endl;
             std::cout << "--serial <device> <baud>          - set output device to serial port." << std::endl;
             std::cout << "--udp <ip_address> <port>         - set output device to UDP socket" << std::endl;
-
+            std::cout << "--no_tx                           - force tx bit to zero " << std::endl;
             std::cout << "--old_target <value>              - time in seconds to keep target information without an update." << std::endl;
             std::cout << "--ignore_distance  <value>        - ignore targets further away than this (metres)." << std::endl;
             std::cout << "--ignore_height  <value>          - ignore targets with a larger height difference than this (metres)." << std::endl;
@@ -177,6 +180,11 @@ bool Config::update(int argc, char *argv[])
                     _targetPort = (unsigned)port;
                 }
             }
+        }
+
+        else if (isOption(arg, "no_tx"))
+        {
+            _notx = true;
         }
 
         else if (isOption(arg, "old_target"))

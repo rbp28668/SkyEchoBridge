@@ -21,6 +21,6 @@ class OutboundFlarmConverter {
 public:
     OutboundFlarmConverter(std::ostream& os);
     void sendTarget(const TrackedTarget& target);
-    void sendHeartbeat(int rxCount, bool gpsValid, const OwnShip& ownship, TrackedTarget* primaryTarget);
+    void sendHeartbeat(int rxCount, bool gpsValid, bool tx,  const OwnShip& ownship, TrackedTarget* primaryTarget);
     void sendOwnshipData(unsigned int utcSeconds, const OwnShip& ownship);
 };

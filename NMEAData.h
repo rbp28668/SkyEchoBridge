@@ -41,7 +41,7 @@ public:
 	void GPGGA(std::ostream& os, double utcTime, double latDegrees, double longDegrees, float gpsHeight);
 	void GPRMC(std::ostream& os, double utcTime, double latDegrees, double longDegrees, float groundSpeedKnots, float trackDegrees, int day, int month, int year, float magneticVariationDegrees);
 	void PGRMZ(std::ostream& os, int altitude);
-	void PFLAU(std::ostream& os, int rx, int gps, int alarm, int relativeBearing, int alarmType, int relativeVertical, int relativeDistance, bool isICAO, uint32_t id);
+	void PFLAU(std::ostream& os, int rx, bool tx, int gps, int alarm, int relativeBearing, int alarmType, int relativeVertical, int relativeDistance, bool isICAO, uint32_t id);
 	void PFLAA(std::ostream& os, int alarm, int relativeNorth, int relativeEast, int relativeVertical, bool isICAO, uint32_t id, int track, int groundSpeed, float climbRate, char acType);
 
 	NMEAData(void);

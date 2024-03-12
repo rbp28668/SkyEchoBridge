@@ -187,13 +187,13 @@ void NMEAData::PGRMZ(std::ostream& os, int altitude){
 	wrap(os, oss.str());
 }
 
-void NMEAData::PFLAU(std::ostream& os, int rx, int gps, int alarm, int relativeBearing, int alarmType, int relativeVertical, int relativeDistance, bool isICAO, uint32_t id){
+void NMEAData::PFLAU(std::ostream& os, int rx, bool tx, int gps, int alarm, int relativeBearing, int alarmType, int relativeVertical, int relativeDistance, bool isICAO, uint32_t id){
 	std::ostringstream oss;
 	oss << "PFLAU,";
 	if(rx < 0) rx = 0;
 	if(rx > 99) rx = 99;
 	oss << rx << ",";						// RX
-	oss << ((gps != 0) ? 1 : 0) << ",";  	// TX only transmit when gps good.
+	oss << (tx ? 1 : 0) << ",";  			// TX ?
 	oss << gps << ",";						// GPS
 	oss << 1 << ",";						// Power (ok)
 	oss << alarm << ",";					// Alarm

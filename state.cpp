@@ -308,6 +308,10 @@ void State::processCurrentState(){
         //  If nothing special but something has an advisory flag set then send that.
         if(primaryTarget == nullptr) primaryTarget = lastAdvisory;
 
-        outbound->sendHeartbeat(traffic.size(), gpsAvailable, ownship, primaryTarget);
+        // GDL-90 spec says "Position is available for ADS-B Tx" against gps valid flag. 
+        // HOWEVER it's misleading when the tx light is flashing on the flarm display but flarm isn't transmitting.
+        // Hence can suppress it.
+        bool tx = config->NoTx() ? false : gpsAvailable;    
+        outbound->sendHeartbeat(traffic.size(), gpsAvailable, tx,  ownship, primaryTarget);
     }
 }
