@@ -473,8 +473,8 @@ int SimulationScripting::getLocation(lua_State *L)
 int SimulationScripting::move(lua_State *L)
 {
     Traffic *traffic = getTraffic(L);
-    double north = luaL_checknumber(L, 1);
-    double east = luaL_checknumber(L, 2);
+    double north = luaL_checknumber(L, 2);
+    double east = luaL_checknumber(L, 3);
     traffic->move(north, east);
     return 0;
 }
