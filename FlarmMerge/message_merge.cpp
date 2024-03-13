@@ -173,15 +173,10 @@ void MessageMerge::sendHeartbeat(){
 /// as needed.
 void MessageMerge::sendTraffic(){
     
-    // Track Ids to remove any ADSB that already has a FLARM record
-    std::set<uint32_t> addresses;
-    
     std::vector<FlarmMessage*> traffic;
     traffic.reserve( primaryTraffic.size() + secondaryTraffic.size());
 
     for( auto t : primaryTraffic){
-        uint32_t addr = t->getId();
-        if(addr != 0) addresses.insert(addr);
         traffic.push_back(t);
     }
 
@@ -192,9 +187,18 @@ void MessageMerge::sendTraffic(){
     for (auto it = secondaryTraffic.rbegin(); it != secondaryTraffic.rend(); ++it){
         FlarmMessage* t = *it;
         uint32_t addr = t->getId();
-        if(addresses.find(addr) != addresses.end()) {
+        
+        // Target with this ID already in traffic queue?
+        bool exists = false;
+        for(auto t : traffic){
+            if(t->getId() == addr) {
+                exists = true;
+                break;
+            }
+        }
+
+        if(!exists) {
             traffic.push_back(t);
-            addresses.insert(addr); //
         } else {   // it's a duplicate target so discard.
             delete t;
         }
