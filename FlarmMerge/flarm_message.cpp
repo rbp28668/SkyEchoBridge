@@ -47,7 +47,7 @@ FlarmMessage::FlarmMessage(const char *data, size_t len)
     }
 }
 
-bool FlarmMessage::startsWith(const char *str)
+bool FlarmMessage::startsWith(const char *str) const
 {
     const char *pbuff = _buffer;
     while (*str)

@@ -14,8 +14,7 @@ class FlarmMessage {
     bool _hasGps; 
     uint32_t _id;
 
-    bool startsWith(const char* str);
-    const char* getField(int idx);
+    bool startsWith(const char* str) const;
     bool checkValid();
     int extractAlarmLevel();
     bool extractAdvisory();
@@ -25,6 +24,7 @@ class FlarmMessage {
     public:
 
     FlarmMessage(const char* data, size_t len);
+    const char* getField(int idx);
     bool isFlarm();     // Flarm specific message.
     bool isValid()  { return _valid; }
     int alarmLevel() { return _alarmLevel; }
@@ -32,7 +32,7 @@ class FlarmMessage {
     bool hasGps() const { return _hasGps;} 
     bool isTraffic()  const { return _isTraffic; } // PFLAA
     bool isHeartbeat() const { return _isHeartbeat;} // PFLAU;
-
+    bool is(const char* prefix) const { return startsWith(prefix);}
     uint32_t getId() {return _id; }  // address and address type combined.
 
     // Get the message for sending.

@@ -49,12 +49,17 @@ class MessageMerge
 
     bool hasPrimaryFix = false;   // set true if the primary heartbeat has valid GPS.
 
+    // Set true if system time has been set from GPS GPRMC message
+    bool timeSet = false;
+
+    // Outbound queue and writer to actually send it.
     std::list<FlarmMessage *> send_queue;
     FlarmMessageWriter* writer = nullptr;
 
     PrimaryReceiver primaryReceiver;
     SecondaryReceiver secondaryReceiver;
 
+    void setTimeFrom(FlarmMessage *msg);
     void receiveFlarm(FlarmMessage *msg);
     void receiveSecondary(FlarmMessage *msg);
     void sendHeartbeat(); // manage logic to decide which heartbeat to send.
