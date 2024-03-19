@@ -12,6 +12,13 @@ Based loosely on the Python code originally by Davis Chappins and later by Bogda
 Note, this wasn't written specifically for XCSoar so uses my naming/coding conventions. That said, 
 shouldn't be that hard to change. 
 
+Note that there is also a lot of information on the [Wiki](https://github.com/rbp28668/SkyEchoBridge/wiki)
+
+## Other Programs
+There are 2 associated programs:
+- [FlarmMerge](./FlarmMerge/readme.md) that combines the translated Flarm data with Flarm data received over a serial port from a "real" Flarm device.
+- [TrafficGen](./TrafficGen/readme.md) that generates fake GDL-90 data for testing.
+
 ## Building
 This uses GCC and CMake.  You should just be able to use `cmake .` followed by `make` to get an executable.
 

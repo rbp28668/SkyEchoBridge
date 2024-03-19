@@ -35,6 +35,7 @@ ownship:setTrack(90)
 
 t = simulation.createTarget()
 print("Target ", t:callsign())
+t:setEmitter(Emitter.GLIDER) 
 t:setSpeedKts(75);
 t:setAltFeet(2000);
 

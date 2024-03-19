@@ -105,7 +105,7 @@ bool Config::update(int argc, char *argv[])
 
         if (isOption(arg, "help"))
         {
-            std::cout << "TargetGen " << std::endl;
+            std::cout << "TrafficGen " << std::endl;
             std::cout << "--help                            - display this information." << std::endl;
             std::cout << "--udp <ip_address> <port>         - set output device to UDP socket" << std::endl;
 

@@ -238,7 +238,6 @@ const luaL_Reg SimulationScripting::traffic_methods[] = {
     {"setMiscIndicators", SimulationScripting::setMiscIndicators},
     {"setNic", SimulationScripting::setNic},
     {"setNacp", SimulationScripting::setNacp},
-    {"setNacp", SimulationScripting::setNacp},
     {"setEmitter", SimulationScripting::setEmitter},
     {"setSpeedKts", SimulationScripting::setSpeedKts},
     {"setVerticalVelocity", SimulationScripting::setVerticalVelocity},
