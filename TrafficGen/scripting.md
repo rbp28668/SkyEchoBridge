@@ -116,7 +116,10 @@ t:setEmergency(emergency)
 ```
 
 ## Misc
+
+```
 lat,lon = t:getLocation() -- gets location in a single call
 t:move(metresNorth, metresEast) -- moves the target.  -ve values give south and west respectively.
 t:makeConflictingTo(other, range, bearing) -- makes t come into conflict with other (usually ownship) starting at given range and bearing.
 distMetres = t:distanceTo(other) -- gets the distance to another target.
+```
